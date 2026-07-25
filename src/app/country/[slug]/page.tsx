@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
-  getCountries, getCountry, getBanks, totals, byRegion, INDICATORS,
+  getCountries, getCountry, getBanks, getRails, totals, byRegion, INDICATORS,
   fmtUsdBn, fmtPop, fmtKm2, fmtPct, fmtNum, type Country,
 } from '@/lib/data';
 
@@ -54,6 +54,7 @@ export default async function CountryPage({ params }: { params: { slug: string }
 
   const all = await getCountries();
   const banks = await getBanks(c.iso3);
+  const rails = await getRails(c.iso3);
   const w = totals(all);
   const regions = byRegion(all);
   const reg = regions.find((r) => r.region === c.region)!;
@@ -151,10 +152,22 @@ export default async function CountryPage({ params }: { params: { slug: string }
                   <div className="pair"><dt>Valuation</dt><dd>Nominal</dd></div>
                   <div className="pair"><dt>Debt per person</dt>
                     <dd>${fmtNum(Math.round(((c.debt_usd_bn ?? 0) * 1000) / c.population_mn))}</dd></div>
+                  <div className="pair">
+                    <dt>Net of assets</dt>
+                    <dd>{c.net_debt_pct_gdp !== null ? fmtPct(c.net_debt_pct_gdp) : 'not published'}</dd>
+                  </div>
                   <div className="pair"><dt>Source</dt><dd style={{ fontSize: 11 }}>{D.source}</dd></div>
-                  <div className="pair"><dt>Vintage</dt><dd style={{ fontSize: 11 }}>{D.vintage}</dd></div>
                 </dl>
               </div>
+            </div>
+          )}
+          {c.net_debt_pct_gdp !== null && c.debt_pct_gdp !== null && (
+            <div style={{ marginTop: 14, fontSize: 13, color: 'var(--ink-2)' }}>
+              Gross debt is <b>{fmtPct(c.debt_pct_gdp)}</b>; net of the government’s financial assets
+              it is <b>{fmtPct(c.net_debt_pct_gdp)}</b>
+              {c.net_debt_pct_gdp < 0
+                ? ' — negative, meaning the state holds more financial assets than it owes.'
+                : `, a ${fmtPct(c.debt_pct_gdp - c.net_debt_pct_gdp, 1)} gap.`}
             </div>
           )}
           <div className="caveat">
@@ -162,6 +175,115 @@ export default async function CountryPage({ params }: { params: { slug: string }
             {D.caveat}
           </div>
         </div>
+
+        {/* ---- private-sector leverage: the BIS coverage gap ---- */}
+        <div className="panel">
+          <h3>Private-sector debt</h3>
+          {c.bis_covered ? (
+            <div className="grid-2">
+              <div>
+                <dl style={{ margin: 0 }}>
+                  <div className="pair">
+                    <dt>Households</dt>
+                    <dd>{c.hh_debt_pct_gdp !== null ? fmtPct(c.hh_debt_pct_gdp) : '—'} of GDP</dd>
+                  </div>
+                  <div className="pair">
+                    <dt>Non-financial corporations</dt>
+                    <dd>{c.corp_debt_pct_gdp !== null ? fmtPct(c.corp_debt_pct_gdp) : '—'} of GDP</dd>
+                  </div>
+                  <div className="pair" style={{ borderTop: '1px solid var(--rule)' }}>
+                    <dt><b style={{ color: 'var(--ink)' }}>Total private</b></dt>
+                    <dd><b>{c.private_debt_pct_gdp !== null ? fmtPct(c.private_debt_pct_gdp) : '—'}</b> of GDP</dd>
+                  </div>
+                </dl>
+              </div>
+              <div style={{ fontSize: 13, color: 'var(--ink-2)', lineHeight: 1.55 }}>
+                Government debt is only one layer. Household and corporate borrowing is where financial
+                fragility often actually sits — and here it totals{' '}
+                <b>{c.private_debt_pct_gdp !== null ? fmtPct(c.private_debt_pct_gdp) : '—'}</b> of GDP,
+                {c.debt_pct_gdp !== null && c.private_debt_pct_gdp !== null && c.private_debt_pct_gdp > c.debt_pct_gdp
+                  ? ' larger than the public debt above.'
+                  : ' set against the public figure above.'}
+              </div>
+            </div>
+          ) : (
+            <div className="missing">
+              The BIS publishes household and corporate credit for 44 economies. {c.name} is not
+              among them, so no comparable private-debt figure exists.
+              <br />This is a gap in global data coverage, not a value of zero.
+            </div>
+          )}
+        </div>
+
+        {/* ---- money: regime, central bank, rate ---- */}
+        <div className="panel">
+          <h3>Currency &amp; monetary policy</h3>
+          <div className="grid-3">
+            <div>
+              <div className="pair"><dt>Currency</dt><dd>{c.currency_code}</dd></div>
+              <div className="pair"><dt>Regime</dt>
+                <dd style={{ fontSize: 12, textAlign: 'right' }}>{c.fx_regime ?? 'not classified'}</dd></div>
+            </div>
+            <div>
+              <div className="pair"><dt>Central bank</dt>
+                <dd style={{ fontSize: 12, textAlign: 'right' }}>{c.cb_name ?? '—'}</dd></div>
+              <div className="pair"><dt>{c.policy_rate_name ?? 'Policy rate'}</dt>
+                <dd>{c.policy_rate !== null ? fmtPct(c.policy_rate, 2) : '—'}</dd></div>
+            </div>
+            <div style={{ fontSize: 12, color: 'var(--ink-2)', lineHeight: 1.5 }}>
+              {c.fx_regime?.includes('Euro area')
+                ? 'Shares the euro and the ECB’s policy rate with the rest of the euro area.'
+                : c.fx_regime?.includes('dollar') || c.fx_regime?.includes('peg') || c.fx_regime?.includes('board')
+                ? 'A pegged or fixed regime — monetary policy is anchored to the currency it tracks, limiting independent rate-setting.'
+                : c.policy_rate !== null
+                ? 'Issues its own currency and sets its own policy rate — meaningful room to manage local-currency debt.'
+                : 'Monetary arrangement shown where classified.'}
+            </div>
+          </div>
+        </div>
+
+        {/* ---- housing ---- */}
+        {(c.house_price_yoy !== null) && (
+          <div className="panel">
+            <h3>House prices</h3>
+            <div className="grid-2">
+              <div>
+                <div className="pair"><dt>Nominal, year-on-year</dt>
+                  <dd style={{ color: (c.house_price_yoy ?? 0) < 0 ? 'var(--copper)' : 'var(--teal)' }}>
+                    {(c.house_price_yoy ?? 0) > 0 ? '+' : ''}{fmtPct(c.house_price_yoy, 1)}</dd></div>
+                <div className="pair"><dt>Real (inflation-adjusted)</dt>
+                  <dd style={{ color: (c.house_real_yoy ?? 0) < 0 ? 'var(--copper)' : 'var(--teal)' }}>
+                    {(c.house_real_yoy ?? 0) > 0 ? '+' : ''}{fmtPct(c.house_real_yoy, 1)}</dd></div>
+              </div>
+              <div style={{ fontSize: 13, color: 'var(--ink-2)', lineHeight: 1.55 }}>
+                {c.house_price_yoy !== null && c.house_real_yoy !== null && c.house_price_yoy > 0 && c.house_real_yoy < 0
+                  ? 'Prices rose in cash terms but fell after inflation — housing got cheaper in purchasing-power terms despite the headline rise.'
+                  : 'The real figure strips out inflation and is the one that tells you whether housing actually became more expensive.'}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ---- payment rails ---- */}
+        {rails.length > 0 && (
+          <div className="panel">
+            <h3>Payment rails</h3>
+            <table className="ledger">
+              <thead>
+                <tr><th>System</th><th>Type</th><th style={{ textAlign: 'right' }}>Live since</th></tr>
+              </thead>
+              <tbody>
+                {rails.map((r) => (
+                  <tr key={r.name}>
+                    <td className="cname">{r.name}</td>
+                    <td style={{ color: 'var(--ink-2)', fontSize: 13 }}>{r.kind}</td>
+                    <td className="num">{r.live_year ?? '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
 
         {/* ---- comparison ---- */}
         <div className="section" style={{ borderBottom: 0, paddingBottom: 20 }}>

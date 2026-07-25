@@ -21,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Link href="/compare">Compare</Link>
               <Link href="/regions">Regions</Link>
               <Link href="/banks">Banks</Link>
+              <Link href="/rates">Rates</Link>
               <Link href="/methodology">Method</Link>
             </nav>
             <div className="masthead-meta">187 economies · 2025–26</div>

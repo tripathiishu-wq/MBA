@@ -15,7 +15,18 @@
 "gdp_per_capita": 89202,
 "pop_density": 37.4,
 "gdp_per_km2": 3335039,
-"debt_usd_bn": 38377.8
+"debt_usd_bn": 38377.8,
+"net_debt_pct_gdp": 100.5,
+"hh_debt_pct_gdp": 72.9,
+"corp_debt_pct_gdp": 77.2,
+"private_debt_pct_gdp": 150.1,
+"fx_regime": "Free floating",
+"cb_name": "Federal Reserve",
+"policy_rate": 3.625,
+"policy_rate_name": "Federal funds target (midpoint)",
+"house_price_yoy": 3.9,
+"house_real_yoy": 1.1,
+"bis_covered": true
 },
 {
 "iso3": "CHN",
@@ -32,7 +43,18 @@
 "gdp_per_capita": 13795,
 "pop_density": 150.8,
 "gdp_per_km2": 2080801,
-"debt_usd_bn": 18812.2
+"debt_usd_bn": 18812.2,
+"net_debt_pct_gdp": 60.5,
+"hh_debt_pct_gdp": 61.3,
+"corp_debt_pct_gdp": 140.8,
+"private_debt_pct_gdp": 202.1,
+"fx_regime": "Crawl-like arrangement",
+"cb_name": "People's Bank of China",
+"policy_rate": 3.0,
+"policy_rate_name": "1-year Loan Prime Rate",
+"house_price_yoy": -4.9,
+"house_real_yoy": -4.8,
+"bis_covered": true
 },
 {
 "iso3": "DEU",
@@ -49,7 +71,18 @@
 "gdp_per_capita": 56409,
 "pop_density": 240.7,
 "gdp_per_km2": 13577950,
-"debt_usd_bn": 3069.4
+"debt_usd_bn": 3069.4,
+"net_debt_pct_gdp": 47.2,
+"hh_debt_pct_gdp": 52.8,
+"corp_debt_pct_gdp": 72.4,
+"private_debt_pct_gdp": 125.2,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 1.8,
+"house_real_yoy": -0.3,
+"bis_covered": true
 },
 {
 "iso3": "IND",
@@ -66,7 +99,18 @@
 "gdp_per_capita": 2860,
 "pop_density": 492.4,
 "gdp_per_km2": 1408252,
-"debt_usd_bn": 3475.2
+"debt_usd_bn": 3475.2,
+"net_debt_pct_gdp": 73.4,
+"hh_debt_pct_gdp": 42.4,
+"corp_debt_pct_gdp": 54.2,
+"private_debt_pct_gdp": 96.6,
+"fx_regime": "Floating",
+"cb_name": "Reserve Bank of India",
+"policy_rate": 5.5,
+"policy_rate_name": "Repo rate",
+"house_price_yoy": 4.2,
+"house_real_yoy": -0.9,
+"bis_covered": true
 },
 {
 "iso3": "JPN",
@@ -83,7 +127,18 @@
 "gdp_per_capita": 34005,
 "pop_density": 337.7,
 "gdp_per_km2": 11482492,
-"debt_usd_bn": 9740.8
+"debt_usd_bn": 9740.8,
+"net_debt_pct_gdp": 134.2,
+"hh_debt_pct_gdp": 68.3,
+"corp_debt_pct_gdp": 118.4,
+"private_debt_pct_gdp": 186.7,
+"fx_regime": "Free floating",
+"cb_name": "Bank of Japan",
+"policy_rate": 1.0,
+"policy_rate_name": "Policy rate",
+"house_price_yoy": 4.5,
+"house_real_yoy": 1.8,
+"bis_covered": true
 },
 {
 "iso3": "GBR",
@@ -100,7 +155,18 @@
 "gdp_per_capita": 55158,
 "pop_density": 287.7,
 "gdp_per_km2": 15868226,
-"debt_usd_bn": 4065.5
+"debt_usd_bn": 4065.5,
+"net_debt_pct_gdp": 94.1,
+"hh_debt_pct_gdp": 77.8,
+"corp_debt_pct_gdp": 68.9,
+"private_debt_pct_gdp": 146.7,
+"fx_regime": "Free floating",
+"cb_name": "Bank of England",
+"policy_rate": 3.75,
+"policy_rate_name": "Bank Rate",
+"house_price_yoy": 3.1,
+"house_real_yoy": -0.6,
+"bis_covered": true
 },
 {
 "iso3": "FRA",
@@ -117,7 +183,18 @@
 "gdp_per_capita": 48213,
 "pop_density": 121.6,
 "gdp_per_km2": 5864230,
-"debt_usd_bn": 3734.4
+"debt_usd_bn": 3734.4,
+"net_debt_pct_gdp": 106.2,
+"hh_debt_pct_gdp": 66.1,
+"corp_debt_pct_gdp": 168.9,
+"private_debt_pct_gdp": 235.0,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": -1.9,
+"house_real_yoy": -2.9,
+"bis_covered": true
 },
 {
 "iso3": "ITA",
@@ -134,7 +211,18 @@
 "gdp_per_capita": 40981,
 "pop_density": 200.9,
 "gdp_per_km2": 8234174,
-"debt_usd_bn": 3315.7
+"debt_usd_bn": 3315.7,
+"net_debt_pct_gdp": 128.9,
+"hh_debt_pct_gdp": 40.9,
+"corp_debt_pct_gdp": 66.8,
+"private_debt_pct_gdp": 107.7,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 2.1,
+"house_real_yoy": 0.4,
+"bis_covered": true
 },
 {
 "iso3": "BRA",
@@ -151,7 +239,18 @@
 "gdp_per_capita": 10841,
 "pop_density": 25.5,
 "gdp_per_km2": 276018,
-"debt_usd_bn": 2122.4
+"debt_usd_bn": 2122.4,
+"net_debt_pct_gdp": 63.2,
+"hh_debt_pct_gdp": 34.7,
+"corp_debt_pct_gdp": 33.4,
+"private_debt_pct_gdp": 68.1,
+"fx_regime": "Free floating",
+"cb_name": "Banco Central do Brasil",
+"policy_rate": 15.0,
+"policy_rate_name": "Selic rate",
+"house_price_yoy": 6.8,
+"house_real_yoy": 1.9,
+"bis_covered": true
 },
 {
 "iso3": "CAN",
@@ -168,7 +267,18 @@
 "gdp_per_capita": 54803,
 "pop_density": 4.5,
 "gdp_per_km2": 244680,
-"debt_usd_bn": 2349.6
+"debt_usd_bn": 2349.6,
+"net_debt_pct_gdp": 13.8,
+"hh_debt_pct_gdp": 102.4,
+"corp_debt_pct_gdp": 115.2,
+"private_debt_pct_gdp": 217.6,
+"fx_regime": "Free floating",
+"cb_name": "Bank of Canada",
+"policy_rate": 2.25,
+"policy_rate_name": "Overnight rate",
+"house_price_yoy": -1.2,
+"house_real_yoy": -3.9,
+"bis_covered": true
 },
 {
 "iso3": "RUS",
@@ -185,7 +295,18 @@
 "gdp_per_capita": 14427,
 "pop_density": 8.8,
 "gdp_per_km2": 126764,
-"debt_usd_bn": 444.3
+"debt_usd_bn": 444.3,
+"net_debt_pct_gdp": 17.2,
+"hh_debt_pct_gdp": 22.9,
+"corp_debt_pct_gdp": 68.4,
+"private_debt_pct_gdp": 91.3,
+"fx_regime": "Free floating",
+"cb_name": "Bank of Russia",
+"policy_rate": 18.0,
+"policy_rate_name": "Key rate",
+"house_price_yoy": 9.8,
+"house_real_yoy": 1.2,
+"bis_covered": true
 },
 {
 "iso3": "KOR",
@@ -202,7 +323,18 @@
 "gdp_per_capita": 37660,
 "pop_density": 531.7,
 "gdp_per_km2": 20024684,
-"debt_usd_bn": 1100.1
+"debt_usd_bn": 1100.1,
+"net_debt_pct_gdp": 22.1,
+"hh_debt_pct_gdp": 105.2,
+"corp_debt_pct_gdp": 115.8,
+"private_debt_pct_gdp": 221.0,
+"fx_regime": "Free floating",
+"cb_name": "Bank of Korea",
+"policy_rate": 2.5,
+"policy_rate_name": "Base rate",
+"house_price_yoy": 2.1,
+"house_real_yoy": -0.2,
+"bis_covered": true
 },
 {
 "iso3": "MEX",
@@ -219,7 +351,18 @@
 "gdp_per_capita": 14041,
 "pop_density": 67.9,
 "gdp_per_km2": 952699,
-"debt_usd_bn": 1085.3
+"debt_usd_bn": 1085.3,
+"net_debt_pct_gdp": 49.8,
+"hh_debt_pct_gdp": 16.9,
+"corp_debt_pct_gdp": 24.8,
+"private_debt_pct_gdp": 41.7,
+"fx_regime": "Free floating",
+"cb_name": "Banco de Mexico",
+"policy_rate": 7.75,
+"policy_rate_name": "Overnight target",
+"house_price_yoy": 7.9,
+"house_real_yoy": 3.1,
+"bis_covered": true
 },
 {
 "iso3": "ESP",
@@ -236,7 +379,18 @@
 "gdp_per_capita": 37557,
 "pop_density": 96.0,
 "gdp_per_km2": 3605355,
-"debt_usd_bn": 1822.4
+"debt_usd_bn": 1822.4,
+"net_debt_pct_gdp": 92.1,
+"hh_debt_pct_gdp": 48.2,
+"corp_debt_pct_gdp": 75.4,
+"private_debt_pct_gdp": 123.6,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 8.4,
+"house_real_yoy": 5.9,
+"bis_covered": true
 },
 {
 "iso3": "AUS",
@@ -253,7 +407,18 @@
 "gdp_per_capita": 65836,
 "pop_density": 3.5,
 "gdp_per_km2": 232002,
-"debt_usd_bn": 887.3
+"debt_usd_bn": 887.3,
+"net_debt_pct_gdp": 33.7,
+"hh_debt_pct_gdp": 109.8,
+"corp_debt_pct_gdp": 60.1,
+"private_debt_pct_gdp": 169.9,
+"fx_regime": "Free floating",
+"cb_name": "Reserve Bank of Australia",
+"policy_rate": 4.35,
+"policy_rate_name": "Cash rate",
+"house_price_yoy": 4.8,
+"house_real_yoy": 1.6,
+"bis_covered": true
 },
 {
 "iso3": "IDN",
@@ -270,7 +435,18 @@
 "gdp_per_capita": 5222,
 "pop_density": 157.7,
 "gdp_per_km2": 823595,
-"debt_usd_bn": 598.3
+"debt_usd_bn": 598.3,
+"net_debt_pct_gdp": 33.9,
+"hh_debt_pct_gdp": 16.8,
+"corp_debt_pct_gdp": 23.4,
+"private_debt_pct_gdp": 40.2,
+"fx_regime": "Floating",
+"cb_name": "Bank Indonesia",
+"policy_rate": 5.25,
+"policy_rate_name": "BI rate",
+"house_price_yoy": 1.9,
+"house_real_yoy": -0.4,
+"bis_covered": true
 },
 {
 "iso3": "TUR",
@@ -287,7 +463,18 @@
 "gdp_per_capita": 16385,
 "pop_density": 114.0,
 "gdp_per_km2": 1867131,
-"debt_usd_bn": 379.4
+"debt_usd_bn": 379.4,
+"net_debt_pct_gdp": 24.8,
+"hh_debt_pct_gdp": 10.9,
+"corp_debt_pct_gdp": 58.4,
+"private_debt_pct_gdp": 69.3,
+"fx_regime": "Floating",
+"cb_name": "Central Bank of Turkey",
+"policy_rate": 40.0,
+"policy_rate_name": "1-week repo",
+"house_price_yoy": 32.1,
+"house_real_yoy": -4.9,
+"bis_covered": true
 },
 {
 "iso3": "NLD",
@@ -304,7 +491,18 @@
 "gdp_per_capita": 69508,
 "pop_density": 543.2,
 "gdp_per_km2": 37756011,
-"debt_usd_bn": 548.2
+"debt_usd_bn": 548.2,
+"net_debt_pct_gdp": 38.4,
+"hh_debt_pct_gdp": 92.4,
+"corp_debt_pct_gdp": 124.8,
+"private_debt_pct_gdp": 217.2,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 9.2,
+"house_real_yoy": 6.1,
+"bis_covered": true
 },
 {
 "iso3": "SAU",
@@ -321,7 +519,18 @@
 "gdp_per_capita": 32861,
 "pop_density": 16.1,
 "gdp_per_km2": 528913,
-"debt_usd_bn": 368.4
+"debt_usd_bn": 368.4,
+"net_debt_pct_gdp": -5.2,
+"hh_debt_pct_gdp": 13.2,
+"corp_debt_pct_gdp": 58.9,
+"private_debt_pct_gdp": 72.1,
+"fx_regime": "Conventional peg (USD)",
+"cb_name": "Saudi Central Bank",
+"policy_rate": 4.5,
+"policy_rate_name": "Repo rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": true
 },
 {
 "iso3": "CHE",
@@ -338,7 +547,18 @@
 "gdp_per_capita": 109780,
 "pop_density": 230.3,
 "gdp_per_km2": 25280899,
-"debt_usd_bn": 376.6
+"debt_usd_bn": 376.6,
+"net_debt_pct_gdp": 13.1,
+"hh_debt_pct_gdp": 126.4,
+"corp_debt_pct_gdp": 142.8,
+"private_debt_pct_gdp": 269.2,
+"fx_regime": null,
+"cb_name": "Swiss National Bank",
+"policy_rate": 0.0,
+"policy_rate_name": "Policy rate",
+"house_price_yoy": 2.8,
+"house_real_yoy": 2.4,
+"bis_covered": true
 },
 {
 "iso3": "POL",
@@ -355,7 +575,18 @@
 "gdp_per_capita": 23766,
 "pop_density": 125.7,
 "gdp_per_km2": 2987950,
-"debt_usd_bn": 533.4
+"debt_usd_bn": 533.4,
+"net_debt_pct_gdp": 42.6,
+"hh_debt_pct_gdp": 26.8,
+"corp_debt_pct_gdp": 38.9,
+"private_debt_pct_gdp": 65.7,
+"fx_regime": "Free floating",
+"cb_name": "Narodowy Bank Polski",
+"policy_rate": 5.0,
+"policy_rate_name": "Reference rate",
+"house_price_yoy": 9.8,
+"house_real_yoy": 6.2,
+"bis_covered": true
 },
 {
 "iso3": "TWN",
@@ -372,7 +603,18 @@
 "gdp_per_capita": 34786,
 "pop_density": 725.4,
 "gdp_per_km2": 25232486,
-"debt_usd_bn": 223.8
+"debt_usd_bn": 223.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BEL",
@@ -389,7 +631,18 @@
 "gdp_per_capita": 58475,
 "pop_density": 389.7,
 "gdp_per_km2": 22787318,
-"debt_usd_bn": 730.7
+"debt_usd_bn": 730.7,
+"net_debt_pct_gdp": 95.4,
+"hh_debt_pct_gdp": 58.9,
+"corp_debt_pct_gdp": 105.4,
+"private_debt_pct_gdp": 164.3,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 4.1,
+"house_real_yoy": 1.9,
+"bis_covered": true
 },
 {
 "iso3": "ARG",
@@ -406,7 +659,18 @@
 "gdp_per_capita": 14880,
 "pop_density": 16.8,
 "gdp_per_km2": 249572,
-"debt_usd_bn": 440.5
+"debt_usd_bn": 440.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": 4.0,
+"corp_debt_pct_gdp": 30.9,
+"private_debt_pct_gdp": 34.9,
+"fx_regime": "Crawling peg",
+"cb_name": "Banco Central de la Republica Argentina",
+"policy_rate": 29.0,
+"policy_rate_name": "Policy rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": true
 },
 {
 "iso3": "SWE",
@@ -423,7 +687,18 @@
 "gdp_per_capita": 58491,
 "pop_density": 25.8,
 "gdp_per_km2": 1510942,
-"debt_usd_bn": 212.0
+"debt_usd_bn": 212.0,
+"net_debt_pct_gdp": 8.9,
+"hh_debt_pct_gdp": 88.9,
+"corp_debt_pct_gdp": 168.9,
+"private_debt_pct_gdp": 257.8,
+"fx_regime": "Free floating",
+"cb_name": "Sveriges Riksbank",
+"policy_rate": 2.0,
+"policy_rate_name": "Policy rate",
+"house_price_yoy": 1.9,
+"house_real_yoy": -0.4,
+"bis_covered": true
 },
 {
 "iso3": "IRL",
@@ -440,7 +715,18 @@
 "gdp_per_capita": 112830,
 "pop_density": 76.9,
 "gdp_per_km2": 8680505,
-"debt_usd_bn": 244.0
+"debt_usd_bn": 244.0,
+"net_debt_pct_gdp": 32.1,
+"hh_debt_pct_gdp": 32.1,
+"corp_debt_pct_gdp": 178.9,
+"private_debt_pct_gdp": 211.0,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 8.9,
+"house_real_yoy": 6.2,
+"bis_covered": true
 },
 {
 "iso3": "ARE",
@@ -457,7 +743,18 @@
 "gdp_per_capita": 51727,
 "pop_density": 131.6,
 "gdp_per_km2": 6806220,
-"debt_usd_bn": 167.3
+"debt_usd_bn": 167.3,
+"net_debt_pct_gdp": -8.1,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Conventional peg (USD)",
+"cb_name": "Central Bank of UAE",
+"policy_rate": 4.4,
+"policy_rate_name": "Base rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SGP",
@@ -474,7 +771,18 @@
 "gdp_per_capita": 92131,
 "pop_density": 8603.7,
 "gdp_per_km2": 792665726,
-"debt_usd_bn": 982.9
+"debt_usd_bn": 982.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": 48.9,
+"corp_debt_pct_gdp": 128.4,
+"private_debt_pct_gdp": 177.3,
+"fx_regime": "Crawl-like arrangement",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": 3.9,
+"house_real_yoy": 3.1,
+"bis_covered": true
 },
 {
 "iso3": "AUT",
@@ -491,7 +799,18 @@
 "gdp_per_capita": 60659,
 "pop_density": 110.4,
 "gdp_per_km2": 6698298,
-"debt_usd_bn": 437.2
+"debt_usd_bn": 437.2,
+"net_debt_pct_gdp": 58.9,
+"hh_debt_pct_gdp": 44.4,
+"corp_debt_pct_gdp": 90.2,
+"private_debt_pct_gdp": 134.6,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 3.9,
+"house_real_yoy": 1.2,
+"bis_covered": true
 },
 {
 "iso3": "ISR",
@@ -508,7 +827,18 @@
 "gdp_per_capita": 55657,
 "pop_density": 457.5,
 "gdp_per_km2": 25462107,
-"debt_usd_bn": 386.3
+"debt_usd_bn": 386.3,
+"net_debt_pct_gdp": 58.9,
+"hh_debt_pct_gdp": 41.5,
+"corp_debt_pct_gdp": 70.1,
+"private_debt_pct_gdp": 111.6,
+"fx_regime": "Floating",
+"cb_name": "Bank of Israel",
+"policy_rate": 4.5,
+"policy_rate_name": "Policy rate",
+"house_price_yoy": 4.9,
+"house_real_yoy": 2.1,
+"bis_covered": true
 },
 {
 "iso3": "THA",
@@ -525,7 +855,18 @@
 "gdp_per_capita": 7626,
 "pop_density": 140.1,
 "gdp_per_km2": 1068723,
-"debt_usd_bn": 348.9
+"debt_usd_bn": 348.9,
+"net_debt_pct_gdp": 40.1,
+"hh_debt_pct_gdp": 86.9,
+"corp_debt_pct_gdp": 88.9,
+"private_debt_pct_gdp": 175.8,
+"fx_regime": "Floating",
+"cb_name": "Bank of Thailand",
+"policy_rate": 1.75,
+"policy_rate_name": "Policy rate",
+"house_price_yoy": 2.1,
+"house_real_yoy": 1.4,
+"bis_covered": true
 },
 {
 "iso3": "NOR",
@@ -542,7 +883,18 @@
 "gdp_per_capita": 94643,
 "pop_density": 15.3,
 "gdp_per_km2": 1450989,
-"debt_usd_bn": 231.6
+"debt_usd_bn": 231.6,
+"net_debt_pct_gdp": -100.4,
+"hh_debt_pct_gdp": 112.4,
+"corp_debt_pct_gdp": 142.8,
+"private_debt_pct_gdp": 255.2,
+"fx_regime": "Free floating",
+"cb_name": "Norges Bank",
+"policy_rate": 4.0,
+"policy_rate_name": "Policy rate",
+"house_price_yoy": 5.2,
+"house_real_yoy": 2.1,
+"bis_covered": true
 },
 {
 "iso3": "PHL",
@@ -559,7 +911,18 @@
 "gdp_per_capita": 4349,
 "pop_density": 391.7,
 "gdp_per_km2": 1703726,
-"debt_usd_bn": 296.2
+"debt_usd_bn": 296.2,
+"net_debt_pct_gdp": 48.2,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": "Bangko Sentral ng Pilipinas",
+"policy_rate": 5.0,
+"policy_rate_name": "Target RRP rate",
+"house_price_yoy": 6.8,
+"house_real_yoy": 3.9,
+"bis_covered": false
 },
 {
 "iso3": "VNM",
@@ -576,7 +939,18 @@
 "gdp_per_capita": 4980,
 "pop_density": 327.7,
 "gdp_per_km2": 1631890,
-"debt_usd_bn": 176.6
+"debt_usd_bn": 176.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Stabilised arrangement",
+"cb_name": "State Bank of Vietnam",
+"policy_rate": 4.5,
+"policy_rate_name": "Refinancing rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MYS",
@@ -593,7 +967,18 @@
 "gdp_per_capita": 13659,
 "pop_density": 109.0,
 "gdp_per_km2": 1488358,
-"debt_usd_bn": 326.7
+"debt_usd_bn": 326.7,
+"net_debt_pct_gdp": 58.9,
+"hh_debt_pct_gdp": 68.1,
+"corp_debt_pct_gdp": 78.9,
+"private_debt_pct_gdp": 147.0,
+"fx_regime": "Floating",
+"cb_name": "Bank Negara Malaysia",
+"policy_rate": 2.75,
+"policy_rate_name": "Overnight policy rate",
+"house_price_yoy": 3.2,
+"house_real_yoy": 1.9,
+"bis_covered": true
 },
 {
 "iso3": "BGD",
@@ -610,7 +995,18 @@
 "gdp_per_capita": 2743,
 "pop_density": 1349.8,
 "gdp_per_km2": 3702850,
-"debt_usd_bn": 194.7
+"debt_usd_bn": 194.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Stabilised arrangement",
+"cb_name": "Bangladesh Bank",
+"policy_rate": 10.0,
+"policy_rate_name": "Policy rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "DNK",
@@ -627,7 +1023,18 @@
 "gdp_per_capita": 72667,
 "pop_density": 141.4,
 "gdp_per_km2": 10275748,
-"debt_usd_bn": 127.7
+"debt_usd_bn": 127.7,
+"net_debt_pct_gdp": 13.2,
+"hh_debt_pct_gdp": 85.6,
+"corp_debt_pct_gdp": 88.4,
+"private_debt_pct_gdp": 174.0,
+"fx_regime": "Conventional peg (EUR)",
+"cb_name": "Danmarks Nationalbank",
+"policy_rate": 2.35,
+"policy_rate_name": "Certificate of deposit rate",
+"house_price_yoy": 6.1,
+"house_real_yoy": 4.2,
+"bis_covered": true
 },
 {
 "iso3": "IRN",
@@ -644,7 +1051,18 @@
 "gdp_per_capita": 4719,
 "pop_density": 56.7,
 "gdp_per_km2": 267723,
-"debt_usd_bn": 146.5
+"debt_usd_bn": 146.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Stabilised arrangement",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "HKG",
@@ -661,7 +1079,18 @@
 "gdp_per_capita": 57027,
 "pop_density": 6896.6,
 "gdp_per_km2": 393289842,
-"debt_usd_bn": 50.2
+"debt_usd_bn": 50.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": 90.5,
+"corp_debt_pct_gdp": 215.4,
+"private_debt_pct_gdp": 305.9,
+"fx_regime": "Currency board (USD)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": -6.9,
+"house_real_yoy": -6.2,
+"bis_covered": true
 },
 {
 "iso3": "PAK",
@@ -678,7 +1107,18 @@
 "gdp_per_capita": 1614,
 "pop_density": 331.1,
 "gdp_per_km2": 534454,
-"debt_usd_bn": 302.4
+"debt_usd_bn": 302.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": "State Bank of Pakistan",
+"policy_rate": 11.0,
+"policy_rate_name": "Policy rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "ZAF",
@@ -695,7 +1135,18 @@
 "gdp_per_capita": 6337,
 "pop_density": 53.3,
 "gdp_per_km2": 337980,
-"debt_usd_bn": 313.6
+"debt_usd_bn": 313.6,
+"net_debt_pct_gdp": 68.2,
+"hh_debt_pct_gdp": 34.1,
+"corp_debt_pct_gdp": 38.2,
+"private_debt_pct_gdp": 72.3,
+"fx_regime": "Free floating",
+"cb_name": "South African Reserve Bank",
+"policy_rate": 7.25,
+"policy_rate_name": "Repo rate",
+"house_price_yoy": 1.2,
+"house_real_yoy": -3.1,
+"bis_covered": true
 },
 {
 "iso3": "ROU",
@@ -712,7 +1163,18 @@
 "gdp_per_capita": 21481,
 "pop_density": 82.1,
 "gdp_per_km2": 1763914,
-"debt_usd_bn": 227.8
+"debt_usd_bn": 227.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": 6.9,
+"house_real_yoy": 2.1,
+"bis_covered": false
 },
 {
 "iso3": "EGY",
@@ -729,7 +1191,18 @@
 "gdp_per_capita": 3319,
 "pop_density": 118.9,
 "gdp_per_km2": 394796,
-"debt_usd_bn": 346.2
+"debt_usd_bn": 346.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Stabilised arrangement",
+"cb_name": "Central Bank of Egypt",
+"policy_rate": 24.0,
+"policy_rate_name": "Overnight deposit rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "COL",
@@ -746,7 +1219,18 @@
 "gdp_per_capita": 8989,
 "pop_density": 48.1,
 "gdp_per_km2": 432627,
-"debt_usd_bn": 279.4
+"debt_usd_bn": 279.4,
+"net_debt_pct_gdp": 52.1,
+"hh_debt_pct_gdp": 28.9,
+"corp_debt_pct_gdp": 37.4,
+"private_debt_pct_gdp": 66.3,
+"fx_regime": "Free floating",
+"cb_name": "Banco de la Republica",
+"policy_rate": 9.25,
+"policy_rate_name": "Policy rate",
+"house_price_yoy": 8.9,
+"house_real_yoy": 2.1,
+"bis_covered": true
 },
 {
 "iso3": "CZE",
@@ -763,7 +1247,18 @@
 "gdp_per_capita": 34019,
 "pop_density": 138.5,
 "gdp_per_km2": 4712584,
-"debt_usd_bn": 164.5
+"debt_usd_bn": 164.5,
+"net_debt_pct_gdp": 30.1,
+"hh_debt_pct_gdp": 30.4,
+"corp_debt_pct_gdp": 57.2,
+"private_debt_pct_gdp": 87.6,
+"fx_regime": "Floating",
+"cb_name": "Czech National Bank",
+"policy_rate": 3.5,
+"policy_rate_name": "2-week repo",
+"house_price_yoy": 9.1,
+"house_real_yoy": 6.8,
+"bis_covered": true
 },
 {
 "iso3": "CHL",
@@ -780,7 +1275,18 @@
 "gdp_per_capita": 17200,
 "pop_density": 26.9,
 "gdp_per_km2": 462657,
-"debt_usd_bn": 146.5
+"debt_usd_bn": 146.5,
+"net_debt_pct_gdp": 22.9,
+"hh_debt_pct_gdp": 45.2,
+"corp_debt_pct_gdp": 95.1,
+"private_debt_pct_gdp": 140.3,
+"fx_regime": "Free floating",
+"cb_name": "Banco Central de Chile",
+"policy_rate": 4.75,
+"policy_rate_name": "Monetary policy rate",
+"house_price_yoy": 4.9,
+"house_real_yoy": 0.9,
+"bis_covered": true
 },
 {
 "iso3": "PRT",
@@ -797,7 +1303,18 @@
 "gdp_per_capita": 31154,
 "pop_density": 113.5,
 "gdp_per_km2": 3537504,
-"debt_usd_bn": 296.5
+"debt_usd_bn": 296.5,
+"net_debt_pct_gdp": 85.3,
+"hh_debt_pct_gdp": 63.5,
+"corp_debt_pct_gdp": 92.4,
+"private_debt_pct_gdp": 155.9,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 9.1,
+"house_real_yoy": 6.8,
+"bis_covered": true
 },
 {
 "iso3": "FIN",
@@ -814,7 +1331,18 @@
 "gdp_per_capita": 55179,
 "pop_density": 18.4,
 "gdp_per_km2": 1016815,
-"debt_usd_bn": 260.5
+"debt_usd_bn": 260.5,
+"net_debt_pct_gdp": 40.2,
+"hh_debt_pct_gdp": 64.2,
+"corp_debt_pct_gdp": 115.2,
+"private_debt_pct_gdp": 179.4,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": -0.9,
+"house_real_yoy": -3.1,
+"bis_covered": true
 },
 {
 "iso3": "PER",
@@ -831,7 +1359,18 @@
 "gdp_per_capita": 8815,
 "pop_density": 27.0,
 "gdp_per_km2": 238281,
-"debt_usd_bn": 104.0
+"debt_usd_bn": 104.0,
+"net_debt_pct_gdp": 24.1,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": "Banco Central de Reserva",
+"policy_rate": 4.5,
+"policy_rate_name": "Reference rate",
+"house_price_yoy": 3.9,
+"house_real_yoy": 2.1,
+"bis_covered": false
 },
 {
 "iso3": "KAZ",
@@ -848,7 +1387,18 @@
 "gdp_per_capita": 14423,
 "pop_density": 7.7,
 "gdp_per_km2": 111123,
-"debt_usd_bn": 76.8
+"debt_usd_bn": 76.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": "National Bank of Kazakhstan",
+"policy_rate": 16.5,
+"policy_rate_name": "Base rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "GRC",
@@ -865,7 +1415,18 @@
 "gdp_per_capita": 28000,
 "pop_density": 77.6,
 "gdp_per_km2": 2172227,
-"debt_usd_bn": 398.2
+"debt_usd_bn": 398.2,
+"net_debt_pct_gdp": 131.0,
+"hh_debt_pct_gdp": 41.2,
+"corp_debt_pct_gdp": 64.2,
+"private_debt_pct_gdp": 105.4,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 8.2,
+"house_real_yoy": 5.9,
+"bis_covered": true
 },
 {
 "iso3": "IRQ",
@@ -882,7 +1443,18 @@
 "gdp_per_capita": 5830,
 "pop_density": 108.2,
 "gdp_per_km2": 630871,
-"debt_usd_bn": 134.8
+"debt_usd_bn": 134.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "DZA",
@@ -899,7 +1471,18 @@
 "gdp_per_capita": 5675,
 "pop_density": 19.9,
 "gdp_per_km2": 112943,
-"debt_usd_bn": 133.4
+"debt_usd_bn": 133.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "NZL",
@@ -916,7 +1499,18 @@
 "gdp_per_capita": 48868,
 "pop_density": 20.2,
 "gdp_per_km2": 986881,
-"debt_usd_bn": 119.9
+"debt_usd_bn": 119.9,
+"net_debt_pct_gdp": 22.8,
+"hh_debt_pct_gdp": 92.8,
+"corp_debt_pct_gdp": 78.2,
+"private_debt_pct_gdp": 171.0,
+"fx_regime": "Floating",
+"cb_name": "Reserve Bank of New Zealand",
+"policy_rate": 3.0,
+"policy_rate_name": "Official cash rate",
+"house_price_yoy": -0.9,
+"house_real_yoy": -3.2,
+"bis_covered": true
 },
 {
 "iso3": "HUN",
@@ -933,7 +1527,18 @@
 "gdp_per_capita": 25312,
 "pop_density": 106.0,
 "gdp_per_km2": 2684193,
-"debt_usd_bn": 178.4
+"debt_usd_bn": 178.4,
+"net_debt_pct_gdp": 62.4,
+"hh_debt_pct_gdp": 18.9,
+"corp_debt_pct_gdp": 68.9,
+"private_debt_pct_gdp": 87.8,
+"fx_regime": "Floating",
+"cb_name": "Magyar Nemzeti Bank",
+"policy_rate": 6.5,
+"policy_rate_name": "Base rate",
+"house_price_yoy": 15.2,
+"house_real_yoy": 10.9,
+"bis_covered": true
 },
 {
 "iso3": "QAT",
@@ -950,7 +1555,18 @@
 "gdp_per_capita": 71935,
 "pop_density": 267.0,
 "gdp_per_km2": 19207580,
-"debt_usd_bn": 94.8
+"debt_usd_bn": 94.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Conventional peg (USD)",
+"cb_name": "Qatar Central Bank",
+"policy_rate": 4.6,
+"policy_rate_name": "Deposit rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "UKR",
@@ -967,7 +1583,18 @@
 "gdp_per_capita": 5409,
 "pop_density": 65.4,
 "gdp_per_km2": 353863,
-"debt_usd_bn": 209.9
+"debt_usd_bn": 209.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": "National Bank of Ukraine",
+"policy_rate": 15.5,
+"policy_rate_name": "Key rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "NGA",
@@ -984,7 +1611,18 @@
 "gdp_per_capita": 792,
 "pop_density": 260.8,
 "gdp_per_km2": 206419,
-"debt_usd_bn": 99.5
+"debt_usd_bn": 99.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Stabilised arrangement",
+"cb_name": "Central Bank of Nigeria",
+"policy_rate": 27.5,
+"policy_rate_name": "Monetary policy rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MAR",
@@ -1001,7 +1639,18 @@
 "gdp_per_capita": 4297,
 "pop_density": 86.0,
 "gdp_per_km2": 369706,
-"debt_usd_bn": 113.7
+"debt_usd_bn": 113.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Conventional peg (basket)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": 1.9,
+"house_real_yoy": -0.9,
+"bis_covered": false
 },
 {
 "iso3": "KWT",
@@ -1018,7 +1667,18 @@
 "gdp_per_capita": 32400,
 "pop_density": 280.6,
 "gdp_per_km2": 9090909,
-"debt_usd_bn": 12.8
+"debt_usd_bn": 12.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Conventional peg (basket)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SVK",
@@ -1035,7 +1695,18 @@
 "gdp_per_capita": 27818,
 "pop_density": 114.4,
 "gdp_per_km2": 3181667,
-"debt_usd_bn": 92.1
+"debt_usd_bn": 92.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 6.2,
+"house_real_yoy": 3.9,
+"bis_covered": false
 },
 {
 "iso3": "ETH",
@@ -1052,7 +1723,18 @@
 "gdp_per_capita": 1070,
 "pop_density": 135.5,
 "gdp_per_km2": 145000,
-"debt_usd_bn": 51.3
+"debt_usd_bn": 51.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Crawl-like arrangement",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "ECU",
@@ -1069,7 +1751,18 @@
 "gdp_per_capita": 7174,
 "pop_density": 74.1,
 "gdp_per_km2": 531487,
-"debt_usd_bn": 73.7
+"debt_usd_bn": 73.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "US dollar (no own currency)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "KEN",
@@ -1086,7 +1779,18 @@
 "gdp_per_capita": 2296,
 "pop_density": 101.0,
 "gdp_per_km2": 231929,
-"debt_usd_bn": 92.5
+"debt_usd_bn": 92.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": "Central Bank of Kenya",
+"policy_rate": 9.75,
+"policy_rate_name": "Central Bank Rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "DOM",
@@ -1103,7 +1807,18 @@
 "gdp_per_capita": 11043,
 "pop_density": 238.0,
 "gdp_per_km2": 2628311,
-"debt_usd_bn": 76.7
+"debt_usd_bn": 76.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "PRI",
@@ -1120,7 +1835,18 @@
 "gdp_per_capita": 39062,
 "pop_density": 360.8,
 "gdp_per_km2": 14092446,
-"debt_usd_bn": null
+"debt_usd_bn": null,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": 15.0,
+"corp_debt_pct_gdp": 45.0,
+"private_debt_pct_gdp": 60.0,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": true
 },
 {
 "iso3": "GTM",
@@ -1137,7 +1863,18 @@
 "gdp_per_capita": 6524,
 "pop_density": 174.5,
 "gdp_per_km2": 1138485,
-"debt_usd_bn": 33.7
+"debt_usd_bn": 33.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "AGO",
@@ -1154,7 +1891,18 @@
 "gdp_per_capita": 3111,
 "pop_density": 31.2,
 "gdp_per_km2": 97056,
-"debt_usd_bn": 77.2
+"debt_usd_bn": 77.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BGR",
@@ -1171,7 +1919,18 @@
 "gdp_per_capita": 18281,
 "pop_density": 59.0,
 "gdp_per_km2": 1077745,
-"debt_usd_bn": 29.4
+"debt_usd_bn": 29.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Currency board (EUR)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": 15.9,
+"house_real_yoy": 12.1,
+"bis_covered": false
 },
 {
 "iso3": "OMN",
@@ -1188,7 +1947,18 @@
 "gdp_per_capita": 20536,
 "pop_density": 18.1,
 "gdp_per_km2": 371567,
-"debt_usd_bn": 40.7
+"debt_usd_bn": 40.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Conventional peg (USD)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "UZB",
@@ -1205,7 +1975,18 @@
 "gdp_per_capita": 3013,
 "pop_density": 88.2,
 "gdp_per_km2": 265632,
-"debt_usd_bn": 39.8
+"debt_usd_bn": 39.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Crawl-like arrangement",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "VEN",
@@ -1222,7 +2003,18 @@
 "gdp_per_capita": 3732,
 "pop_density": 32.2,
 "gdp_per_km2": 120175,
-"debt_usd_bn": 164.3
+"debt_usd_bn": 164.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "CRI",
@@ -1239,7 +2031,18 @@
 "gdp_per_capita": 20000,
 "pop_density": 99.9,
 "gdp_per_km2": 1997650,
-"debt_usd_bn": 63.8
+"debt_usd_bn": 63.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "LUX",
@@ -1256,7 +2059,18 @@
 "gdp_per_capita": 137143,
 "pop_density": 270.3,
 "gdp_per_km2": 37065637,
-"debt_usd_bn": 25.3
+"debt_usd_bn": 25.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": 68.4,
+"corp_debt_pct_gdp": 315.2,
+"private_debt_pct_gdp": 383.6,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 2.9,
+"house_real_yoy": 0.9,
+"bis_covered": true
 },
 {
 "iso3": "HRV",
@@ -1273,7 +2087,18 @@
 "gdp_per_capita": 25526,
 "pop_density": 67.9,
 "gdp_per_km2": 1733381,
-"debt_usd_bn": 55.9
+"debt_usd_bn": 55.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 9.8,
+"house_real_yoy": 6.2,
+"bis_covered": false
 },
 {
 "iso3": "CIV",
@@ -1290,7 +2115,18 @@
 "gdp_per_capita": 2905,
 "pop_density": 102.8,
 "gdp_per_km2": 298742,
-"debt_usd_bn": 55.2
+"debt_usd_bn": 55.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "PAN",
@@ -1307,7 +2143,18 @@
 "gdp_per_capita": 20000,
 "pop_density": 61.9,
 "gdp_per_km2": 1237557,
-"debt_usd_bn": 58.4
+"debt_usd_bn": 58.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "US dollar (no own currency)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SRB",
@@ -1324,7 +2171,18 @@
 "gdp_per_capita": 13939,
 "pop_density": 75.5,
 "gdp_per_km2": 1051909,
-"debt_usd_bn": 43.7
+"debt_usd_bn": 43.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "TZA",
@@ -1341,7 +2199,18 @@
 "gdp_per_capita": 1277,
 "pop_density": 79.6,
 "gdp_per_km2": 101603,
-"debt_usd_bn": 42.6
+"debt_usd_bn": 42.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "LTU",
@@ -1358,7 +2227,18 @@
 "gdp_per_capita": 32143,
 "pop_density": 44.7,
 "gdp_per_km2": 1435865,
-"debt_usd_bn": 36.1
+"debt_usd_bn": 36.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 9.1,
+"house_real_yoy": 5.9,
+"bis_covered": false
 },
 {
 "iso3": "GHA",
@@ -1375,7 +2255,18 @@
 "gdp_per_capita": 2507,
 "pop_density": 154.3,
 "gdp_per_km2": 386745,
-"debt_usd_bn": 63.8
+"debt_usd_bn": 63.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": "Bank of Ghana",
+"policy_rate": 25.0,
+"policy_rate_name": "Policy rate",
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "URY",
@@ -1392,7 +2283,18 @@
 "gdp_per_capita": 25294,
 "pop_density": 19.4,
 "gdp_per_km2": 491372,
-"debt_usd_bn": 55.1
+"debt_usd_bn": 55.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "LKA",
@@ -1409,7 +2311,18 @@
 "gdp_per_capita": 3562,
 "pop_density": 371.6,
 "gdp_per_km2": 1323553,
-"debt_usd_bn": 86.1
+"debt_usd_bn": 86.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Stabilised arrangement",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "TKM",
@@ -1426,7 +2339,18 @@
 "gdp_per_capita": 10921,
 "pop_density": 16.2,
 "gdp_per_km2": 176622,
-"debt_usd_bn": 4.6
+"debt_usd_bn": 4.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Conventional peg (USD)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "COD",
@@ -1443,7 +2367,18 @@
 "gdp_per_capita": 700,
 "pop_density": 49.8,
 "gdp_per_km2": 34847,
-"debt_usd_bn": 16.3
+"debt_usd_bn": 16.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "AZE",
@@ -1460,7 +2395,18 @@
 "gdp_per_capita": 7500,
 "pop_density": 125.8,
 "gdp_per_km2": 943647,
-"debt_usd_bn": 15.8
+"debt_usd_bn": 15.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Stabilised arrangement",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BLR",
@@ -1477,7 +2423,18 @@
 "gdp_per_capita": 8571,
 "pop_density": 44.8,
 "gdp_per_km2": 384274,
-"debt_usd_bn": 33.3
+"debt_usd_bn": 33.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SVN",
@@ -1494,7 +2451,18 @@
 "gdp_per_capita": 36190,
 "pop_density": 104.3,
 "gdp_per_km2": 3773585,
-"debt_usd_bn": 50.5
+"debt_usd_bn": 50.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 6.9,
+"house_real_yoy": 4.2,
+"bis_covered": false
 },
 {
 "iso3": "UGA",
@@ -1511,7 +2479,18 @@
 "gdp_per_capita": 1284,
 "pop_density": 257.2,
 "gdp_per_km2": 330314,
-"debt_usd_bn": 34.6
+"debt_usd_bn": 34.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MMR",
@@ -1528,7 +2507,18 @@
 "gdp_per_capita": 1184,
 "pop_density": 84.0,
 "gdp_per_km2": 99496,
-"debt_usd_bn": 39.1
+"debt_usd_bn": 39.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "CUB",
@@ -1545,7 +2535,18 @@
 "gdp_per_capita": 5872,
 "pop_density": 105.0,
 "gdp_per_km2": 616570,
-"debt_usd_bn": null
+"debt_usd_bn": null,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MAC",
@@ -1562,7 +2563,18 @@
 "gdp_per_capita": 81429,
 "pop_density": 21212.1,
 "gdp_per_km2": 1727272727,
-"debt_usd_bn": 0.0
+"debt_usd_bn": 0.0,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "CMR",
@@ -1579,7 +2591,18 @@
 "gdp_per_capita": 1860,
 "pop_density": 63.7,
 "gdp_per_km2": 118466,
-"debt_usd_bn": 24.5
+"debt_usd_bn": 24.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "TUN",
@@ -1596,7 +2619,18 @@
 "gdp_per_capita": 4516,
 "pop_density": 79.8,
 "gdp_per_km2": 360453,
-"debt_usd_bn": 46.2
+"debt_usd_bn": 46.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "JOR",
@@ -1613,7 +2647,18 @@
 "gdp_per_capita": 4741,
 "pop_density": 130.7,
 "gdp_per_km2": 619509,
-"debt_usd_bn": 50.3
+"debt_usd_bn": 50.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Conventional peg (USD)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BOL",
@@ -1630,7 +2675,18 @@
 "gdp_per_capita": 4160,
 "pop_density": 11.5,
 "gdp_per_km2": 48001,
-"debt_usd_bn": 49.5
+"debt_usd_bn": 49.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "KHM",
@@ -1647,7 +2703,18 @@
 "gdp_per_capita": 2809,
 "pop_density": 100.8,
 "gdp_per_km2": 283254,
-"debt_usd_bn": 13.7
+"debt_usd_bn": 13.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "LVA",
@@ -1664,7 +2731,18 @@
 "gdp_per_capita": 25789,
 "pop_density": 30.5,
 "gdp_per_km2": 787781,
-"debt_usd_bn": 23.5
+"debt_usd_bn": 23.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 4.9,
+"house_real_yoy": 2.1,
+"bis_covered": false
 },
 {
 "iso3": "BHR",
@@ -1681,7 +2759,18 @@
 "gdp_per_capita": 30000,
 "pop_density": 2105.3,
 "gdp_per_km2": 63157895,
-"debt_usd_bn": 62.4
+"debt_usd_bn": 62.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Conventional peg (USD)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "LBY",
@@ -1698,7 +2787,18 @@
 "gdp_per_capita": 6267,
 "pop_density": 4.3,
 "gdp_per_km2": 26712,
-"debt_usd_bn": 26.0
+"debt_usd_bn": 26.0,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "PRY",
@@ -1715,7 +2815,18 @@
 "gdp_per_capita": 6812,
 "pop_density": 17.4,
 "gdp_per_km2": 118299,
-"debt_usd_bn": 19.8
+"debt_usd_bn": 19.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "NPL",
@@ -1732,7 +2843,18 @@
 "gdp_per_capita": 1515,
 "pop_density": 207.2,
 "gdp_per_km2": 313917,
-"debt_usd_bn": 21.5
+"debt_usd_bn": 21.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Conventional peg (INR)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "EST",
@@ -1749,7 +2871,18 @@
 "gdp_per_capita": 31429,
 "pop_density": 32.7,
 "gdp_per_km2": 1029240,
-"debt_usd_bn": 11.4
+"debt_usd_bn": 11.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 5.9,
+"house_real_yoy": 3.1,
+"bis_covered": false
 },
 {
 "iso3": "SLV",
@@ -1766,7 +2899,18 @@
 "gdp_per_capita": 6094,
 "pop_density": 308.9,
 "gdp_per_km2": 1882239,
-"debt_usd_bn": 33.7
+"debt_usd_bn": 33.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "US dollar (no own currency)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "ZWE",
@@ -1783,7 +2927,18 @@
 "gdp_per_capita": 2249,
 "pop_density": 43.7,
 "gdp_per_km2": 98229,
-"debt_usd_bn": 17.4
+"debt_usd_bn": 17.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Multi-currency",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "HND",
@@ -1800,7 +2955,18 @@
 "gdp_per_capita": 3486,
 "pop_density": 97.4,
 "gdp_per_km2": 339619,
-"debt_usd_bn": 17.6
+"debt_usd_bn": 17.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SEN",
@@ -1817,7 +2983,18 @@
 "gdp_per_capita": 1905,
 "pop_density": 98.2,
 "gdp_per_km2": 186984,
-"debt_usd_bn": 40.1
+"debt_usd_bn": 40.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "CYP",
@@ -1834,7 +3011,18 @@
 "gdp_per_capita": 25714,
 "pop_density": 151.5,
 "gdp_per_km2": 3896104,
-"debt_usd_bn": 21.9
+"debt_usd_bn": 21.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 6.1,
+"house_real_yoy": 3.9,
+"bis_covered": false
 },
 {
 "iso3": "ISL",
@@ -1851,7 +3039,18 @@
 "gdp_per_capita": 90000,
 "pop_density": 4.0,
 "gdp_per_km2": 359102,
-"debt_usd_bn": 21.6
+"debt_usd_bn": 21.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": 8.9,
+"house_real_yoy": 3.1,
+"bis_covered": false
 },
 {
 "iso3": "PNG",
@@ -1868,7 +3067,18 @@
 "gdp_per_capita": 3119,
 "pop_density": 24.1,
 "gdp_per_km2": 75078,
-"debt_usd_bn": 17.3
+"debt_usd_bn": 17.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "GEO",
@@ -1885,7 +3095,18 @@
 "gdp_per_capita": 8947,
 "pop_density": 54.7,
 "gdp_per_km2": 489279,
-"debt_usd_bn": 12.6
+"debt_usd_bn": 12.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "ZMB",
@@ -1902,7 +3123,18 @@
 "gdp_per_capita": 1389,
 "pop_density": 29.1,
 "gdp_per_km2": 40356,
-"debt_usd_bn": 21.7
+"debt_usd_bn": 21.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SDN",
@@ -1919,7 +3151,18 @@
 "gdp_per_capita": 561,
 "pop_density": 29.3,
 "gdp_per_km2": 16430,
-"debt_usd_bn": 73.1
+"debt_usd_bn": 73.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "PRK",
@@ -1936,7 +3179,18 @@
 "gdp_per_capita": 1090,
 "pop_density": 220.9,
 "gdp_per_km2": 240844,
-"debt_usd_bn": null
+"debt_usd_bn": null,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BIH",
@@ -1953,7 +3207,18 @@
 "gdp_per_capita": 9062,
 "pop_density": 62.7,
 "gdp_per_km2": 568627,
-"debt_usd_bn": 7.8
+"debt_usd_bn": 7.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "TTO",
@@ -1970,7 +3235,18 @@
 "gdp_per_capita": 19333,
 "pop_density": 292.4,
 "gdp_per_km2": 5653021,
-"debt_usd_bn": 16.9
+"debt_usd_bn": 16.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "ALB",
@@ -1987,7 +3263,18 @@
 "gdp_per_capita": 10000,
 "pop_density": 102.2,
 "gdp_per_km2": 1021898,
-"debt_usd_bn": 15.7
+"debt_usd_bn": 15.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "ARM",
@@ -2004,7 +3291,18 @@
 "gdp_per_capita": 9000,
 "pop_density": 105.4,
 "gdp_per_km2": 948367,
-"debt_usd_bn": 13.4
+"debt_usd_bn": 13.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "LBN",
@@ -2021,7 +3319,18 @@
 "gdp_per_capita": 4483,
 "pop_density": 567.0,
 "gdp_per_km2": 2541544,
-"debt_usd_bn": 37.7
+"debt_usd_bn": 37.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Stabilised arrangement",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "GIN",
@@ -2038,7 +3347,18 @@
 "gdp_per_capita": 1645,
 "pop_density": 61.9,
 "gdp_per_km2": 101742,
-"debt_usd_bn": 8.3
+"debt_usd_bn": 8.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "GUY",
@@ -2055,7 +3375,18 @@
 "gdp_per_capita": 31250,
 "pop_density": 4.1,
 "gdp_per_km2": 127000,
-"debt_usd_bn": 6.2
+"debt_usd_bn": 6.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MNG",
@@ -2072,7 +3403,18 @@
 "gdp_per_capita": 6857,
 "pop_density": 2.3,
 "gdp_per_km2": 15448,
-"debt_usd_bn": 15.9
+"debt_usd_bn": 15.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MLT",
@@ -2089,7 +3431,18 @@
 "gdp_per_capita": 38333,
 "pop_density": 1875.0,
 "gdp_per_km2": 71875000,
-"debt_usd_bn": 11.4
+"debt_usd_bn": 11.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Euro area",
+"cb_name": "European Central Bank",
+"policy_rate": 2.25,
+"policy_rate_name": "Deposit facility rate",
+"house_price_yoy": 5.2,
+"house_real_yoy": 2.9,
+"bis_covered": false
 },
 {
 "iso3": "MOZ",
@@ -2106,7 +3459,18 @@
 "gdp_per_capita": 655,
 "pop_density": 44.6,
 "gdp_per_km2": 29248,
-"debt_usd_bn": 20.8
+"debt_usd_bn": 20.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MLI",
@@ -2123,7 +3487,18 @@
 "gdp_per_capita": 866,
 "pop_density": 20.8,
 "gdp_per_km2": 18030,
-"debt_usd_bn": 11.5
+"debt_usd_bn": 11.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BFA",
@@ -2140,7 +3515,18 @@
 "gdp_per_capita": 913,
 "pop_density": 88.1,
 "gdp_per_km2": 80409,
-"debt_usd_bn": 12.9
+"debt_usd_bn": 12.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BWA",
@@ -2157,7 +3543,18 @@
 "gdp_per_capita": 8400,
 "pop_density": 4.4,
 "gdp_per_km2": 37055,
-"debt_usd_bn": 5.6
+"debt_usd_bn": 5.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "GAB",
@@ -2174,7 +3571,18 @@
 "gdp_per_capita": 8077,
 "pop_density": 10.1,
 "gdp_per_km2": 81500,
-"debt_usd_bn": 15.4
+"debt_usd_bn": 15.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BEN",
@@ -2191,7 +3599,18 @@
 "gdp_per_capita": 1429,
 "pop_density": 130.4,
 "gdp_per_km2": 186236,
-"debt_usd_bn": 11.2
+"debt_usd_bn": 11.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "JAM",
@@ -2208,7 +3627,18 @@
 "gdp_per_capita": 7500,
 "pop_density": 258.5,
 "gdp_per_km2": 1939058,
-"debt_usd_bn": 13.5
+"debt_usd_bn": 13.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "NER",
@@ -2225,7 +3655,18 @@
 "gdp_per_capita": 681,
 "pop_density": 22.0,
 "gdp_per_km2": 15000,
-"debt_usd_bn": 9.4
+"debt_usd_bn": 9.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "NIC",
@@ -2242,7 +3683,18 @@
 "gdp_per_capita": 2714,
 "pop_density": 58.2,
 "gdp_per_km2": 157886,
-"debt_usd_bn": 8.2
+"debt_usd_bn": 8.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MDA",
@@ -2259,7 +3711,18 @@
 "gdp_per_capita": 6333,
 "pop_density": 91.2,
 "gdp_per_km2": 577508,
-"debt_usd_bn": 7.4
+"debt_usd_bn": 7.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MDG",
@@ -2276,7 +3739,18 @@
 "gdp_per_capita": 562,
 "pop_density": 55.0,
 "gdp_per_km2": 30938,
-"debt_usd_bn": 9.8
+"debt_usd_bn": 9.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MKD",
@@ -2293,7 +3767,18 @@
 "gdp_per_capita": 9444,
 "pop_density": 71.4,
 "gdp_per_km2": 674068,
-"debt_usd_bn": 9.7
+"debt_usd_bn": 9.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "KGZ",
@@ -2310,7 +3795,18 @@
 "gdp_per_capita": 2329,
 "pop_density": 38.1,
 "gdp_per_km2": 88634,
-"debt_usd_bn": 7.2
+"debt_usd_bn": 7.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "YEM",
@@ -2327,7 +3823,18 @@
 "gdp_per_capita": 407,
 "pop_density": 79.2,
 "gdp_per_km2": 32199,
-"debt_usd_bn": 13.5
+"debt_usd_bn": 13.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "AFG",
@@ -2344,7 +3851,18 @@
 "gdp_per_capita": 388,
 "pop_density": 67.2,
 "gdp_per_km2": 26064,
-"debt_usd_bn": null
+"debt_usd_bn": null,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BRN",
@@ -2361,7 +3879,18 @@
 "gdp_per_capita": 32000,
 "pop_density": 94.9,
 "gdp_per_km2": 3036053,
-"debt_usd_bn": 0.4
+"debt_usd_bn": 0.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Currency board (SGD)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "LAO",
@@ -2378,7 +3907,18 @@
 "gdp_per_capita": 2025,
 "pop_density": 34.2,
 "gdp_per_km2": 69324,
-"debt_usd_bn": 18.4
+"debt_usd_bn": 18.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "RWA",
@@ -2395,7 +3935,18 @@
 "gdp_per_capita": 1096,
 "pop_density": 591.8,
 "gdp_per_km2": 648561,
-"debt_usd_bn": 12.7
+"debt_usd_bn": 12.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MUS",
@@ -2412,7 +3963,18 @@
 "gdp_per_capita": 12308,
 "pop_density": 640.4,
 "gdp_per_km2": 7881773,
-"debt_usd_bn": 12.8
+"debt_usd_bn": 12.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "COG",
@@ -2429,7 +3991,18 @@
 "gdp_per_capita": 2500,
 "pop_density": 18.7,
 "gdp_per_km2": 46852,
-"debt_usd_bn": 15.4
+"debt_usd_bn": 15.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BHS",
@@ -2446,7 +4019,18 @@
 "gdp_per_capita": 37500,
 "pop_density": 40.0,
 "gdp_per_km2": 1498501,
-"debt_usd_bn": 11.9
+"debt_usd_bn": 11.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "TJK",
@@ -2463,7 +4047,18 @@
 "gdp_per_capita": 1296,
 "pop_density": 77.8,
 "gdp_per_km2": 100872,
-"debt_usd_bn": 4.5
+"debt_usd_bn": 4.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "PSE",
@@ -2480,7 +4075,18 @@
 "gdp_per_capita": 2500,
 "pop_density": 930.2,
 "gdp_per_km2": 2325581,
-"debt_usd_bn": null
+"debt_usd_bn": null,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "TCD",
@@ -2497,7 +4103,18 @@
 "gdp_per_capita": 690,
 "pop_density": 16.1,
 "gdp_per_km2": 11118,
-"debt_usd_bn": 6.9
+"debt_usd_bn": 6.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "HTI",
@@ -2514,7 +4131,18 @@
 "gdp_per_capita": 1092,
 "pop_density": 431.8,
 "gdp_per_km2": 471698,
-"debt_usd_bn": 3.1
+"debt_usd_bn": 3.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "NAM",
@@ -2531,7 +4159,18 @@
 "gdp_per_capita": 4194,
 "pop_density": 3.8,
 "gdp_per_km2": 15790,
-"debt_usd_bn": 8.6
+"debt_usd_bn": 8.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SOM",
@@ -2548,7 +4187,18 @@
 "gdp_per_capita": 660,
 "pop_density": 31.4,
 "gdp_per_km2": 20722,
-"debt_usd_bn": 0.8
+"debt_usd_bn": 0.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MWI",
@@ -2565,7 +4215,18 @@
 "gdp_per_capita": 545,
 "pop_density": 233.3,
 "gdp_per_km2": 127280,
-"debt_usd_bn": 10.6
+"debt_usd_bn": 10.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Floating",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SYR",
@@ -2582,7 +4243,18 @@
 "gdp_per_capita": 469,
 "pop_density": 139.4,
 "gdp_per_km2": 65349,
-"debt_usd_bn": null
+"debt_usd_bn": null,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MRT",
@@ -2599,7 +4271,18 @@
 "gdp_per_capita": 2264,
 "pop_density": 5.1,
 "gdp_per_km2": 11643,
-"debt_usd_bn": 5.6
+"debt_usd_bn": 5.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "XKX",
@@ -2616,7 +4299,18 @@
 "gdp_per_capita": 7500,
 "pop_density": 147.0,
 "gdp_per_km2": 1102232,
-"debt_usd_bn": 2.1
+"debt_usd_bn": 2.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Euro (unilateral)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "GNQ",
@@ -2633,7 +4327,18 @@
 "gdp_per_capita": 6316,
 "pop_density": 67.7,
 "gdp_per_km2": 427807,
-"debt_usd_bn": 5.1
+"debt_usd_bn": 5.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "TGO",
@@ -2650,7 +4355,18 @@
 "gdp_per_capita": 1031,
 "pop_density": 178.3,
 "gdp_per_km2": 183857,
-"debt_usd_bn": 6.8
+"debt_usd_bn": 6.8,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MCO",
@@ -2667,7 +4383,18 @@
 "gdp_per_capita": null,
 "pop_density": 0.0,
 "gdp_per_km2": 5000000000,
-"debt_usd_bn": null
+"debt_usd_bn": null,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "LIE",
@@ -2684,7 +4411,18 @@
 "gdp_per_capita": null,
 "pop_density": 0.0,
 "gdp_per_km2": 50000000,
-"debt_usd_bn": null
+"debt_usd_bn": null,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MNE",
@@ -2701,7 +4439,18 @@
 "gdp_per_capita": 13333,
 "pop_density": 44.6,
 "gdp_per_km2": 594796,
-"debt_usd_bn": 4.9
+"debt_usd_bn": 4.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Euro (unilateral)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SLE",
@@ -2718,7 +4467,18 @@
 "gdp_per_capita": 787,
 "pop_density": 123.3,
 "gdp_per_km2": 96980,
-"debt_usd_bn": 3.1
+"debt_usd_bn": 3.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BRB",
@@ -2735,7 +4495,18 @@
 "gdp_per_capita": 23333,
 "pop_density": 697.7,
 "gdp_per_km2": 16279070,
-"debt_usd_bn": 7.2
+"debt_usd_bn": 7.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "MDV",
@@ -2752,7 +4523,18 @@
 "gdp_per_capita": 14000,
 "pop_density": 1666.7,
 "gdp_per_km2": 23333333,
-"debt_usd_bn": 8.7
+"debt_usd_bn": 8.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "FJI",
@@ -2769,7 +4551,18 @@
 "gdp_per_capita": 6667,
 "pop_density": 49.3,
 "gdp_per_km2": 328407,
-"debt_usd_bn": 4.7
+"debt_usd_bn": 4.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "LBR",
@@ -2786,7 +4579,18 @@
 "gdp_per_capita": 877,
 "pop_density": 59.2,
 "gdp_per_km2": 51910,
-"debt_usd_bn": 2.7
+"debt_usd_bn": 2.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SSD",
@@ -2803,7 +4607,18 @@
 "gdp_per_capita": 417,
 "pop_density": 19.6,
 "gdp_per_km2": 8184,
-"debt_usd_bn": 2.9
+"debt_usd_bn": 2.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SWZ",
@@ -2820,7 +4635,18 @@
 "gdp_per_capita": 4167,
 "pop_density": 69.8,
 "gdp_per_km2": 290698,
-"debt_usd_bn": 2.3
+"debt_usd_bn": 2.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SUR",
@@ -2837,7 +4663,18 @@
 "gdp_per_capita": 6667,
 "pop_density": 3.8,
 "gdp_per_km2": 25641,
-"debt_usd_bn": 3.6
+"debt_usd_bn": 3.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "DJI",
@@ -2854,7 +4691,18 @@
 "gdp_per_capita": 3333,
 "pop_density": 51.8,
 "gdp_per_km2": 172563,
-"debt_usd_bn": 1.3
+"debt_usd_bn": 1.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "AND",
@@ -2871,7 +4719,18 @@
 "gdp_per_capita": 40000,
 "pop_density": 212.8,
 "gdp_per_km2": 8510638,
-"debt_usd_bn": 1.4
+"debt_usd_bn": 1.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BTN",
@@ -2888,7 +4747,18 @@
 "gdp_per_capita": 3750,
 "pop_density": 21.0,
 "gdp_per_km2": 78705,
-"debt_usd_bn": 3.6
+"debt_usd_bn": 3.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Conventional peg (INR)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BDI",
@@ -2905,7 +4775,18 @@
 "gdp_per_capita": 208,
 "pop_density": 560.7,
 "gdp_per_km2": 116822,
-"debt_usd_bn": 2.2
+"debt_usd_bn": 2.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "CAF",
@@ -2922,7 +4803,18 @@
 "gdp_per_capita": 526,
 "pop_density": 9.1,
 "gdp_per_km2": 4816,
-"debt_usd_bn": 1.6
+"debt_usd_bn": 1.6,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "ERI",
@@ -2939,7 +4831,18 @@
 "gdp_per_capita": 811,
 "pop_density": 36.6,
 "gdp_per_km2": 29703,
-"debt_usd_bn": 4.7
+"debt_usd_bn": 4.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "Conventional peg (USD)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "GMB",
@@ -2956,7 +4859,18 @@
 "gdp_per_capita": 1071,
 "pop_density": 276.7,
 "gdp_per_km2": 296443,
-"debt_usd_bn": 2.1
+"debt_usd_bn": 2.1,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "CPV",
@@ -2973,7 +4887,18 @@
 "gdp_per_capita": 6000,
 "pop_density": 124.1,
 "gdp_per_km2": 744417,
-"debt_usd_bn": 3.3
+"debt_usd_bn": 3.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "BLZ",
@@ -2990,7 +4915,18 @@
 "gdp_per_capita": 7500,
 "pop_density": 17.5,
 "gdp_per_km2": 131521,
-"debt_usd_bn": 1.9
+"debt_usd_bn": 1.9,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "LSO",
@@ -3007,7 +4943,18 @@
 "gdp_per_capita": 870,
 "pop_density": 75.8,
 "gdp_per_km2": 65876,
-"debt_usd_bn": 1.2
+"debt_usd_bn": 1.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "TLS",
@@ -3024,7 +4971,18 @@
 "gdp_per_capita": 1429,
 "pop_density": 94.1,
 "gdp_per_km2": 134499,
-"debt_usd_bn": 0.3
+"debt_usd_bn": 0.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": "US dollar (no own currency)",
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "GNB",
@@ -3041,7 +4999,18 @@
 "gdp_per_capita": 909,
 "pop_density": 78.2,
 "gdp_per_km2": 71124,
-"debt_usd_bn": 1.5
+"debt_usd_bn": 1.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "COM",
@@ -3058,7 +5027,18 @@
 "gdp_per_capita": 2222,
 "pop_density": 483.6,
 "gdp_per_km2": 1074691,
-"debt_usd_bn": 0.7
+"debt_usd_bn": 0.7,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SLB",
@@ -3075,7 +5055,18 @@
 "gdp_per_capita": 2500,
 "pop_density": 28.6,
 "gdp_per_km2": 71454,
-"debt_usd_bn": 0.3
+"debt_usd_bn": 0.3,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SYC",
@@ -3092,7 +5083,18 @@
 "gdp_per_capita": 20000,
 "pop_density": 217.4,
 "gdp_per_km2": 4347826,
-"debt_usd_bn": 1.2
+"debt_usd_bn": 1.2,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "SMR",
@@ -3109,7 +5111,18 @@
 "gdp_per_capita": null,
 "pop_density": 0.0,
 "gdp_per_km2": 33333333,
-"debt_usd_bn": null
+"debt_usd_bn": null,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "STP",
@@ -3126,7 +5139,18 @@
 "gdp_per_capita": 5000,
 "pop_density": 208.3,
 "gdp_per_km2": 1041667,
-"debt_usd_bn": 0.5
+"debt_usd_bn": 0.5,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "VUT",
@@ -3143,7 +5167,18 @@
 "gdp_per_capita": 3333,
 "pop_density": 24.6,
 "gdp_per_km2": 82034,
-"debt_usd_bn": 0.4
+"debt_usd_bn": 0.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "WSM",
@@ -3160,7 +5195,18 @@
 "gdp_per_capita": 5000,
 "pop_density": 70.7,
 "gdp_per_km2": 353357,
-"debt_usd_bn": 0.4
+"debt_usd_bn": 0.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 },
 {
 "iso3": "TON",
@@ -3177,7 +5223,18 @@
 "gdp_per_capita": 10000,
 "pop_density": 138.9,
 "gdp_per_km2": 1388889,
-"debt_usd_bn": 0.4
+"debt_usd_bn": 0.4,
+"net_debt_pct_gdp": null,
+"hh_debt_pct_gdp": null,
+"corp_debt_pct_gdp": null,
+"private_debt_pct_gdp": null,
+"fx_regime": null,
+"cb_name": null,
+"policy_rate": null,
+"policy_rate_name": null,
+"house_price_yoy": null,
+"house_real_yoy": null,
+"bis_covered": false
 }
 ],
 "banks": [
@@ -4668,6 +6725,494 @@
 "iso3": "SVK",
 "assets_usd_bn": 25,
 "hq_city": "Bratislava"
+}
+],
+"rails": [
+{
+"iso3": "IND",
+"name": "UPI",
+"kind": "Instant retail",
+"live_year": 2016
+},
+{
+"iso3": "IND",
+"name": "IMPS",
+"kind": "Instant retail",
+"live_year": 2010
+},
+{
+"iso3": "IND",
+"name": "RTGS",
+"kind": "Large-value RTGS",
+"live_year": 2004
+},
+{
+"iso3": "IND",
+"name": "NEFT",
+"kind": "Deferred net",
+"live_year": 2005
+},
+{
+"iso3": "BRA",
+"name": "PIX",
+"kind": "Instant retail",
+"live_year": 2020
+},
+{
+"iso3": "BRA",
+"name": "STR",
+"kind": "Large-value RTGS",
+"live_year": 2002
+},
+{
+"iso3": "BRA",
+"name": "TED",
+"kind": "Same-day transfer",
+"live_year": 2002
+},
+{
+"iso3": "USA",
+"name": "FedNow",
+"kind": "Instant retail",
+"live_year": 2023
+},
+{
+"iso3": "USA",
+"name": "RTP",
+"kind": "Instant retail",
+"live_year": 2017
+},
+{
+"iso3": "USA",
+"name": "ACH",
+"kind": "Deferred net",
+"live_year": 1974
+},
+{
+"iso3": "USA",
+"name": "Fedwire",
+"kind": "Large-value RTGS",
+"live_year": 1918
+},
+{
+"iso3": "GBR",
+"name": "Faster Payments",
+"kind": "Instant retail",
+"live_year": 2008
+},
+{
+"iso3": "GBR",
+"name": "CHAPS",
+"kind": "Large-value RTGS",
+"live_year": 1984
+},
+{
+"iso3": "GBR",
+"name": "Bacs",
+"kind": "Deferred net",
+"live_year": 1968
+},
+{
+"iso3": "CHN",
+"name": "IBPS",
+"kind": "Instant retail",
+"live_year": 2010
+},
+{
+"iso3": "CHN",
+"name": "CIPS",
+"kind": "Cross-border",
+"live_year": 2015
+},
+{
+"iso3": "CHN",
+"name": "HVPS",
+"kind": "Large-value RTGS",
+"live_year": 2005
+},
+{
+"iso3": "JPN",
+"name": "Zengin",
+"kind": "Retail transfer",
+"live_year": 1973
+},
+{
+"iso3": "JPN",
+"name": "BOJ-NET",
+"kind": "Large-value RTGS",
+"live_year": 1988
+},
+{
+"iso3": "KOR",
+"name": "BOK-Wire+",
+"kind": "Large-value RTGS",
+"live_year": 2009
+},
+{
+"iso3": "KOR",
+"name": "Interbank instant",
+"kind": "Instant retail",
+"live_year": 2001
+},
+{
+"iso3": "AUS",
+"name": "NPP / PayTo",
+"kind": "Instant retail",
+"live_year": 2018
+},
+{
+"iso3": "AUS",
+"name": "RITS",
+"kind": "Large-value RTGS",
+"live_year": 1998
+},
+{
+"iso3": "AUS",
+"name": "BECS",
+"kind": "Deferred net",
+"live_year": 1994
+},
+{
+"iso3": "SGP",
+"name": "PayNow",
+"kind": "Instant retail",
+"live_year": 2017
+},
+{
+"iso3": "SGP",
+"name": "FAST",
+"kind": "Instant retail",
+"live_year": 2014
+},
+{
+"iso3": "SGP",
+"name": "MEPS+",
+"kind": "Large-value RTGS",
+"live_year": 2006
+},
+{
+"iso3": "MEX",
+"name": "SPEI",
+"kind": "Instant retail",
+"live_year": 2004
+},
+{
+"iso3": "MEX",
+"name": "CoDi",
+"kind": "Instant retail",
+"live_year": 2019
+},
+{
+"iso3": "ZAF",
+"name": "PayShap",
+"kind": "Instant retail",
+"live_year": 2023
+},
+{
+"iso3": "ZAF",
+"name": "SAMOS",
+"kind": "Large-value RTGS",
+"live_year": 1998
+},
+{
+"iso3": "NGA",
+"name": "NIP",
+"kind": "Instant retail",
+"live_year": 2011
+},
+{
+"iso3": "NGA",
+"name": "RTGS",
+"kind": "Large-value RTGS",
+"live_year": 2006
+},
+{
+"iso3": "THA",
+"name": "PromptPay",
+"kind": "Instant retail",
+"live_year": 2017
+},
+{
+"iso3": "THA",
+"name": "BAHTNET",
+"kind": "Large-value RTGS",
+"live_year": 1995
+},
+{
+"iso3": "IDN",
+"name": "BI-FAST",
+"kind": "Instant retail",
+"live_year": 2021
+},
+{
+"iso3": "IDN",
+"name": "BI-RTGS",
+"kind": "Large-value RTGS",
+"live_year": 2000
+},
+{
+"iso3": "MYS",
+"name": "DuitNow",
+"kind": "Instant retail",
+"live_year": 2019
+},
+{
+"iso3": "MYS",
+"name": "RENTAS",
+"kind": "Large-value RTGS",
+"live_year": 1999
+},
+{
+"iso3": "PHL",
+"name": "InstaPay",
+"kind": "Instant retail",
+"live_year": 2018
+},
+{
+"iso3": "PHL",
+"name": "PESONet",
+"kind": "Deferred net",
+"live_year": 2017
+},
+{
+"iso3": "CAN",
+"name": "Interac e-Transfer",
+"kind": "Instant retail",
+"live_year": 2003
+},
+{
+"iso3": "CAN",
+"name": "Lynx",
+"kind": "Large-value RTGS",
+"live_year": 2021
+},
+{
+"iso3": "TUR",
+"name": "FAST",
+"kind": "Instant retail",
+"live_year": 2021
+},
+{
+"iso3": "TUR",
+"name": "EFT",
+"kind": "Large-value RTGS",
+"live_year": 1992
+},
+{
+"iso3": "RUS",
+"name": "SBP (Faster Payments)",
+"kind": "Instant retail",
+"live_year": 2019
+},
+{
+"iso3": "RUS",
+"name": "BESP",
+"kind": "Large-value RTGS",
+"live_year": 2007
+},
+{
+"iso3": "SAU",
+"name": "sarie / IPS",
+"kind": "Instant retail",
+"live_year": 2021
+},
+{
+"iso3": "SAU",
+"name": "SARIE",
+"kind": "Large-value RTGS",
+"live_year": 1997
+},
+{
+"iso3": "ARE",
+"name": "Aani",
+"kind": "Instant retail",
+"live_year": 2023
+},
+{
+"iso3": "ARE",
+"name": "UAEFTS",
+"kind": "Large-value RTGS",
+"live_year": 2001
+},
+{
+"iso3": "KEN",
+"name": "PesaLink",
+"kind": "Instant retail",
+"live_year": 2017
+},
+{
+"iso3": "KEN",
+"name": "KEPSS",
+"kind": "Large-value RTGS",
+"live_year": 2005
+},
+{
+"iso3": "POL",
+"name": "Express Elixir",
+"kind": "Instant retail",
+"live_year": 2012
+},
+{
+"iso3": "POL",
+"name": "SORBNET2",
+"kind": "Large-value RTGS",
+"live_year": 2013
+},
+{
+"iso3": "SWE",
+"name": "Swish",
+"kind": "Instant retail",
+"live_year": 2012
+},
+{
+"iso3": "SWE",
+"name": "RIX",
+"kind": "Large-value RTGS",
+"live_year": 1990
+},
+{
+"iso3": "VNM",
+"name": "NAPAS 247",
+"kind": "Instant retail",
+"live_year": 2016
+},
+{
+"iso3": "VNM",
+"name": "IBPS",
+"kind": "Large-value RTGS",
+"live_year": 2002
+},
+{
+"iso3": "PAK",
+"name": "Raast",
+"kind": "Instant retail",
+"live_year": 2021
+},
+{
+"iso3": "PAK",
+"name": "RTGS/PRISM",
+"kind": "Large-value RTGS",
+"live_year": 2008
+},
+{
+"iso3": "BGD",
+"name": "Binimoy",
+"kind": "Instant retail",
+"live_year": 2022
+},
+{
+"iso3": "BGD",
+"name": "BEFTN",
+"kind": "Deferred net",
+"live_year": 2011
+},
+{
+"iso3": "EGY",
+"name": "InstaPay",
+"kind": "Instant retail",
+"live_year": 2022
+},
+{
+"iso3": "EGY",
+"name": "RTGS",
+"kind": "Large-value RTGS",
+"live_year": 2009
+},
+{
+"iso3": "ARG",
+"name": "Transferencias 3.0",
+"kind": "Instant retail",
+"live_year": 2021
+},
+{
+"iso3": "ARG",
+"name": "MEP",
+"kind": "Large-value RTGS",
+"live_year": 1997
+},
+{
+"iso3": "COL",
+"name": "Bre-B",
+"kind": "Instant retail",
+"live_year": 2025
+},
+{
+"iso3": "COL",
+"name": "CUD",
+"kind": "Large-value RTGS",
+"live_year": 1993
+},
+{
+"iso3": "DEU",
+"name": "SEPA Instant",
+"kind": "Instant retail",
+"live_year": 2017
+},
+{
+"iso3": "DEU",
+"name": "TARGET2/T2",
+"kind": "Large-value RTGS",
+"live_year": 2007
+},
+{
+"iso3": "FRA",
+"name": "SEPA Instant",
+"kind": "Instant retail",
+"live_year": 2017
+},
+{
+"iso3": "FRA",
+"name": "TARGET2/T2",
+"kind": "Large-value RTGS",
+"live_year": 2007
+},
+{
+"iso3": "ITA",
+"name": "SEPA Instant",
+"kind": "Instant retail",
+"live_year": 2017
+},
+{
+"iso3": "ITA",
+"name": "TARGET2/T2",
+"kind": "Large-value RTGS",
+"live_year": 2007
+},
+{
+"iso3": "ESP",
+"name": "SEPA Instant",
+"kind": "Instant retail",
+"live_year": 2017
+},
+{
+"iso3": "ESP",
+"name": "TARGET2/T2",
+"kind": "Large-value RTGS",
+"live_year": 2007
+},
+{
+"iso3": "NLD",
+"name": "SEPA Instant",
+"kind": "Instant retail",
+"live_year": 2017
+},
+{
+"iso3": "NLD",
+"name": "TARGET2/T2",
+"kind": "Large-value RTGS",
+"live_year": 2007
+},
+{
+"iso3": "IRL",
+"name": "SEPA Instant",
+"kind": "Instant retail",
+"live_year": 2017
+},
+{
+"iso3": "IRL",
+"name": "TARGET2/T2",
+"kind": "Large-value RTGS",
+"live_year": 2007
 }
 ]
 }

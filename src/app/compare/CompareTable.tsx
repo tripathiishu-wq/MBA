@@ -31,6 +31,18 @@ const METRICS: Metric[] = [
     note: 'People per km² of land. National averages conceal extreme internal variation.' },
   { key: 'gdp_km2', label: 'Output per km²', get: (c) => c.gdp_per_km2, fmt: (c) => `$${fmtNum(c.gdp_per_km2)}`,
     note: 'Nominal GDP divided by land area — economic density rather than population density.' },
+  { key: 'net_debt', label: 'Net govt debt', get: (c) => c.net_debt_pct_gdp, fmt: (c) => fmtPct(c.net_debt_pct_gdp),
+    note: 'Government debt net of financial assets. Published for ~42 economies. Norway is negative — its wealth fund exceeds what the state owes.' },
+  { key: 'hh_debt', label: 'Household debt', get: (c) => c.hh_debt_pct_gdp, fmt: (c) => fmtPct(c.hh_debt_pct_gdp),
+    note: 'Credit to households as % of GDP. BIS covers exactly 44 economies; the rest have no comparable figure and are excluded, not zeroed.' },
+  { key: 'corp_debt', label: 'Corporate debt', get: (c) => c.corp_debt_pct_gdp, fmt: (c) => fmtPct(c.corp_debt_pct_gdp),
+    note: 'Credit to non-financial corporations as % of GDP. BIS 44-economy coverage. Luxembourg and Ireland are multinational-driven outliers.' },
+  { key: 'private_debt', label: 'Total private debt', get: (c) => c.private_debt_pct_gdp, fmt: (c) => fmtPct(c.private_debt_pct_gdp),
+    note: 'Household plus corporate debt, where BIS covers both. Often larger than government debt — this is where financial fragility frequently sits.' },
+  { key: 'policy_rate', label: 'Policy rate', get: (c) => c.policy_rate, fmt: (c) => fmtPct(c.policy_rate, 2),
+    note: 'Central bank main policy rate. The one live figure here — changes on meeting calendars. Euro-area members share the ECB rate. Mid-2026.' },
+  { key: 'house_yoy', label: 'House prices (nominal)', get: (c) => c.house_price_yoy, fmt: (c) => `${(c.house_price_yoy ?? 0) > 0 ? '+' : ''}${fmtPct(c.house_price_yoy, 1)}`,
+    note: 'Year-on-year change in residential prices. ~55 economies. Nominal — see each country page for the inflation-adjusted figure.' },
 ];
 
 export default function CompareTable({ rows, initialMetric }: { rows: Country[]; initialMetric?: string }) {

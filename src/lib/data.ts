@@ -17,6 +17,24 @@ export type Country = {
   pop_density: number | null;
   gdp_per_km2: number | null;
   debt_usd_bn: number | null;
+  net_debt_pct_gdp: number | null;
+  hh_debt_pct_gdp: number | null;
+  corp_debt_pct_gdp: number | null;
+  private_debt_pct_gdp: number | null;
+  fx_regime: string | null;
+  cb_name: string | null;
+  policy_rate: number | null;
+  policy_rate_name: string | null;
+  house_price_yoy: number | null;
+  house_real_yoy: number | null;
+  bis_covered: boolean;
+};
+
+export type Rail = {
+  iso3: string;
+  name: string;
+  kind: string;
+  live_year: number | null;
 };
 
 export type Bank = {
@@ -36,6 +54,7 @@ export const usingSupabase = Boolean(supabase);
 
 const localCountries = seed.countries as Country[];
 const localBanks = seed.banks as Bank[];
+const localRails = ((seed as any).rails ?? []) as Rail[];
 
 export async function getCountries(): Promise<Country[]> {
   if (supabase) {
@@ -62,6 +81,17 @@ export async function getBanks(iso3?: string): Promise<Bank[]> {
   }
   if (iso3) rows = rows.filter((b) => b.iso3 === iso3);
   return [...rows].sort((a, b) => b.assets_usd_bn - a.assets_usd_bn);
+}
+
+export async function getRails(iso3?: string): Promise<Rail[]> {
+  let rows: Rail[] = localRails;
+  if (supabase) {
+    const q = supabase.from('rail').select('*').order('live_year', { ascending: true });
+    const { data, error } = iso3 ? await q.eq('iso3', iso3) : await q;
+    if (!error && data) return data as Rail[];
+  }
+  if (iso3) rows = rows.filter((r) => r.iso3 === iso3);
+  return rows;
 }
 
 export type WorldTotals = {
@@ -167,5 +197,60 @@ export const INDICATORS: Record<
       'Assets, not market capitalisation — the two rank very differently. Coverage is the largest institutions per country and is not exhaustive.',
     source: 'S&P Global Market Intelligence',
     vintage: '2026 ranking',
+  },
+  NET_DEBT: {
+    name: 'Net government debt',
+    unit: '% of GDP',
+    definition: 'Government debt net of its financial assets, as a share of GDP.',
+    caveat:
+      'Published for fewer countries than gross. Norway is negative — its sovereign wealth fund holds more than the state owes. Net is often the fairer solvency measure; gross is what headlines quote.',
+    source: 'IMF Fiscal Monitor',
+    vintage: '2025–26 estimate',
+  },
+  HH_DEBT: {
+    name: 'Household debt',
+    unit: '% of GDP',
+    definition: 'Credit to households and non-profits serving them, as a share of GDP.',
+    caveat:
+      'BIS publishes this for exactly 44 economies. The other ~143 countries here have no comparable figure — shown as absent, never zero. High household debt signals consumer leverage, not government weakness.',
+    source: 'BIS credit statistics',
+    vintage: '2024–25',
+  },
+  CORP_DEBT: {
+    name: 'Corporate debt',
+    unit: '% of GDP',
+    definition: 'Credit to non-financial corporations, as a share of GDP.',
+    caveat:
+      'BIS, same 44-economy coverage. Luxembourg and Ireland are extreme outliers due to multinationals domiciled there; the figure reflects corporate structuring, not domestic fragility.',
+    source: 'BIS credit statistics',
+    vintage: '2024–25',
+  },
+  FX_REGIME: {
+    name: 'Exchange rate regime',
+    unit: 'classification',
+    definition:
+      'How the currency is managed: free floating, floating, pegged, currency board, or no separate legal tender.',
+    caveat:
+      'IMF de facto classification — what a country actually does, which sometimes differs from what it says. A country that issues its own freely floating currency can service local-currency debt in a way a pegged or dollarised economy cannot.',
+    source: 'IMF AREAER',
+    vintage: '2025',
+  },
+  POLICY_RATE: {
+    name: 'Central bank policy rate',
+    unit: '%',
+    definition: 'The main policy interest rate set by the central bank.',
+    caveat:
+      'The one genuinely live figure on this site — it changes on each bank’s meeting calendar, not annually. Euro-area countries share the ECB’s rate. Verify against the central bank directly before relying on it.',
+    source: 'Central banks / BIS',
+    vintage: 'mid-2026, live',
+  },
+  HOUSE: {
+    name: 'Residential house prices',
+    unit: '% year-on-year',
+    definition: 'Year-on-year change in residential property prices, nominal and inflation-adjusted.',
+    caveat:
+      'Roughly 60 economies publish comparable indices. Nominal and real diverge sharply — Turkey’s nominal prices rose over 30% while real prices fell, because inflation outran them.',
+    source: 'BIS / OECD residential property',
+    vintage: 'latest quarter',
   },
 };
