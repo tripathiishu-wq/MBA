@@ -1,4 +1,5 @@
 import { createClient } from '@supabase/supabase-js';
+import { cache } from 'react';
 import seed from './seed.json';
 
 export type Country = {
@@ -47,16 +48,23 @@ export type Bank = {
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-// Supabase when configured; bundled seed otherwise. The site renders either way,
-// so a missing env var degrades to static data rather than an error page.
-const supabase = url && key ? createClient(url, key) : null;
+// During `next build` we generate 187 static pages. If each one opened its own
+// Supabase query, that's 500+ round-trips to a nano-tier instance — it times out
+// and the build loops forever. So: the build always reads the bundled seed (instant,
+// offline), and Supabase is used only for runtime revalidation after deploy.
+// The seed already contains every field, so built pages are fully correct.
+const isBuildPhase = process.env.NEXT_PHASE === 'phase-production-build';
+
+const supabase = url && key && !isBuildPhase ? createClient(url, key) : null;
 export const usingSupabase = Boolean(supabase);
 
 const localCountries = seed.countries as Country[];
 const localBanks = seed.banks as Bank[];
 const localRails = ((seed as any).rails ?? []) as Rail[];
 
-export async function getCountries(): Promise<Country[]> {
+// cache() dedupes within a single request/render pass, so getCountry() calling
+// getCountries() many times triggers at most ONE fetch, not one per country.
+const fetchAllCountries = cache(async (): Promise<Country[]> => {
   if (supabase) {
     const { data, error } = await supabase
       .from('country')
@@ -65,33 +73,43 @@ export async function getCountries(): Promise<Country[]> {
     if (!error && data) return data as Country[];
   }
   return [...localCountries].sort((a, b) => b.gdp_usd_bn - a.gdp_usd_bn);
+});
+
+const fetchAllBanks = cache(async (): Promise<Bank[]> => {
+  if (supabase) {
+    const { data, error } = await supabase
+      .from('bank').select('*').order('assets_usd_bn', { ascending: false });
+    if (!error && data) return data as Bank[];
+  }
+  return [...localBanks].sort((a, b) => b.assets_usd_bn - a.assets_usd_bn);
+});
+
+const fetchAllRails = cache(async (): Promise<Rail[]> => {
+  if (supabase) {
+    const { data, error } = await supabase
+      .from('rail').select('*').order('live_year', { ascending: true });
+    if (!error && data) return data as Rail[];
+  }
+  return localRails;
+});
+
+export async function getCountries(): Promise<Country[]> {
+  return fetchAllCountries();
 }
 
 export async function getCountry(slug: string): Promise<Country | null> {
-  const all = await getCountries();
+  const all = await fetchAllCountries();
   return all.find((c) => c.slug === slug) ?? null;
 }
 
 export async function getBanks(iso3?: string): Promise<Bank[]> {
-  let rows: Bank[] = localBanks;
-  if (supabase) {
-    const q = supabase.from('bank').select('*').order('assets_usd_bn', { ascending: false });
-    const { data, error } = iso3 ? await q.eq('iso3', iso3) : await q;
-    if (!error && data) return data as Bank[];
-  }
-  if (iso3) rows = rows.filter((b) => b.iso3 === iso3);
-  return [...rows].sort((a, b) => b.assets_usd_bn - a.assets_usd_bn);
+  const rows = await fetchAllBanks();
+  return iso3 ? rows.filter((b) => b.iso3 === iso3) : rows;
 }
 
 export async function getRails(iso3?: string): Promise<Rail[]> {
-  let rows: Rail[] = localRails;
-  if (supabase) {
-    const q = supabase.from('rail').select('*').order('live_year', { ascending: true });
-    const { data, error } = iso3 ? await q.eq('iso3', iso3) : await q;
-    if (!error && data) return data as Rail[];
-  }
-  if (iso3) rows = rows.filter((r) => r.iso3 === iso3);
-  return rows;
+  const rows = await fetchAllRails();
+  return iso3 ? rows.filter((r) => r.iso3 === iso3) : rows;
 }
 
 export type WorldTotals = {
