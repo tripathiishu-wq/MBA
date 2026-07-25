@@ -119,30 +119,33 @@ export async function getRails(iso3?: string): Promise<Rail[]> {
   return iso3 ? rows.filter((r) => r.iso3 === iso3) : rows;
 }
 
-// History comes ONLY from Supabase (the observation table). At build time there's
-// no seed history, so pages render current-year data and history fills in at runtime.
-// A country with no history returns [] and the chart simply doesn't show.
-export async function getHistory(iso3: string, indicator = 'gdp_usd_bn'): Promise<Observation[]> {
-  if (!supabase) return [];
-  const { data, error } = await supabase
+// History needs its own client that ISN'T blocked at build time. Unlike the main
+// country/bank/rail data (187 pages x several queries = build-timeout risk), history
+// is fetched ONCE as a single bulk query and cached — same safe pattern as
+// fetchAllCountries, just not gated behind isBuildPhase. This is what makes the
+// GDP chart actually populate at build instead of silently rendering empty.
+const historyClient = url && key ? createClient(url, key) : null;
+
+const fetchAllHistory = cache(async (): Promise<Observation[]> => {
+  if (!historyClient) return [];
+  const { data, error } = await historyClient
     .from('observation')
     .select('iso3, indicator, year, value')
-    .eq('iso3', iso3)
-    .eq('indicator', indicator)
     .order('year', { ascending: true });
   if (error || !data) return [];
   return data as Observation[];
+});
+
+export async function getHistory(iso3: string, indicator = 'gdp_usd_bn'): Promise<Observation[]> {
+  const all = await fetchAllHistory();
+  return all.filter((o) => o.iso3 === iso3 && o.indicator === indicator);
 }
 
 // Available years across the whole dataset, for the global year switcher.
 export async function getAvailableYears(): Promise<number[]> {
-  if (!supabase) return [];
-  const { data, error } = await supabase
-    .from('observation')
-    .select('year')
-    .eq('indicator', 'gdp_usd_bn');
-  if (error || !data) return [];
-  return [...new Set((data as { year: number }[]).map((r) => r.year))].sort((a, b) => b - a);
+  const all = await fetchAllHistory();
+  return [...new Set(all.filter((o) => o.indicator === 'gdp_usd_bn').map((o) => o.year))]
+    .sort((a, b) => b - a);
 }
 
 export type WorldTotals = {
@@ -199,7 +202,7 @@ export const fmtPop = (v: number | null) =>
   v === null ? '—' : v >= 1000 ? `${(v / 1000).toFixed(2)}B` : `${v.toFixed(1)}M`;
 
 // Indicator definitions — perimeter and caveat render beside the number.
-export const INDICATORS: Record<
+export const INDICATORS: Record
   string,
   { name: string; unit: string; definition: string; caveat?: string; source: string; vintage: string }
 > = {
@@ -209,7 +212,7 @@ export const INDICATORS: Record<
     definition:
       'Gross domestic product at current market prices, converted to US dollars at market exchange rates. Not adjusted for purchasing power.',
     caveat:
-      'Moves with the US dollar. A 10% dollar appreciation mechanically shrinks every other economy’s figure without any change in real output.',
+      'Moves with the US dollar. A 10% dollar appreciation mechanically shrinks every other economy\u2019s figure without any change in real output.',
     source: 'IMF World Economic Outlook',
     vintage: '2025 estimate',
   },
@@ -291,7 +294,7 @@ export const INDICATORS: Record<
     unit: '%',
     definition: 'The main policy interest rate set by the central bank.',
     caveat:
-      'The one genuinely live figure on this site — it changes on each bank’s meeting calendar, not annually. Euro-area countries share the ECB’s rate. Verify against the central bank directly before relying on it.',
+      'The one genuinely live figure on this site — it changes on each bank\u2019s meeting calendar, not annually. Euro-area countries share the ECB\u2019s rate. Verify against the central bank directly before relying on it.',
     source: 'Central banks / BIS',
     vintage: 'mid-2026, live',
   },
@@ -300,7 +303,7 @@ export const INDICATORS: Record<
     unit: '% year-on-year',
     definition: 'Year-on-year change in residential property prices, nominal and inflation-adjusted.',
     caveat:
-      'Roughly 60 economies publish comparable indices. Nominal and real diverge sharply — Turkey’s nominal prices rose over 30% while real prices fell, because inflation outran them.',
+      'Roughly 60 economies publish comparable indices. Nominal and real diverge sharply — Turkey\u2019s nominal prices rose over 30% while real prices fell, because inflation outran them.',
     source: 'BIS / OECD residential property',
     vintage: 'latest quarter',
   },
