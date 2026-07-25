@@ -201,12 +201,7 @@ export const fmtKm2 = (v: number | null) =>
 export const fmtPop = (v: number | null) =>
   v === null ? '—' : v >= 1000 ? `${(v / 1000).toFixed(2)}B` : `${v.toFixed(1)}M`;
 
-// Indicator definitions — perimeter and caveat render beside the number.
-export const INDICATORS: Record
-  string,
-  { name: string; unit: string; definition: string; caveat?: string; source: string; vintage: string }
-> = {
-  GDP_NOM: {
+export const INDICATORS: Record<string, { name: string; unit: string; definition: string; caveat?: string; source: string; vintage: string }> = {  GDP_NOM: {
     name: 'Nominal GDP',
     unit: 'USD billions',
     definition:
