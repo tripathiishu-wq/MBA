@@ -38,6 +38,13 @@ export type Rail = {
   live_year: number | null;
 };
 
+export type Observation = {
+  iso3: string;
+  indicator: string;
+  year: number;
+  value: number | null;
+};
+
 export type Bank = {
   name: string;
   iso3: string;
@@ -110,6 +117,32 @@ export async function getBanks(iso3?: string): Promise<Bank[]> {
 export async function getRails(iso3?: string): Promise<Rail[]> {
   const rows = await fetchAllRails();
   return iso3 ? rows.filter((r) => r.iso3 === iso3) : rows;
+}
+
+// History comes ONLY from Supabase (the observation table). At build time there's
+// no seed history, so pages render current-year data and history fills in at runtime.
+// A country with no history returns [] and the chart simply doesn't show.
+export async function getHistory(iso3: string, indicator = 'gdp_usd_bn'): Promise<Observation[]> {
+  if (!supabase) return [];
+  const { data, error } = await supabase
+    .from('observation')
+    .select('iso3, indicator, year, value')
+    .eq('iso3', iso3)
+    .eq('indicator', indicator)
+    .order('year', { ascending: true });
+  if (error || !data) return [];
+  return data as Observation[];
+}
+
+// Available years across the whole dataset, for the global year switcher.
+export async function getAvailableYears(): Promise<number[]> {
+  if (!supabase) return [];
+  const { data, error } = await supabase
+    .from('observation')
+    .select('year')
+    .eq('indicator', 'gdp_usd_bn');
+  if (error || !data) return [];
+  return [...new Set((data as { year: number }[]).map((r) => r.year))].sort((a, b) => b - a);
 }
 
 export type WorldTotals = {

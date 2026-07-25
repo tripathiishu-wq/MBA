@@ -2,9 +2,10 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
-  getCountries, getCountry, getBanks, getRails, totals, byRegion, INDICATORS,
+  getCountries, getCountry, getBanks, getRails, getHistory, totals, byRegion, INDICATORS,
   fmtUsdBn, fmtPop, fmtKm2, fmtPct, fmtNum, type Country,
 } from '@/lib/data';
+import GdpHistoryChart from '@/components/GdpHistoryChart';
 
 export const revalidate = 3600;
 
@@ -55,6 +56,7 @@ export default async function CountryPage({ params }: { params: { slug: string }
   const all = await getCountries();
   const banks = await getBanks(c.iso3);
   const rails = await getRails(c.iso3);
+  const history = await getHistory(c.iso3, 'gdp_usd_bn');
   const w = totals(all);
   const regions = byRegion(all);
   const reg = regions.find((r) => r.region === c.region)!;
@@ -175,6 +177,9 @@ export default async function CountryPage({ params }: { params: { slug: string }
             {D.caveat}
           </div>
         </div>
+
+        {/* ---- GDP history chart (renders only if history exists) ---- */}
+        <GdpHistoryChart data={history} label={c.name} />
 
         {/* ---- private-sector leverage: the BIS coverage gap ---- */}
         <div className="panel">
