@@ -29,6 +29,20 @@ export type Country = {
   house_price_yoy: number | null;
   house_real_yoy: number | null;
   bis_covered: boolean;
+  current_account_pct_gdp?: number | null;
+  inflation_pct?: number | null;
+  reserves_usd_bn?: number | null;
+  reserves_pct_gdp?: number | null;
+  rating_sp?: string | null;
+  rating_moodys?: string | null;
+  rating_fitch?: string | null;
+  exports_usd_bn?: number | null;
+  imports_usd_bn?: number | null;
+  top_export?: string | null;
+  lpi_score?: number | null;
+  trade_partners?: string | null;
+  trade_openness_pct?: number | null;
+  trade_balance_usd_bn?: number | null;
 };
 
 export type Rail = {
@@ -65,21 +79,46 @@ const isBuildPhase = process.env.NEXT_PHASE === 'phase-production-build';
 const supabase = url && key && !isBuildPhase ? createClient(url, key) : null;
 export const usingSupabase = Boolean(supabase);
 
+// A second client that is deliberately NOT build-blocked. Used for bulk, one-shot
+// queries (history, Phase 3 enrichment) where a single query is safe even at build.
+const historyClient = url && key ? createClient(url, key) : null;
+
 const localCountries = seed.countries as Country[];
 const localBanks = seed.banks as Bank[];
 const localRails = ((seed as any).rails ?? []) as Rail[];
 
 // cache() dedupes within a single request/render pass, so getCountry() calling
 // getCountries() many times triggers at most ONE fetch, not one per country.
+// Phase 3 fields (trade, inflation, reserves, ratings) live only in Supabase —
+// they're not in the bundled seed. Fetched once as a single bulk query using the
+// non-build-blocked client, same pattern as history, then merged onto the seed.
+// This is why they appear at build rather than only after revalidation.
+const PHASE3 = 'iso3, current_account_pct_gdp, inflation_pct, reserves_usd_bn, reserves_pct_gdp, rating_sp, rating_moodys, rating_fitch, exports_usd_bn, imports_usd_bn, top_export, lpi_score, trade_partners, trade_openness_pct, trade_balance_usd_bn';
+
+const fetchEnrichment = cache(async (): Promise<Map<string, Partial<Country>>> => {
+  const m = new Map<string, Partial<Country>>();
+  if (!historyClient) return m;
+  const { data, error } = await historyClient.from('country').select(PHASE3);
+  if (error || !data) return m;
+  (data as any[]).forEach((r) => m.set(r.iso3, r));
+  return m;
+});
+
 const fetchAllCountries = cache(async (): Promise<Country[]> => {
+  let rows: Country[] | null = null;
   if (supabase) {
     const { data, error } = await supabase
       .from('country')
       .select('*')
       .order('gdp_usd_bn', { ascending: false });
-    if (!error && data) return data as Country[];
+    if (!error && data) rows = data as Country[];
   }
-  return [...localCountries].sort((a, b) => b.gdp_usd_bn - a.gdp_usd_bn);
+  if (!rows) {
+    // seed fallback (build phase) — merge Phase 3 fields from Supabase on top
+    const enrich = await fetchEnrichment();
+    rows = localCountries.map((c) => ({ ...c, ...(enrich.get(c.iso3) ?? {}) }));
+  }
+  return [...rows].sort((a, b) => b.gdp_usd_bn - a.gdp_usd_bn);
 });
 
 const fetchAllBanks = cache(async (): Promise<Bank[]> => {
@@ -124,8 +163,6 @@ export async function getRails(iso3?: string): Promise<Rail[]> {
 // is fetched ONCE as a single bulk query and cached — same safe pattern as
 // fetchAllCountries, just not gated behind isBuildPhase. This is what makes the
 // GDP chart actually populate at build instead of silently rendering empty.
-const historyClient = url && key ? createClient(url, key) : null;
-
 const fetchAllHistory = cache(async (): Promise<Observation[]> => {
   if (!historyClient) return [];
   const { data, error } = await historyClient
@@ -201,13 +238,18 @@ export const fmtKm2 = (v: number | null) =>
 export const fmtPop = (v: number | null) =>
   v === null ? '—' : v >= 1000 ? `${(v / 1000).toFixed(2)}B` : `${v.toFixed(1)}M`;
 
-export const INDICATORS: Record<string, { name: string; unit: string; definition: string; caveat?: string; source: string; vintage: string }> = {  GDP_NOM: {
+// Indicator definitions — perimeter and caveat render beside the number.
+export const INDICATORS: Record<
+  string,
+  { name: string; unit: string; definition: string; caveat?: string; source: string; vintage: string }
+> = {
+  GDP_NOM: {
     name: 'Nominal GDP',
     unit: 'USD billions',
     definition:
       'Gross domestic product at current market prices, converted to US dollars at market exchange rates. Not adjusted for purchasing power.',
     caveat:
-      'Moves with the US dollar. A 10% dollar appreciation mechanically shrinks every other economy\u2019s figure without any change in real output.',
+      'Moves with the US dollar. A 10% dollar appreciation mechanically shrinks every other economy’s figure without any change in real output.',
     source: 'IMF World Economic Outlook',
     vintage: '2025 estimate',
   },
@@ -289,16 +331,80 @@ export const INDICATORS: Record<string, { name: string; unit: string; definition
     unit: '%',
     definition: 'The main policy interest rate set by the central bank.',
     caveat:
-      'The one genuinely live figure on this site — it changes on each bank\u2019s meeting calendar, not annually. Euro-area countries share the ECB\u2019s rate. Verify against the central bank directly before relying on it.',
+      'The one genuinely live figure on this site — it changes on each bank’s meeting calendar, not annually. Euro-area countries share the ECB’s rate. Verify against the central bank directly before relying on it.',
     source: 'Central banks / BIS',
     vintage: 'mid-2026, live',
+  },
+  CURRENT_ACCOUNT: {
+    name: 'Current account balance',
+    unit: '% of GDP',
+    definition:
+      'The broadest measure of transactions with the rest of the world — trade in goods and services, income and transfers — as a share of GDP.',
+    caveat:
+      'A surplus is not automatically good nor a deficit bad. A deficit means a country absorbs more than it produces and finances the difference from abroad — sustainable for a reserve-currency issuer, dangerous for one dependent on volatile capital inflows. Read it alongside the exchange rate regime and reserves.',
+    source: 'IMF World Economic Outlook',
+    vintage: '2025 estimate',
+  },
+  INFLATION: {
+    name: 'Inflation (CPI)',
+    unit: '%',
+    definition: 'Annual average change in consumer prices.',
+    caveat:
+      'The number that makes every other nominal figure on this site readable — nominal GDP growth and nominal house-price growth both mean little without it. Basket composition differs between countries, so cross-country comparison is indicative rather than exact.',
+    source: 'IMF World Economic Outlook',
+    vintage: '2025 estimate',
+  },
+  RESERVES: {
+    name: 'Foreign exchange reserves',
+    unit: 'USD billions',
+    definition: 'Total official reserve assets including gold, held by the central bank.',
+    caveat:
+      'The buffer that lets a country defend its currency and meet external obligations. Adequacy depends on exposure, not the raw total — a large economy with a floating currency needs proportionally far less than a small one running a peg. Gold is valued at market prices, so totals move with the gold price alone.',
+    source: 'IMF / World Bank',
+    vintage: 'latest available',
+  },
+  RATING: {
+    name: 'Sovereign credit rating',
+    unit: 'grade',
+    definition: "Long-term foreign-currency issuer rating from S&P, Moody's and Fitch.",
+    caveat:
+      'Opinions, not measurements — and the agencies disagree with each other regularly, which is itself informative. Ratings move on the agencies\u2019 own schedules, so treat these as a point-in-time register and verify against the agency directly. SD or RD means selective or restricted default; absence means unrated, not creditworthy or otherwise.',
+    source: "S&P Global / Moody's / Fitch",
+    vintage: 'point-in-time, verify',
+  },
+  TRADE: {
+    name: 'Exports & imports',
+    unit: 'USD billions',
+    definition: 'Goods and services crossing the border, for the latest full year.',
+    caveat:
+      'Re-export hubs distort this badly. Hong Kong, Singapore, the Netherlands and Luxembourg all record goods that arrive, get re-labelled and leave again \u2014 so their trade can exceed their entire GDP several times over without reflecting domestic production.',
+    source: 'IMF / World Bank / national statistics',
+    vintage: 'latest full year',
+  },
+  TRADE_OPENNESS: {
+    name: 'Trade openness',
+    unit: '% of GDP',
+    definition: 'Exports plus imports as a share of GDP. Derived, not separately sourced.',
+    caveat:
+      'Above 100% is normal for small open economies and re-export hubs. A low figure usually means a large domestic market rather than isolation \u2014 the United States sits near 25% because most of what Americans buy is made in America.',
+    source: 'Derived',
+    vintage: 'latest full year',
+  },
+  LPI: {
+    name: 'Logistics Performance Index',
+    unit: 'score 1\u20135',
+    definition: 'World Bank composite covering customs, infrastructure, shipment timeliness and tracking.',
+    caveat:
+      'A survey-based perception index, not a physical measurement \u2014 it reflects what freight professionals report, so it captures reputation alongside reality. Published irregularly, so a score may be several years old.',
+    source: 'World Bank Logistics Performance Index',
+    vintage: '2023 edition',
   },
   HOUSE: {
     name: 'Residential house prices',
     unit: '% year-on-year',
     definition: 'Year-on-year change in residential property prices, nominal and inflation-adjusted.',
     caveat:
-      'Roughly 60 economies publish comparable indices. Nominal and real diverge sharply — Turkey\u2019s nominal prices rose over 30% while real prices fell, because inflation outran them.',
+      'Roughly 60 economies publish comparable indices. Nominal and real diverge sharply — Turkey’s nominal prices rose over 30% while real prices fell, because inflation outran them.',
     source: 'BIS / OECD residential property',
     vintage: 'latest quarter',
   },

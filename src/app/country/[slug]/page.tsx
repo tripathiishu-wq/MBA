@@ -57,6 +57,8 @@ export default async function CountryPage({ params }: { params: { slug: string }
   const banks = await getBanks(c.iso3);
   const rails = await getRails(c.iso3);
   const history = await getHistory(c.iso3, 'gdp_usd_bn');
+  const debtHistory = await getHistory(c.iso3, 'debt_pct_gdp');
+  const popHistory = await getHistory(c.iso3, 'population_mn');
   const w = totals(all);
   const regions = byRegion(all);
   const reg = regions.find((r) => r.region === c.region)!;
@@ -180,6 +182,135 @@ export default async function CountryPage({ params }: { params: { slug: string }
 
         {/* ---- GDP history chart (renders only if history exists) ---- */}
         <GdpHistoryChart data={history} label={c.name} />
+
+        {/* ---- debt trajectory: level matters less than direction ---- */}
+        <GdpHistoryChart
+          data={debtHistory}
+          label={c.name}
+          title="Debt trajectory"
+          kind="pct"
+          color="var(--copper)"
+          source="IMF World Economic Outlook · gross general government debt, % of GDP"
+        />
+
+        {/* ---- external position: trade, inflation, reserves ---- */}
+        <div className="panel">
+          <h3>External position &amp; prices</h3>
+          <div className="grid-3">
+            <div>
+              <div className="pair"><dt>Current account</dt>
+                <dd style={{ color: (c.current_account_pct_gdp ?? 0) < 0 ? 'var(--copper)' : 'var(--teal)' }}>
+                  {c.current_account_pct_gdp != null
+                    ? `${c.current_account_pct_gdp > 0 ? '+' : ''}${fmtPct(c.current_account_pct_gdp)}`
+                    : '—'}</dd></div>
+              <div className="pair"><dt>Inflation (CPI)</dt>
+                <dd>{c.inflation_pct != null ? fmtPct(c.inflation_pct) : '—'}</dd></div>
+            </div>
+            <div>
+              <div className="pair"><dt>FX reserves</dt>
+                <dd>{c.reserves_usd_bn != null ? fmtUsdBn(c.reserves_usd_bn) : '—'}</dd></div>
+              <div className="pair"><dt>Reserves ÷ GDP</dt>
+                <dd>{c.reserves_pct_gdp != null ? fmtPct(c.reserves_pct_gdp) : '—'}</dd></div>
+            </div>
+            <div style={{ fontSize: 12, color: 'var(--ink-2)', lineHeight: 1.5 }}>
+              {c.current_account_pct_gdp != null && c.current_account_pct_gdp < -3
+                ? 'Runs a sizeable external deficit — absorbing more than it produces and financing the gap from abroad. How risky that is depends on the currency regime above.'
+                : c.current_account_pct_gdp != null && c.current_account_pct_gdp > 5
+                ? 'Runs a large external surplus — producing more than it absorbs and accumulating claims on the rest of the world.'
+                : 'A surplus is not automatically good nor a deficit bad; read it against the currency regime and reserves.'}
+            </div>
+          </div>
+        </div>
+
+        {/* ---- trade & supply chain ---- */}
+        {(c.exports_usd_bn != null || c.top_export) ? (
+          <div className="panel">
+            <h3>Trade &amp; supply chain</h3>
+            <div className="grid-3">
+              <div>
+                <div className="pair"><dt>Exports</dt>
+                  <dd>{c.exports_usd_bn != null ? fmtUsdBn(c.exports_usd_bn) : '—'}</dd></div>
+                <div className="pair"><dt>Imports</dt>
+                  <dd>{c.imports_usd_bn != null ? fmtUsdBn(c.imports_usd_bn) : '—'}</dd></div>
+                <div className="pair"><dt>Balance</dt>
+                  <dd style={{ color: (c.trade_balance_usd_bn ?? 0) < 0 ? 'var(--copper)' : 'var(--teal)' }}>
+                    {c.trade_balance_usd_bn != null
+                      ? `${c.trade_balance_usd_bn > 0 ? '+' : '−'}${fmtUsdBn(Math.abs(c.trade_balance_usd_bn))}`
+                      : '—'}</dd></div>
+              </div>
+              <div>
+                <div className="pair"><dt>Trade ÷ GDP</dt>
+                  <dd>{c.trade_openness_pct != null ? fmtPct(c.trade_openness_pct, 0) : '—'}</dd></div>
+                <div className="pair"><dt>Logistics index</dt>
+                  <dd>{c.lpi_score != null ? `${c.lpi_score.toFixed(1)} / 5` : '—'}</dd></div>
+                <div className="pair"><dt>Principal export</dt>
+                  <dd style={{ fontSize: 11, textAlign: 'right' }}>{c.top_export ?? '—'}</dd></div>
+              </div>
+              <div style={{ fontSize: 12, color: 'var(--ink-2)', lineHeight: 1.5 }}>
+                {(c.trade_openness_pct ?? 0) > 150
+                  ? 'Trade exceeds the size of the economy itself — the mark of a re-export hub, where the same goods cross the border more than once. Read this as throughput, not domestic production.'
+                  : (c.trade_openness_pct ?? 0) < 40 && c.trade_openness_pct != null
+                  ? 'A relatively closed trade profile — usually a sign of a large domestic market rather than isolation.'
+                  : 'Exports plus imports against output. Concentration in a single export category is the exposure worth watching.'}
+              </div>
+            </div>
+            {c.trade_partners && (
+              <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--rule)',
+                fontSize: 13, color: 'var(--ink-2)' }}>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.08em',
+                  textTransform: 'uppercase', color: 'var(--ink-3)' }}>Principal partners</span>
+                <div style={{ marginTop: 5 }}>{c.trade_partners}</div>
+              </div>
+            )}
+          </div>
+        ) : (
+          <div className="panel">
+            <h3>Trade &amp; supply chain</h3>
+            <div className="missing">
+              No comparable trade breakdown is compiled for {c.name}.
+              <br />Coverage here is roughly 130 economies; absence is a gap in this dataset,
+              not an absence of trade.
+            </div>
+          </div>
+        )}
+
+        {/* ---- sovereign credit ratings ---- */}
+        {(c.rating_sp || c.rating_moodys || c.rating_fitch) ? (
+          <div className="panel">
+            <h3>Sovereign credit rating</h3>
+            <div className="grid-2">
+              <div>
+                <div className="pair"><dt>S&amp;P</dt><dd>{c.rating_sp ?? 'not rated'}</dd></div>
+                <div className="pair"><dt>Moody&apos;s</dt><dd>{c.rating_moodys ?? 'not rated'}</dd></div>
+                <div className="pair"><dt>Fitch</dt><dd>{c.rating_fitch ?? 'not rated'}</dd></div>
+              </div>
+              <div style={{ fontSize: 13, color: 'var(--ink-2)', lineHeight: 1.55 }}>
+                Opinions, not measurements. Where the three agencies disagree, that
+                disagreement is itself information. Ratings move on the agencies&apos; own
+                schedules — verify directly before relying on them.
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="panel">
+            <h3>Sovereign credit rating</h3>
+            <div className="missing">
+              No major agency currently publishes a rating for {c.name}.
+              <br />Unrated is not the same as uncreditworthy — many governments simply
+              do not seek a rating.
+            </div>
+          </div>
+        )}
+
+        {/* ---- population trajectory ---- */}
+        <GdpHistoryChart
+          data={popHistory}
+          label={c.name}
+          title="Population over time"
+          kind="people"
+          color="var(--people)"
+          source="UN World Population Prospects / IMF · mid-year estimates"
+        />
 
         {/* ---- private-sector leverage: the BIS coverage gap ---- */}
         <div className="panel">

@@ -43,6 +43,22 @@ const METRICS: Metric[] = [
     note: 'Central bank main policy rate. The one live figure here — changes on meeting calendars. Euro-area members share the ECB rate. Mid-2026.' },
   { key: 'house_yoy', label: 'House prices (nominal)', get: (c) => c.house_price_yoy, fmt: (c) => `${(c.house_price_yoy ?? 0) > 0 ? '+' : ''}${fmtPct(c.house_price_yoy, 1)}`,
     note: 'Year-on-year change in residential prices. ~55 economies. Nominal — see each country page for the inflation-adjusted figure.' },
+  { key: 'current_account', label: 'Current account', get: (c) => c.current_account_pct_gdp ?? null, fmt: (c) => c.current_account_pct_gdp != null ? `${c.current_account_pct_gdp > 0 ? '+' : ''}${fmtPct(c.current_account_pct_gdp)}` : '—',
+    note: 'Balance of trade, income and transfers with the rest of the world, % of GDP. A surplus is not automatically good nor a deficit bad — it depends on the currency regime and who finances the gap.' },
+  { key: 'inflation', label: 'Inflation (CPI)', get: (c) => c.inflation_pct ?? null, fmt: (c) => c.inflation_pct != null ? fmtPct(c.inflation_pct) : '—',
+    note: 'Annual average consumer price change, 2025 estimate. The figure that makes every nominal number on this site readable. Baskets differ by country, so treat cross-country comparison as indicative.' },
+  { key: 'reserves', label: 'FX reserves', get: (c) => c.reserves_usd_bn ?? null, fmt: (c) => c.reserves_usd_bn != null ? fmtUsdBn(c.reserves_usd_bn) : '—',
+    note: 'Official reserve assets including gold. Adequacy depends on exposure, not the raw total — gold is at market value, so totals move with the gold price alone.' },
+  { key: 'reserves_gdp', label: 'Reserves ÷ GDP', get: (c) => c.reserves_pct_gdp ?? null, fmt: (c) => c.reserves_pct_gdp != null ? fmtPct(c.reserves_pct_gdp) : '—',
+    note: 'Reserves as a share of output — a rough adequacy read. Small open economies and peggers rationally hold far more than large floaters.' },
+  { key: 'exports', label: 'Exports', get: (c) => c.exports_usd_bn ?? null, fmt: (c) => c.exports_usd_bn != null ? fmtUsdBn(c.exports_usd_bn) : '—',
+    note: 'Goods and services leaving the country, latest full year. ~130 economies compiled. Re-export hubs record goods that merely pass through.' },
+  { key: 'trade_balance', label: 'Trade balance', get: (c) => c.trade_balance_usd_bn ?? null, fmt: (c) => c.trade_balance_usd_bn != null ? `${c.trade_balance_usd_bn > 0 ? '+' : '−'}${fmtUsdBn(Math.abs(c.trade_balance_usd_bn))}` : '—',
+    note: 'Exports minus imports. A deficit is not a debt or a loss — it means a country received more than it sent and settled the difference in financial claims.' },
+  { key: 'openness', label: 'Trade openness', get: (c) => c.trade_openness_pct ?? null, fmt: (c) => c.trade_openness_pct != null ? fmtPct(c.trade_openness_pct, 0) : '—',
+    note: 'Exports plus imports over GDP. Above 100% marks a re-export hub, not an unusually productive economy. A low figure usually means a large domestic market.' },
+  { key: 'lpi', label: 'Logistics index', get: (c) => c.lpi_score ?? null, fmt: (c) => c.lpi_score != null ? `${c.lpi_score.toFixed(1)} / 5` : '—',
+    note: 'World Bank Logistics Performance Index, 1–5. Survey-based perception rather than physical measurement, published irregularly.' },
 ];
 
 export default function CompareTable({ rows, initialMetric }: { rows: Country[]; initialMetric?: string }) {

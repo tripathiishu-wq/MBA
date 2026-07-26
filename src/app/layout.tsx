@@ -20,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <nav className="nav">
               <Link href="/compare">Compare</Link>
               <Link href="/regions">Regions</Link>
+              <Link href="/trade">Trade</Link>
               <Link href="/banks">Banks</Link>
               <Link href="/rates">Rates</Link>
               <Link href="/methodology">Method</Link>
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <ul>
                 <li><Link href="/compare">Compare countries</Link></li>
                 <li><Link href="/regions">Regional aggregates</Link></li>
+                <li><Link href="/trade">Trade &amp; supply chain</Link></li>
                 <li><Link href="/banks">Major banks</Link></li>
                 <li><Link href="/methodology">Method &amp; sources</Link></li>
               </ul>
