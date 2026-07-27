@@ -240,7 +240,12 @@ export type Corporation = {
   employees_k: number | null;
   description: string | null;
   top_products: string | null;
+  domain?: string | null;
 };
+
+/** Clearbit logo URL — free, no API key, indexed by domain. */
+export const corpLogoUrl = (domain: string | null | undefined, size = 64): string =>
+  domain ? `https://logo.clearbit.com/${domain}?size=${size}` : '';
 
 export const corpSlug = (name: string) =>
   name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -248,7 +253,7 @@ export const corpSlug = (name: string) =>
 const fetchAllCorporations = cache(async (): Promise<Corporation[]> => {
   if (historyClient) {
     const { data, error } = await historyClient
-      .from('corporation').select('*').order('market_cap_usd_bn', { ascending: false });
+      .from('corporation').select('id,name,iso3,ticker,sector,revenue_usd_bn,market_cap_usd_bn,employees_k,description,top_products,domain').order('market_cap_usd_bn', { ascending: false });
     if (!error && data) return data as Corporation[];
   }
   return [...localCorps].sort((a, b) => (b.market_cap_usd_bn ?? 0) - (a.market_cap_usd_bn ?? 0));

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getCorporations, getCorporationBySlug, getCountries, getAllCorporationSlugs, getCorporationHistory, getCorporationQuarterly, corpSlug, fmtUsdBn, fmtPct, fmtNum } from '@/lib/data';
+import { getCorporations, getCorporationBySlug, getCountries, getAllCorporationSlugs, getCorporationHistory, getCorporationQuarterly, corpSlug, corpLogoUrl, fmtUsdBn, fmtPct, fmtNum } from '@/lib/data';
 import QuarterlyEarningsChart from '@/components/QuarterlyEarningsChart';
 import CorpScaleChart from '@/components/CorpScaleChart';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
@@ -56,12 +56,22 @@ export default async function CorpPage({ params }: { params: { slug: string } })
             {home && <> · <Link href={`/country/${home.slug}`}>{home.name}</Link></>}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
-            <div>
-              <h1 style={{ margin: '0 0 4px' }}>{c.name}</h1>
-              <div style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-3)' }}>
-                {c.ticker && <span style={{ marginRight: 12 }}>{c.ticker}</span>}
-                <span>{c.sector}</span>
-                {home && <span style={{ marginLeft: 12 }}>· {home.name}</span>}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+              {corpLogoUrl(c.domain) && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={corpLogoUrl(c.domain, 80)} alt={`${c.name} logo`}
+                  style={{ width: 56, height: 56, objectFit: 'contain', flexShrink: 0,
+                    background: 'white', borderRadius: 8,
+                    border: '1px solid var(--rule)', padding: 6,
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }} />
+              )}
+              <div>
+                <h1 style={{ margin: '0 0 4px' }}>{c.name}</h1>
+                <div style={{ fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-3)' }}>
+                  {c.ticker && <span style={{ marginRight: 12 }}>{c.ticker}</span>}
+                  <span>{c.sector}</span>
+                  {home && <span style={{ marginLeft: 12 }}>· {home.name}</span>}
+                </div>
               </div>
             </div>
             {home && flagUrl(home.iso3) && (

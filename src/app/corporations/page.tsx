@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { getCorporations, getCountries, fmtUsdBn, fmtPct, corpSlug } from '@/lib/data';
+import { getCorporations, getCountries, fmtUsdBn, fmtPct, corpSlug, corpLogoUrl } from '@/lib/data';
 import { flagUrl, flagAlt } from '@/lib/flags';
 
 export const revalidate = 3600;
@@ -71,9 +71,17 @@ export default async function CorporationsPage() {
             return (
               <tr key={c.id}>
                 <td className="rank">{i + 1}</td>
-                <td className="cname">
-                  <Link href={`/corporation/${corpSlug(c.name)}`}>{c.name}</Link>
-                  {c.ticker && <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--ink-3)', marginLeft: 6 }}>{c.ticker}</span>}
+                <td className="cname" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  {corpLogoUrl(c.domain) ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src={corpLogoUrl(c.domain, 32)} alt="" aria-hidden="true"
+                      style={{ width: 22, height: 22, objectFit: 'contain', flexShrink: 0,
+                        background: 'white', borderRadius: 4, border: '1px solid var(--rule)', padding: 2 }} />
+                  ) : <span style={{ width: 22 }} />}
+                  <span>
+                    <Link href={`/corporation/${corpSlug(c.name)}`}>{c.name}</Link>
+                    {c.ticker && <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--ink-3)', marginLeft: 6 }}>{c.ticker}</span>}
+                  </span>
                 </td>
                 <td className="hide-sm" style={{ color: 'var(--ink-2)', fontSize: 12 }}>{c.sector}</td>
                 <td style={{ fontSize: 13 }}>
@@ -107,9 +115,17 @@ export default async function CorporationsPage() {
                 <span style={{ marginLeft: 'auto', fontFamily: 'var(--mono)', fontSize: 12, color: 'var(--ink-2)' }}>{fmtUsdBn(total)}</span>
               </div>
               {list.slice(0, 4).map((c) => (
-                <div key={c.id} style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px dotted var(--rule)', fontSize: 12 }}>
-                  <Link href={`/corporation/${corpSlug(c.name)}`}>{c.name}</Link>
-                  <span style={{ fontFamily: 'var(--mono)', color: 'var(--ink-2)' }}>{c.market_cap_usd_bn ? fmtUsdBn(c.market_cap_usd_bn) : '—'}</span>
+                <div key={c.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px dotted var(--rule)', fontSize: 12, gap: 6 }}>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
+                    {corpLogoUrl(c.domain) && (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={corpLogoUrl(c.domain, 32)} alt="" aria-hidden="true"
+                        style={{ width: 16, height: 16, objectFit: 'contain', flexShrink: 0,
+                          background: 'white', borderRadius: 3, border: '1px solid var(--rule)', padding: 1 }} />
+                    )}
+                    <Link href={`/corporation/${corpSlug(c.name)}`} style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{c.name}</Link>
+                  </span>
+                  <span style={{ fontFamily: 'var(--mono)', color: 'var(--ink-2)', flexShrink: 0 }}>{c.market_cap_usd_bn ? fmtUsdBn(c.market_cap_usd_bn) : '—'}</span>
                 </div>
               ))}
               {list.length > 4 && <div style={{ fontSize: 11, color: 'var(--ink-3)', marginTop: 6 }}>+{list.length - 4} more</div>}

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
   getCountries, getCountry, getBanks, getRails, getHistory, totals, byRegion, INDICATORS, bankSlug,
-  getTradeItems, getSovereignWealth, getCorporations, corpSlug,
+  getTradeItems, getSovereignWealth, getCorporations, corpSlug, corpLogoUrl,
   fmtUsdBn, fmtPop, fmtKm2, fmtPct, fmtNum, type Country,
 } from '@/lib/data';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
@@ -277,9 +277,17 @@ export default async function CountryPage({ params }: { params: { slug: string }
               <tbody>
                 {corporations.slice(0, 10).map((corp) => (
                   <tr key={corp.id}>
-                    <td className="cname">
-                      <Link href={`/corporation/${corpSlug(corp.name)}`}>{corp.name}</Link>
-                      {corp.ticker && <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--ink-3)', marginLeft: 5 }}>{corp.ticker}</span>}
+                    <td className="cname" style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                      {corpLogoUrl(corp.domain) ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={corpLogoUrl(corp.domain, 32)} alt="" aria-hidden="true"
+                          style={{ width: 20, height: 20, objectFit: 'contain', flexShrink: 0,
+                            background: 'white', borderRadius: 3, border: '1px solid var(--rule)', padding: 2 }} />
+                      ) : <span style={{ width: 20 }} />}
+                      <span>
+                        <Link href={`/corporation/${corpSlug(corp.name)}`}>{corp.name}</Link>
+                        {corp.ticker && <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--ink-3)', marginLeft: 5 }}>{corp.ticker}</span>}
+                      </span>
                     </td>
                     <td className="hide-sm" style={{ color: 'var(--ink-2)', fontSize: 12 }}>{corp.sector}</td>
                     <td className="num">{corp.market_cap_usd_bn ? fmtUsdBn(corp.market_cap_usd_bn) : '—'}</td>
