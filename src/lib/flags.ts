@@ -27,20 +27,18 @@ const A3_TO_A2: Record<string, string> = {
   XKX:'XK',
 };
 
-// Regional indicator symbols run A=U+1F1E6 .. Z=U+1F1FF, offset from 'A'=65.
-function toRegionalIndicators(a2: string): string {
-  return [...a2.toUpperCase()]
-    .map((ch) => String.fromCodePoint(0x1f1e6 + (ch.charCodeAt(0) - 65)))
-    .join('');
+/**
+ * Real flag image URL (not emoji) from flagcdn.com — a free, public CDN of
+ * actual national flag graphics, indexed by the same ISO alpha-2 codes above.
+ * `width` controls the requested raster size (flagcdn serves w20/w40/w80/w160/w320).
+ */
+export function flagUrl(iso3: string, width: 20 | 40 | 80 | 160 | 320 = 40): string {
+  const a2 = A3_TO_A2[iso3];
+  if (!a2) return '';
+  return `https://flagcdn.com/w${width}/${a2.toLowerCase()}.png`;
 }
 
-/** Flag emoji for a country given its ISO alpha-3 code. Empty string if unmapped. */
-export function flagEmoji(iso3: string): string {
-  const a2 = A3_TO_A2[iso3];
-  if (!a2 || a2.length !== 2) return '';
-  try {
-    return toRegionalIndicators(a2);
-  } catch {
-    return '';
-  }
+/** Alt text helper so every flag image has a real accessible label. */
+export function flagAlt(name: string): string {
+  return `Flag of ${name}`;
 }

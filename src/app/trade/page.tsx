@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { getCountries, totals, fmtUsdBn, fmtPct, INDICATORS } from '@/lib/data';
-import { flagEmoji } from '@/lib/flags';
+import { flagUrl, flagAlt } from '@/lib/flags';
 
 export const revalidate = 3600;
 export const metadata = {
@@ -85,7 +85,7 @@ export default async function TradePage() {
               {byOpenness.map((c, i) => (
                 <tr key={c.iso3}>
                   <td className="rank">{i + 1}</td>
-                  <td className="cname"><Link href={`/country/${c.slug}`}>{flagEmoji(c.iso3)} {c.name}</Link></td>
+                  <td className="cname"><Link href={`/country/${c.slug}`}>{<img src={flagUrl(c.iso3, 40)} alt={flagAlt(c.name)} width={16} height={12} loading="lazy" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: 6, borderRadius: 2, boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }} />}{c.name}</Link></td>
                   <td className="num">{fmtPct(c.trade_openness_pct ?? null, 0)}</td>
                 </tr>
               ))}
@@ -100,7 +100,7 @@ export default async function TradePage() {
               {byLpi.map((c, i) => (
                 <tr key={c.iso3}>
                   <td className="rank">{i + 1}</td>
-                  <td className="cname"><Link href={`/country/${c.slug}`}>{flagEmoji(c.iso3)} {c.name}</Link></td>
+                  <td className="cname"><Link href={`/country/${c.slug}`}>{<img src={flagUrl(c.iso3, 40)} alt={flagAlt(c.name)} width={16} height={12} loading="lazy" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: 6, borderRadius: 2, boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }} />}{c.name}</Link></td>
                   <td className="num">{(c.lpi_score ?? 0).toFixed(1)}</td>
                 </tr>
               ))}
@@ -118,7 +118,7 @@ export default async function TradePage() {
             <tbody>
               {surplus.slice(0, 5).map((c) => (
                 <tr key={c.iso3}>
-                  <td className="cname"><Link href={`/country/${c.slug}`}>{flagEmoji(c.iso3)} {c.name}</Link></td>
+                  <td className="cname"><Link href={`/country/${c.slug}`}>{<img src={flagUrl(c.iso3, 40)} alt={flagAlt(c.name)} width={16} height={12} loading="lazy" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: 6, borderRadius: 2, boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }} />}{c.name}</Link></td>
                   <td className="num" style={{ color: 'var(--teal)' }}>+{fmtUsdBn(c.trade_balance_usd_bn ?? null)}</td>
                 </tr>
               ))}
@@ -129,7 +129,7 @@ export default async function TradePage() {
             <tbody>
               {surplus.slice(-5).reverse().map((c) => (
                 <tr key={c.iso3}>
-                  <td className="cname"><Link href={`/country/${c.slug}`}>{flagEmoji(c.iso3)} {c.name}</Link></td>
+                  <td className="cname"><Link href={`/country/${c.slug}`}>{<img src={flagUrl(c.iso3, 40)} alt={flagAlt(c.name)} width={16} height={12} loading="lazy" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: 6, borderRadius: 2, boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }} />}{c.name}</Link></td>
                   <td className="num" style={{ color: 'var(--copper)' }}>−{fmtUsdBn(Math.abs(c.trade_balance_usd_bn ?? 0))}</td>
                 </tr>
               ))}

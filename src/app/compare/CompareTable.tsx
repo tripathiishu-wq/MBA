@@ -1,6 +1,6 @@
 'use client';
 
-import { flagEmoji } from '@/lib/flags';
+import { flagUrl, flagAlt } from '@/lib/flags';
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
@@ -63,6 +63,10 @@ const METRICS: Metric[] = [
     note: 'World Bank Logistics Performance Index, 1–5. Survey-based perception rather than physical measurement, published irregularly.' },
   { key: 'bond_yield', label: 'Bond yield (10Y)', get: (c) => c.bond_yield_10y ?? null, fmt: (c) => c.bond_yield_10y != null ? fmtPct(c.bond_yield_10y, 2) : '—',
     note: 'Market yield on the benchmark 10-year government bond — what it costs that government to borrow. Live market data, point-in-time. Where a rating and a yield disagree, the yield is the market betting real money.' },
+  { key: 'broad_money', label: 'Broad money (M2)', get: (c) => c.broad_money_pct_gdp ?? null, fmt: (c) => c.broad_money_pct_gdp != null ? `${fmtPct(c.broad_money_pct_gdp, 0)} of GDP` : '—',
+    note: 'M2 — currency plus deposits — the standard measure of how much money exists in an economy. Not the same as wealth or reserves.' },
+  { key: 'gold', label: 'Gold reserves', get: (c) => c.gold_tonnes ?? null, fmt: (c) => c.gold_tonnes != null ? `${fmtNum(c.gold_tonnes, 0)} t` : '—',
+    note: 'Central bank gold holdings in metric tonnes. Distinct from FX reserve value — tonnage does not move with the gold price.' },
 ];
 
 export default function CompareTable({ rows, initialMetric }: { rows: Country[]; initialMetric?: string }) {
@@ -149,7 +153,7 @@ export default function CompareTable({ rows, initialMetric }: { rows: Country[];
                 <td className="rank">{i + 1}</td>
                 <td className="cname microbar">
                   <span style={{ width: `${(v / max) * 100}%`, background: 'var(--teal)' }} />
-                  <Link href={`/country/${c.slug}`} style={{ position: 'relative' }}>{flagEmoji(c.iso3)} {c.name}</Link>
+                  <Link href={`/country/${c.slug}`} style={{ position: 'relative' }}>{<img src={flagUrl(c.iso3, 40)} alt={flagAlt(c.name)} width={16} height={12} loading="lazy" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: 6, borderRadius: 2, boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }} />}{c.name}</Link>
                 </td>
                 <td className="hide-sm" style={{ color: 'var(--ink-2)', fontSize: 13 }}>{c.region}</td>
                 <td className="hide-sm" style={{ fontFamily: 'var(--mono)', fontSize: 12 }}>{c.currency_code}</td>

@@ -224,6 +224,17 @@ const fetchAllHistory = cache(async (): Promise<Observation[]> => {
   return all;
 });
 
+export async function getBankDeals(bankName: string): Promise<{ deal: string; role: string; year: number | null }[]> {
+  if (!historyClient) return [];
+  const { data, error } = await historyClient
+    .from('bank_deal')
+    .select('deal_name, role, year')
+    .eq('bank_name', bankName)
+    .order('year', { ascending: false });
+  if (error || !data) return [];
+  return (data as any[]).map((r) => ({ deal: r.deal_name, role: r.role, year: r.year }));
+}
+
 export async function getBankHistory(bankName: string): Promise<{ year: number; value: number | null }[]> {
   if (!historyClient) return [];
   const { data, error } = await historyClient

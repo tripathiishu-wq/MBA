@@ -2,11 +2,12 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
-  getBanks, getBankBySlug, getCountries, getBankHistory, bankSlug,
+  getBanks, getBankBySlug, getCountries, getBankHistory, getBankDeals, bankSlug,
   fmtUsdBn, fmtPct, INDICATORS,
 } from '@/lib/data';
-import { flagEmoji } from '@/lib/flags';
+import { flagUrl, flagAlt } from '@/lib/flags';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
+import DealsTimeline from '@/components/DealsTimeline';
 
 export const revalidate = 3600;
 
@@ -41,6 +42,7 @@ export default async function BankPage({ params }: { params: { slug: string } })
   const vsGdp = home ? (bank.assets_usd_bn / home.gdp_usd_bn) * 100 : null;
   const I = INDICATORS.BANK_ASSETS;
   const assetHistory = await getBankHistory(bank.name);
+  const deals = await getBankDeals(bank.name);
 
   return (
     <>
@@ -50,11 +52,18 @@ export default async function BankPage({ params }: { params: { slug: string } })
             <Link href="/">Atlas</Link> · <Link href="/banks">Banks</Link>
             {home && <> · <Link href={`/country/${home.slug}`}>{home.name}</Link></>}
           </div>
-          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
             <h1 style={{ margin: 0 }}>{bank.name}</h1>
-            {home && flagEmoji(home.iso3) && (
-              <span style={{ fontSize: 'clamp(28px, 4vw, 44px)', lineHeight: 1, flexShrink: 0 }}
-                role="img" aria-label={`Flag of ${home.name}`}>{flagEmoji(home.iso3)}</span>
+            {home && flagUrl(home.iso3) && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={flagUrl(home.iso3, 160)}
+                alt={flagAlt(home.name)}
+                style={{
+                  width: 'clamp(48px, 5vw, 72px)', height: 'auto', flexShrink: 0,
+                  border: '1px solid var(--rule)', boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
+                }}
+              />
             )}
           </div>
           <div className="country-meta">
@@ -103,7 +112,7 @@ export default async function BankPage({ params }: { params: { slug: string } })
           </div>
         </div>
 
-        {assetHistory.filter((d) => d.value !== null).length >= 2 ? (
+        {assetHistory.filter((d) => d.value !== null).length >= 2 && (
           <GdpHistoryChart
             data={assetHistory as any}
             label={bank.name}
@@ -111,16 +120,9 @@ export default async function BankPage({ params }: { params: { slug: string } })
             source="Company 10-K filings / SEC EDGAR"
             note={undefined}
           />
-        ) : (
-          <div className="panel">
-            <h3>Total assets over time</h3>
-            <div className="missing">
-              Multi-year asset history is not yet compiled for {bank.name}. This atlas carries
-              verified, filing-sourced history for a small and growing set of banks — partial and
-              real is preferred over complete and estimated.
-            </div>
-          </div>
         )}
+
+        {deals.length > 0 && <DealsTimeline deals={deals} label={bank.name} />}
 
         {home && (
           <div className="panel">

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { getCountries, getBanks, fmtUsdBn, fmtPct, INDICATORS } from '@/lib/data';
 import { bankSlug } from '@/lib/data';
-import { flagEmoji } from '@/lib/flags';
+import { flagUrl, flagAlt } from '@/lib/flags';
 
 export const revalidate = 3600;
 export const metadata = {
@@ -59,7 +59,7 @@ export default async function BanksPage() {
           {hosts.map((h, i) => (
             <tr key={h.iso3}>
               <td className="rank">{i + 1}</td>
-              <td className="cname"><Link href={`/country/${h.c.slug}`}>{flagEmoji(h.c.iso3)} {h.c.name}</Link></td>
+              <td className="cname"><Link href={`/country/${h.c.slug}`}>{<img src={flagUrl(h.c.iso3, 40)} alt={flagAlt(h.c.name)} width={16} height={12} loading="lazy" style={{ display: 'inline-block', verticalAlign: 'middle', marginRight: 6, borderRadius: 2, boxShadow: '0 0 0 1px rgba(0,0,0,0.08)' }} />}{h.c.name}</Link></td>
               <td className="num">{fmtUsdBn(h.assets)}</td>
               <td className="num hide-sm">{fmtUsdBn(h.c.gdp_usd_bn)}</td>
               <td className="num">{fmtPct((h.assets / h.c.gdp_usd_bn) * 100, 0)}</td>

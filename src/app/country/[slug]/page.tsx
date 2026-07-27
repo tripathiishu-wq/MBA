@@ -6,7 +6,7 @@ import {
   fmtUsdBn, fmtPop, fmtKm2, fmtPct, fmtNum, type Country,
 } from '@/lib/data';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
-import { flagEmoji } from '@/lib/flags';
+import { flagUrl, flagAlt } from '@/lib/flags';
 
 export const revalidate = 3600;
 
@@ -75,6 +75,8 @@ export default async function CountryPage({ params }: { params: { slug: string }
   const popRank = rank('population_mn');
   const landRank = rank('land_km2');
   const debtRank = rank('debt_usd_bn');
+  const moneyRank = rank('broad_money_pct_gdp');
+  const goldRank = rank('gold_tonnes');
 
   const worldGdpPc = (w.gdp_usd_bn * 1000) / w.population_mn;
   const regGdpPc = (reg.gdp_usd_bn * 1000) / reg.population_mn;
@@ -95,13 +97,18 @@ export default async function CountryPage({ params }: { params: { slug: string }
           <div className="crumb">
             <Link href="/">Atlas</Link> · <Link href="/regions">{c.region}</Link> · {c.iso3}
           </div>
-          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 20 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
             <h1 style={{ margin: 0 }}>{c.name}</h1>
-            {flagEmoji(c.iso3) && (
-              <span style={{ fontSize: 'clamp(34px, 5vw, 54px)', lineHeight: 1, flexShrink: 0 }}
-                role="img" aria-label={`Flag of ${c.name}`}>
-                {flagEmoji(c.iso3)}
-              </span>
+            {flagUrl(c.iso3) && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={flagUrl(c.iso3, 160)}
+                alt={flagAlt(c.name)}
+                style={{
+                  width: 'clamp(56px, 7vw, 88px)', height: 'auto', flexShrink: 0,
+                  border: '1px solid var(--rule)', boxShadow: '0 1px 3px rgba(0,0,0,0.12)',
+                }}
+              />
             )}
           </div>
           <div className="country-meta">
@@ -295,9 +302,11 @@ export default async function CountryPage({ params }: { params: { slug: string }
           {(c.broad_money_pct_gdp != null || c.gold_tonnes != null) && (
             <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--rule)' }}>
               <div className="grid-2">
-                <div className="pair"><dt>Broad money (M2)</dt>
+                <div className="pair"><dt>Broad money (M2)
+                  {moneyRank.pos > 0 && <span style={{ color: 'var(--ink-3)', fontWeight: 400 }}> · rank {moneyRank.pos} of {moneyRank.of}</span>}</dt>
                   <dd>{c.broad_money_pct_gdp != null ? `${fmtPct(c.broad_money_pct_gdp, 0)} of GDP` : '—'}</dd></div>
-                <div className="pair"><dt>Gold reserves</dt>
+                <div className="pair"><dt>Gold reserves
+                  {goldRank.pos > 0 && <span style={{ color: 'var(--ink-3)', fontWeight: 400 }}> · rank {goldRank.pos} of {goldRank.of}</span>}</dt>
                   <dd>{c.gold_tonnes != null ? `${fmtNum(c.gold_tonnes, 0)} tonnes` : '—'}</dd></div>
               </div>
               <div style={{ fontSize: 12, color: 'var(--ink-3)', marginTop: 8, lineHeight: 1.5 }}>
