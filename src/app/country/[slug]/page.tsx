@@ -127,6 +127,43 @@ export default async function CountryPage({ params }: { params: { slug: string }
           </div>
         </dl>
 
+        {/* ---- government & alignment (political context) ---- */}
+        {(c.leader_name || c.gov_type || c.blocs) && (
+          <div className="panel">
+            <h3>Government &amp; alignment</h3>
+            <div className="grid-3">
+              <div>
+                <div className="pair"><dt>Leader</dt>
+                  <dd style={{ fontSize: 13, textAlign: 'right' }}>{c.leader_name ?? '—'}</dd></div>
+                <div className="pair"><dt>Title</dt>
+                  <dd style={{ fontSize: 12, textAlign: 'right' }}>
+                    {c.leader_title ?? '—'}{c.leader_since ? ` · since ${c.leader_since}` : ''}</dd></div>
+              </div>
+              <div>
+                <div className="pair" style={{ alignItems: 'flex-start' }}><dt>Government</dt>
+                  <dd style={{ fontSize: 12, textAlign: 'right' }}>{c.gov_type ?? '—'}</dd></div>
+              </div>
+              <div style={{ fontSize: 12, color: 'var(--ink-2)', lineHeight: 1.5 }}>
+                Leader is a point-in-time entry — verify against a current source. Alignment below
+                is formal bloc membership only, not informal alliance.
+              </div>
+            </div>
+            {c.blocs && (
+              <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--rule)' }}>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.08em',
+                  textTransform: 'uppercase', color: 'var(--ink-3)' }}>Blocs &amp; organisations</span>
+                <div style={{ marginTop: 8, display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                  {c.blocs.split(', ').map((b) => (
+                    <span key={b} style={{ fontFamily: 'var(--mono)', fontSize: 11,
+                      padding: '3px 9px', border: '1px solid var(--rule)', background: '#FCFBF8',
+                      color: b.includes('-') ? 'var(--ink-3)' : 'var(--ink)' }}>{b}</span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
         {/* ---- DEBT: the argument ---- */}
         <div className="panel debt-block">
           <h3>Government debt</h3>

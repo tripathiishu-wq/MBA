@@ -44,6 +44,11 @@ export type Country = {
   trade_openness_pct?: number | null;
   trade_balance_usd_bn?: number | null;
   bond_yield_10y?: number | null;
+  leader_name?: string | null;
+  leader_title?: string | null;
+  leader_since?: string | null;
+  gov_type?: string | null;
+  blocs?: string | null;
 };
 
 export type Rail = {
@@ -94,7 +99,7 @@ const localRails = ((seed as any).rails ?? []) as Rail[];
 // they're not in the bundled seed. Fetched once as a single bulk query using the
 // non-build-blocked client, same pattern as history, then merged onto the seed.
 // This is why they appear at build rather than only after revalidation.
-const PHASE3 = 'iso3, current_account_pct_gdp, inflation_pct, reserves_usd_bn, reserves_pct_gdp, rating_sp, rating_moodys, rating_fitch, exports_usd_bn, imports_usd_bn, top_export, lpi_score, trade_partners, trade_openness_pct, trade_balance_usd_bn, bond_yield_10y';
+const PHASE3 = 'iso3, current_account_pct_gdp, inflation_pct, reserves_usd_bn, reserves_pct_gdp, rating_sp, rating_moodys, rating_fitch, exports_usd_bn, imports_usd_bn, top_export, lpi_score, trade_partners, trade_openness_pct, trade_balance_usd_bn, bond_yield_10y, leader_name, leader_title, leader_since, gov_type, blocs';
 
 const fetchEnrichment = cache(async (): Promise<Map<string, Partial<Country>>> => {
   const m = new Map<string, Partial<Country>>();
