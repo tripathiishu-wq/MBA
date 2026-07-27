@@ -51,6 +51,8 @@ export type Country = {
   blocs?: string | null;
   hos_name?: string | null;
   hos_title?: string | null;
+  broad_money_pct_gdp?: number | null;
+  gold_tonnes?: number | null;
 };
 
 export type Rail = {
@@ -106,7 +108,7 @@ const localRails = ((seed as any).rails ?? []) as Rail[];
 // they're not in the bundled seed. Fetched once as a single bulk query using the
 // non-build-blocked client, same pattern as history, then merged onto the seed.
 // This is why they appear at build rather than only after revalidation.
-const PHASE3 = 'iso3, current_account_pct_gdp, inflation_pct, reserves_usd_bn, reserves_pct_gdp, rating_sp, rating_moodys, rating_fitch, exports_usd_bn, imports_usd_bn, top_export, lpi_score, trade_partners, trade_openness_pct, trade_balance_usd_bn, bond_yield_10y, leader_name, leader_title, leader_since, gov_type, blocs, hos_name, hos_title';
+const PHASE3 = 'iso3, current_account_pct_gdp, inflation_pct, reserves_usd_bn, reserves_pct_gdp, rating_sp, rating_moodys, rating_fitch, exports_usd_bn, imports_usd_bn, top_export, lpi_score, trade_partners, trade_openness_pct, trade_balance_usd_bn, bond_yield_10y, leader_name, leader_title, leader_since, gov_type, blocs, hos_name, hos_title, broad_money_pct_gdp, gold_tonnes';
 
 const fetchEnrichment = cache(async (): Promise<Map<string, Partial<Country>>> => {
   const m = new Map<string, Partial<Country>>();
@@ -221,6 +223,17 @@ const fetchAllHistory = cache(async (): Promise<Observation[]> => {
   }
   return all;
 });
+
+export async function getBankHistory(bankName: string): Promise<{ year: number; value: number | null }[]> {
+  if (!historyClient) return [];
+  const { data, error } = await historyClient
+    .from('bank_observation')
+    .select('year, assets_usd_bn')
+    .eq('bank_name', bankName)
+    .order('year', { ascending: true });
+  if (error || !data) return [];
+  return (data as any[]).map((r) => ({ year: r.year, value: r.assets_usd_bn }));
+}
 
 export async function getHistory(iso3: string, indicator = 'gdp_usd_bn'): Promise<Observation[]> {
   const all = await fetchAllHistory();

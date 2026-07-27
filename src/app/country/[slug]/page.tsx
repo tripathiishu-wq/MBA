@@ -292,6 +292,21 @@ export default async function CountryPage({ params }: { params: { slug: string }
                 : 'A surplus is not automatically good nor a deficit bad; read it against the currency regime and reserves.'}
             </div>
           </div>
+          {(c.broad_money_pct_gdp != null || c.gold_tonnes != null) && (
+            <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--rule)' }}>
+              <div className="grid-2">
+                <div className="pair"><dt>Broad money (M2)</dt>
+                  <dd>{c.broad_money_pct_gdp != null ? `${fmtPct(c.broad_money_pct_gdp, 0)} of GDP` : '—'}</dd></div>
+                <div className="pair"><dt>Gold reserves</dt>
+                  <dd>{c.gold_tonnes != null ? `${fmtNum(c.gold_tonnes, 0)} tonnes` : '—'}</dd></div>
+              </div>
+              <div style={{ fontSize: 12, color: 'var(--ink-3)', marginTop: 8, lineHeight: 1.5 }}>
+                Broad money is the standard measure of how much money exists in the economy — not
+                the same as wealth or reserves. Gold is in tonnes, not dollars, so it doesn&apos;t
+                move with the gold price the way the FX reserve figure above does.
+              </div>
+            </div>
+          )}
         </div>
 
         {/* ---- trade & supply chain ---- */}

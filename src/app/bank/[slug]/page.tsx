@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
-  getBanks, getBankBySlug, getCountries, getHistory, bankSlug,
+  getBanks, getBankBySlug, getCountries, getBankHistory, bankSlug,
   fmtUsdBn, fmtPct, INDICATORS,
 } from '@/lib/data';
 import { flagEmoji } from '@/lib/flags';
@@ -40,7 +40,7 @@ export default async function BankPage({ params }: { params: { slug: string } })
     .slice(0, 6);
   const vsGdp = home ? (bank.assets_usd_bn / home.gdp_usd_bn) * 100 : null;
   const I = INDICATORS.BANK_ASSETS;
-  const gdpHistory = home ? await getHistory(home.iso3, 'gdp_usd_bn') : [];
+  const assetHistory = await getBankHistory(bank.name);
 
   return (
     <>
@@ -103,21 +103,23 @@ export default async function BankPage({ params }: { params: { slug: string } })
           </div>
         </div>
 
-        {home && gdpHistory.length >= 2 && (
-          <>
-            <GdpHistoryChart
-              data={gdpHistory}
-              label={home.name}
-              title={`${home.name}'s economy, for scale`}
-              source="IMF World Economic Outlook · nominal USD, not inflation-adjusted"
-            />
-            <p style={{ fontSize: 12, color: 'var(--ink-3)', margin: '-28px 0 24px' }}>
-              This atlas does not carry a multi-year asset history for individual banks — no single
-              free source covers that across {total} institutions. {home.name}&apos;s own GDP trajectory,
-              shown here, is the closest sourced context available for how {bank.name}&apos;s scale compares
-              to its home economy over time.
-            </p>
-          </>
+        {assetHistory.filter((d) => d.value !== null).length >= 2 ? (
+          <GdpHistoryChart
+            data={assetHistory as any}
+            label={bank.name}
+            title="Total assets over time"
+            source="Company 10-K filings / SEC EDGAR"
+            note={undefined}
+          />
+        ) : (
+          <div className="panel">
+            <h3>Total assets over time</h3>
+            <div className="missing">
+              Multi-year asset history is not yet compiled for {bank.name}. This atlas carries
+              verified, filing-sourced history for a small and growing set of banks — partial and
+              real is preferred over complete and estimated.
+            </div>
+          </div>
         )}
 
         {home && (
