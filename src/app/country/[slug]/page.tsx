@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
   getCountries, getCountry, getBanks, getRails, getHistory, totals, byRegion, INDICATORS, bankSlug,
-  getTradeItems, getSovereignWealth,
+  getTradeItems, getSovereignWealth, getCorporations, corpSlug,
   fmtUsdBn, fmtPop, fmtKm2, fmtPct, fmtNum, type Country,
 } from '@/lib/data';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
@@ -63,6 +63,7 @@ export default async function CountryPage({ params }: { params: { slug: string }
   const debtHistory = await getHistory(c.iso3, 'debt_pct_gdp');
   const popHistory = await getHistory(c.iso3, 'population_mn');
   const tradeItems = await getTradeItems(c.iso3);
+  const corporations = await getCorporations(c.iso3);
   const swfs = await getSovereignWealth(c.iso3);
   const w = totals(all);
   const regions = byRegion(all);
@@ -263,7 +264,42 @@ export default async function CountryPage({ params }: { params: { slug: string }
           </div>
         </div>
 
-        {/* ---- GDP history chart (renders only if history exists) ---- */}
+        {/* ---- corporations ---- */}
+        {corporations.length > 0 && (
+          <div className="panel">
+            <h3>Major public companies</h3>
+            <table className="ledger">
+              <thead>
+                <tr><th>Company</th><th className="hide-sm">Sector</th>
+                  <th style={{ textAlign: 'right' }}>Mkt cap</th>
+                  <th style={{ textAlign: 'right' }} className="hide-sm">Revenue</th></tr>
+              </thead>
+              <tbody>
+                {corporations.slice(0, 10).map((corp) => (
+                  <tr key={corp.id}>
+                    <td className="cname">
+                      <Link href={`/corporation/${corpSlug(corp.name)}`}>{corp.name}</Link>
+                      {corp.ticker && <span style={{ fontFamily: 'var(--mono)', fontSize: 10, color: 'var(--ink-3)', marginLeft: 5 }}>{corp.ticker}</span>}
+                    </td>
+                    <td className="hide-sm" style={{ color: 'var(--ink-2)', fontSize: 12 }}>{corp.sector}</td>
+                    <td className="num">{corp.market_cap_usd_bn ? fmtUsdBn(corp.market_cap_usd_bn) : '—'}</td>
+                    <td className="num hide-sm">{corp.revenue_usd_bn ? fmtUsdBn(corp.revenue_usd_bn) : '—'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            {corporations.length > 10 && (
+              <div style={{ fontSize: 12, color: 'var(--ink-3)', marginTop: 10 }}>
+                +{corporations.length - 10} more · <Link href="/corporations">see all companies</Link>
+              </div>
+            )}
+            <p style={{ fontSize: 11, color: 'var(--ink-3)', margin: '10px 0 0', fontFamily: 'var(--mono)' }}>
+              Market cap is mid-2026 point-in-time — verify before relying. Revenue is latest fiscal year.
+            </p>
+          </div>
+        )}
+
+                {/* ---- GDP history chart (renders only if history exists) ---- */}
         <GdpHistoryChart data={history} label={c.name} />
 
         {/* ---- debt trajectory: level matters less than direction ---- */}

@@ -105,6 +105,7 @@ const historyClient = url && key ? createClient(url, key) : null;
 const localCountries = seed.countries as Country[];
 const localBanks = seed.banks as Bank[];
 const localRails = ((seed as any).rails ?? []) as Rail[];
+const localCorps = ((seed as any).corporations ?? []) as Corporation[];
 
 // cache() dedupes within a single request/render pass, so getCountry() calling
 // getCountries() many times triggers at most ONE fetch, not one per country.
@@ -227,6 +228,46 @@ const fetchAllHistory = cache(async (): Promise<Observation[]> => {
   }
   return all;
 });
+
+export type Corporation = {
+  id: number;
+  name: string;
+  iso3: string;
+  ticker: string | null;
+  sector: string;
+  revenue_usd_bn: number | null;
+  market_cap_usd_bn: number | null;
+  employees_k: number | null;
+  description: string | null;
+  top_products: string | null;
+};
+
+export const corpSlug = (name: string) =>
+  name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+const fetchAllCorporations = cache(async (): Promise<Corporation[]> => {
+  if (historyClient) {
+    const { data, error } = await historyClient
+      .from('corporation').select('*').order('market_cap_usd_bn', { ascending: false });
+    if (!error && data) return data as Corporation[];
+  }
+  return [...localCorps].sort((a, b) => (b.market_cap_usd_bn ?? 0) - (a.market_cap_usd_bn ?? 0));
+});
+
+export async function getCorporations(iso3?: string): Promise<Corporation[]> {
+  const all = await fetchAllCorporations();
+  return iso3 ? all.filter(c => c.iso3 === iso3) : all;
+}
+
+export async function getCorporationBySlug(slug: string): Promise<Corporation | null> {
+  const all = await getCorporations();
+  return all.find((c) => corpSlug(c.name) === slug) ?? null;
+}
+
+export async function getAllCorporationSlugs(): Promise<string[]> {
+  const all = await fetchAllCorporations();
+  return all.map(c => corpSlug(c.name));
+}
 
 export async function getTradeItems(iso3: string): Promise<{ direction: 'export'|'import'; item: string; pct_share: number|null; ordinal: number }[]> {
   if (!historyClient) return [];
