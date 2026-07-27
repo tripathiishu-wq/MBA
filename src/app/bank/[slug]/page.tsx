@@ -3,13 +3,12 @@ import LogoImg from '@/components/LogoImg';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
-  getBanks, getBankBySlug, getCountries, getBankHistory, getBankDeals, bankSlug,
+  getBanks, getBankBySlug, getCountries, getBankHistory, bankSlug,
   fmtUsdBn, fmtPct, INDICATORS,
 } from '@/lib/data';
 import { flagUrl, flagAlt } from '@/lib/flags';
 import { bankLogoUrl } from '@/lib/data';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
-import DealsTimeline from '@/components/DealsTimeline';
 
 export const revalidate = 3600;
 
@@ -44,7 +43,6 @@ export default async function BankPage({ params }: { params: { slug: string } })
   const vsGdp = home ? (bank.assets_usd_bn / home.gdp_usd_bn) * 100 : null;
   const I = INDICATORS.BANK_ASSETS;
   const assetHistory = await getBankHistory(bank.name);
-  const deals = await getBankDeals(bank.name);
 
   return (
     <>
@@ -128,7 +126,6 @@ export default async function BankPage({ params }: { params: { slug: string } })
           />
         )}
 
-        {deals.length > 0 && <DealsTimeline deals={deals} label={bank.name} />}
 
         {home && (
           <div className="panel">
