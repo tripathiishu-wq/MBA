@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
-  getCountries, getCountry, getBanks, getRails, getHistory, totals, byRegion, INDICATORS,
+  getCountries, getCountry, getBanks, getRails, getHistory, totals, byRegion, INDICATORS, bankSlug,
   fmtUsdBn, fmtPop, fmtKm2, fmtPct, fmtNum, type Country,
 } from '@/lib/data';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
@@ -127,25 +127,51 @@ export default async function CountryPage({ params }: { params: { slug: string }
           </div>
         </dl>
 
-        {/* ---- government & alignment (political context) ---- */}
-        {(c.leader_name || c.gov_type || c.blocs) && (
-          <div className="panel">
-            <h3>Government &amp; alignment</h3>
-            <div className="grid-3">
-              <div>
-                <div className="pair"><dt>Leader</dt>
-                  <dd style={{ fontSize: 13, textAlign: 'right' }}>{c.leader_name ?? '—'}</dd></div>
-                <div className="pair"><dt>Title</dt>
-                  <dd style={{ fontSize: 12, textAlign: 'right' }}>
-                    {c.leader_title ?? '—'}{c.leader_since ? ` · since ${c.leader_since}` : ''}</dd></div>
+        {/* ---- leader: feature headline ---- */}
+        {c.leader_name && (
+          <div style={{ padding: '30px 0 26px', borderBottom: '1px solid var(--rule)', marginBottom: 4 }}>
+            <div style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.14em',
+              textTransform: 'uppercase', color: 'var(--ink-3)', marginBottom: 10 }}>
+              {c.leader_title ?? 'Head of government'}
+            </div>
+            <div style={{ fontFamily: 'var(--display)', fontSize: 'clamp(30px, 4.5vw, 46px)',
+              fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--gold)' }}>
+              {c.leader_name}
+            </div>
+            <div style={{ marginTop: 10, fontSize: 13, color: 'var(--ink-2)', fontFamily: 'var(--mono)' }}>
+              {c.leader_since ? `In office since ${c.leader_since}` : ''}
+              {c.gov_type ? `${c.leader_since ? '  ·  ' : ''}${c.gov_type}` : ''}
+              <span style={{ color: 'var(--ink-3)' }}>  ·  point-in-time, verify</span>
+            </div>
+            {c.hos_name && c.hos_name !== c.leader_name && (
+              <div style={{ marginTop: 16, paddingTop: 14, borderTop: '1px dotted var(--rule)' }}>
+                <span style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.1em',
+                  textTransform: 'uppercase', color: 'var(--ink-3)' }}>{c.hos_title ?? 'Head of state'}</span>
+                <div style={{ fontFamily: 'var(--display)', fontSize: 22, fontWeight: 500,
+                  color: 'var(--ink)', marginTop: 4 }}>{c.hos_name}</div>
+                <div style={{ fontSize: 12, color: 'var(--ink-3)', marginTop: 3 }}>
+                  Ceremonial head of state — the {c.leader_title?.toLowerCase() ?? 'head of government'} above holds executive power.
+                </div>
               </div>
+            )}
+          </div>
+        )}
+
+        {/* ---- government & alignment (political context) ---- */}
+        {(c.gov_type || c.blocs) && (
+          <div className="panel">
+            <h3>Alignment &amp; membership</h3>
+            <div className="grid-2">
               <div>
                 <div className="pair" style={{ alignItems: 'flex-start' }}><dt>Government</dt>
                   <dd style={{ fontSize: 12, textAlign: 'right' }}>{c.gov_type ?? '—'}</dd></div>
+                <div className="pair"><dt>Currency</dt><dd>{c.currency_code}</dd></div>
+                <div className="pair"><dt>Capital</dt><dd style={{ fontSize: 13 }}>{c.capital ?? '—'}</dd></div>
               </div>
               <div style={{ fontSize: 12, color: 'var(--ink-2)', lineHeight: 1.5 }}>
-                Leader is a point-in-time entry — verify against a current source. Alignment below
-                is formal bloc membership only, not informal alliance.
+                Membership below is of formal treaty and economic organisations only — a matter of
+                record. It is deliberately not a map of informal alliances, which are contested and
+                unsourceable.
               </div>
             </div>
             {c.blocs && (
@@ -516,7 +542,7 @@ export default async function CountryPage({ params }: { params: { slug: string }
                 {banks.map((b, i) => (
                   <tr key={b.name}>
                     <td className="rank">{i + 1}</td>
-                    <td className="cname">{b.name}</td>
+                    <td className="cname"><Link href={`/bank/${bankSlug(b.name)}`}>{b.name}</Link></td>
                     <td className="hide-sm" style={{ color: 'var(--ink-2)' }}>{b.hq_city ?? '—'}</td>
                     <td className="num">{fmtUsdBn(b.assets_usd_bn)}</td>
                     <td className="num hide-sm">{fmtPct((b.assets_usd_bn / c.gdp_usd_bn) * 100, 0)}</td>

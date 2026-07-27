@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getCountries, getBanks, fmtUsdBn, fmtPct, INDICATORS } from '@/lib/data';
+import { bankSlug } from '@/lib/data';
 
 export const revalidate = 3600;
 export const metadata = {
@@ -85,7 +86,7 @@ export default async function BanksPage() {
             return (
               <tr key={b.name}>
                 <td className="rank">{i + 1}</td>
-                <td className="cname">{b.name}</td>
+                <td className="cname"><Link href={`/bank/${bankSlug(b.name)}`}>{b.name}</Link></td>
                 <td className="hide-sm" style={{ color: 'var(--ink-2)', fontSize: 13 }}>{b.hq_city ?? '—'}</td>
                 <td style={{ fontSize: 13 }}>
                   {c ? <Link href={`/country/${c.slug}`}>{c.name}</Link> : b.iso3}

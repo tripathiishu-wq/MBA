@@ -185,3 +185,34 @@ BLOCS = {
 "MOZ":["AU","Commonwealth"],"URY":["MERCOSUR","OECD-accession"],"PRY":["MERCOSUR"],
 "BOL":["MERCOSUR","OPEC-none"],"ECU":["OPEC-former"],"LBY":["OPEC","AU"],
 }
+
+# For parliamentary/dual-executive systems: (ceremonial head of state, their title)
+# shown ALONGSIDE the head of government already in LEADER. Verified mid-2026.
+HEAD_OF_STATE = {
+"IND":("Droupadi Murmu","President"),
+"GBR":("King Charles III","Monarch"),
+"CAN":("King Charles III (rep. by Governor General)","Monarch"),
+"AUS":("King Charles III (rep. by Governor General)","Monarch"),
+"NZL":("King Charles III (rep. by Governor General)","Monarch"),
+"JPN":("Emperor Naruhito","Emperor"),
+"DEU":("Frank-Walter Steinmeier","President"),
+"ITA":("Sergio Mattarella","President"),
+"ISR":("Isaac Herzog","President"),
+"IRL":("Michael D. Higgins","President"),
+"SGP":("Tharman Shanmugaratnam","President"),
+"ZAF":("Cyril Ramaphosa","President (also head of govt)"),
+"NLD":("King Willem-Alexander","Monarch"),
+"BEL":("King Philippe","Monarch"),
+"ESP":("King Felipe VI","Monarch"),
+"SWE":("King Carl XVI Gustaf","Monarch"),
+"NOR":("King Harald V","Monarch"),
+"DNK":("King Frederik X","Monarch"),
+"THA":("King Vajiralongkorn","Monarch"),
+"MYS":("Sultan Ibrahim","King (Yang di-Pertuan Agong)"),
+"PAK":("Asif Ali Zardari","President"),
+"BGD":("Mohammed Shahabuddin","President"),
+"GRC":("Konstantinos Tasoulas","President"),
+"PRT":("Marcelo Rebelo de Sousa","President"),
+"CZE":("Petr Pavel","President"),
+"HUN":("Tamas Sulyok","President"),
+}

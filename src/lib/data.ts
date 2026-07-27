@@ -49,6 +49,8 @@ export type Country = {
   leader_since?: string | null;
   gov_type?: string | null;
   blocs?: string | null;
+  hos_name?: string | null;
+  hos_title?: string | null;
 };
 
 export type Rail = {
@@ -70,7 +72,11 @@ export type Bank = {
   iso3: string;
   assets_usd_bn: number;
   hq_city: string | null;
+  slug?: string;
 };
+
+export const bankSlug = (name: string) =>
+  name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
 const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
@@ -99,7 +105,7 @@ const localRails = ((seed as any).rails ?? []) as Rail[];
 // they're not in the bundled seed. Fetched once as a single bulk query using the
 // non-build-blocked client, same pattern as history, then merged onto the seed.
 // This is why they appear at build rather than only after revalidation.
-const PHASE3 = 'iso3, current_account_pct_gdp, inflation_pct, reserves_usd_bn, reserves_pct_gdp, rating_sp, rating_moodys, rating_fitch, exports_usd_bn, imports_usd_bn, top_export, lpi_score, trade_partners, trade_openness_pct, trade_balance_usd_bn, bond_yield_10y, leader_name, leader_title, leader_since, gov_type, blocs';
+const PHASE3 = 'iso3, current_account_pct_gdp, inflation_pct, reserves_usd_bn, reserves_pct_gdp, rating_sp, rating_moodys, rating_fitch, exports_usd_bn, imports_usd_bn, top_export, lpi_score, trade_partners, trade_openness_pct, trade_balance_usd_bn, bond_yield_10y, leader_name, leader_title, leader_since, gov_type, blocs, hos_name, hos_title';
 
 const fetchEnrichment = cache(async (): Promise<Map<string, Partial<Country>>> => {
   const m = new Map<string, Partial<Country>>();
@@ -164,6 +170,13 @@ export async function getRails(iso3?: string): Promise<Rail[]> {
   return iso3 ? rows.filter((r) => r.iso3 === iso3) : rows;
 }
 
+export async function getBankBySlug(slug: string): Promise<{ bank: Bank; globalRank: number; total: number } | null> {
+  const all = await fetchAllBanks(); // already sorted by assets desc
+  const idx = all.findIndex((b) => bankSlug(b.name) === slug);
+  if (idx < 0) return null;
+  return { bank: all[idx], globalRank: idx + 1, total: all.length };
+}
+
 // History needs its own client that ISN'T blocked at build time. Unlike the main
 // country/bank/rail data (187 pages x several queries = build-timeout risk), history
 // is fetched ONCE as a single bulk query and cached — same safe pattern as
@@ -171,12 +184,26 @@ export async function getRails(iso3?: string): Promise<Rail[]> {
 // GDP chart actually populate at build instead of silently rendering empty.
 const fetchAllHistory = cache(async (): Promise<Observation[]> => {
   if (!historyClient) return [];
-  const { data, error } = await historyClient
-    .from('observation')
-    .select('iso3, indicator, year, value')
-    .order('year', { ascending: true });
-  if (error || !data) return [];
-  return data as Observation[];
+  // PostgREST caps every response at 1,000 rows. The observation table has ~9,700,
+  // so a single select silently returns only the first 1,000 (all from 2010–2011),
+  // which is why charts only drew two years. Page through in 1,000-row ranges until
+  // the table is exhausted.
+  const PAGE = 1000;
+  let from = 0;
+  const all: Observation[] = [];
+  for (;;) {
+    const { data, error } = await historyClient
+      .from('observation')
+      .select('iso3, indicator, year, value')
+      .order('iso3', { ascending: true })
+      .order('year', { ascending: true })
+      .range(from, from + PAGE - 1);
+    if (error || !data || data.length === 0) break;
+    all.push(...(data as Observation[]));
+    if (data.length < PAGE) break;
+    from += PAGE;
+  }
+  return all;
 });
 
 export async function getHistory(iso3: string, indicator = 'gdp_usd_bn'): Promise<Observation[]> {
