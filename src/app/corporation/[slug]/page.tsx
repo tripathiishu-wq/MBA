@@ -115,23 +115,13 @@ export default async function CorpPage({ params }: { params: { slug: string } })
           sector={c.sector}
         />
 
-        {revenueHistory.length >= 3 ? (
+        {revenueHistory.length >= 3 && (
           <GdpHistoryChart
             data={revenueHistory as any}
             label={c.name}
             title="Annual revenue over time"
             source="Company 10-K filings / SEC EDGAR · annual revenue, USD"
           />
-        ) : (
-          <div className="panel">
-            <h3>Revenue history</h3>
-            <div className="missing">
-              Annual revenue history is not yet compiled for {c.name}. This atlas carries
-              verified, filing-sourced history for a small and growing set — partial and real
-              is preferred over complete and estimated. For quarterly earnings data, Twelve Data
-              (twelvedata.com) provides a clean free-tier API feed.
-            </div>
-          </div>
         )}
 
 

@@ -243,9 +243,9 @@ export type Corporation = {
   domain?: string | null;
 };
 
-/** Clearbit logo URL — free, no API key, indexed by domain. */
+/** Company logo via Google's favicon service — reliable, no API key, always resolves. */
 export const corpLogoUrl = (domain: string | null | undefined, size = 64): string =>
-  domain ? `https://logo.clearbit.com/${domain}?size=${size}` : '';
+  domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}` : '';
 
 export const corpSlug = (name: string) =>
   name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
