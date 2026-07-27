@@ -59,6 +59,8 @@ const METRICS: Metric[] = [
     note: 'Exports plus imports over GDP. Above 100% marks a re-export hub, not an unusually productive economy. A low figure usually means a large domestic market.' },
   { key: 'lpi', label: 'Logistics index', get: (c) => c.lpi_score ?? null, fmt: (c) => c.lpi_score != null ? `${c.lpi_score.toFixed(1)} / 5` : '—',
     note: 'World Bank Logistics Performance Index, 1–5. Survey-based perception rather than physical measurement, published irregularly.' },
+  { key: 'bond_yield', label: 'Bond yield (10Y)', get: (c) => c.bond_yield_10y ?? null, fmt: (c) => c.bond_yield_10y != null ? fmtPct(c.bond_yield_10y, 2) : '—',
+    note: 'Market yield on the benchmark 10-year government bond — what it costs that government to borrow. Live market data, point-in-time. Where a rating and a yield disagree, the yield is the market betting real money.' },
 ];
 
 export default function CompareTable({ rows, initialMetric }: { rows: Country[]; initialMetric?: string }) {

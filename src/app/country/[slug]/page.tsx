@@ -288,6 +288,13 @@ export default async function CountryPage({ params }: { params: { slug: string }
                 Opinions, not measurements. Where the three agencies disagree, that
                 disagreement is itself information. Ratings move on the agencies&apos; own
                 schedules — verify directly before relying on them.
+                {c.bond_yield_10y != null && (
+                  <span style={{ display: 'block', marginTop: 10, paddingTop: 10, borderTop: '1px solid var(--rule)' }}>
+                    The market&apos;s own verdict sits in the <b>10-year bond yield: {fmtPct(c.bond_yield_10y, 2)}</b> —
+                    what it actually costs this government to borrow. Where the rating and the yield
+                    disagree, the yield is the crowd betting real capital.
+                  </span>
+                )}
               </div>
             </div>
           </div>
