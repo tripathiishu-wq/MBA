@@ -1,6 +1,7 @@
 import Link from 'next/link';
+import LogoImg from '@/components/LogoImg';
 import { getCountries, getBanks, fmtUsdBn, fmtPct, INDICATORS } from '@/lib/data';
-import { bankSlug } from '@/lib/data';
+import { bankSlug, bankLogoUrl } from '@/lib/data';
 import { flagUrl, flagAlt } from '@/lib/flags';
 
 export const revalidate = 3600;
@@ -87,11 +88,16 @@ export default async function BanksPage() {
             return (
               <tr key={b.name}>
                 <td className="rank">{i + 1}</td>
-                <td className="cname">
-                  <Link href={`/bank/${bankSlug(b.name)}`}>{b.name}</Link>
-                  {b.ceo_name && (
-                    <div style={{ fontSize: 11, fontWeight: 400, color: '#000', marginTop: 1 }}>{b.ceo_name}</div>
-                  )}
+                <td className="cname" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+                  {bankLogoUrl(b.domain) ? (                    <LogoImg src={bankLogoUrl(b.domain)} size={32} style={{ width: 22, height: 22, objectFit: 'contain', flexShrink: 0,
+                        background: 'white', borderRadius: 4, border: '1px solid var(--rule)', padding: 2 }} alt="" aria-hidden="true" />
+                  ) : <span style={{ width: 22, flexShrink: 0 }} />}
+                  <span>
+                    <Link href={`/bank/${bankSlug(b.name)}`}>{b.name}</Link>
+                    {b.ceo_name && (
+                      <div style={{ fontSize: 11, fontWeight: 400, color: '#000', marginTop: 1 }}>{b.ceo_name}</div>
+                    )}
+                  </span>
                 </td>
                 <td className="hide-sm" style={{ color: 'var(--ink-2)', fontSize: 13 }}>{b.hq_city ?? '—'}</td>
                 <td style={{ fontSize: 13 }}>

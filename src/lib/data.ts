@@ -80,6 +80,7 @@ export type Bank = {
   hq_city: string | null;
   slug?: string;
   ceo_name?: string | null;
+  domain?: string | null;
 };
 
 export const bankSlug = (name: string) =>
@@ -243,9 +244,14 @@ export type Corporation = {
   domain?: string | null;
 };
 
-/** Company logo via Google's favicon service — reliable, no API key, always resolves. */
-export const corpLogoUrl = (domain: string | null | undefined, size = 64): string =>
-  domain ? `https://www.google.com/s2/favicons?domain=${domain}&sz=${size}` : '';
+/** Bank logo URL via Clearbit Logo API. */
+export const bankLogoUrl = (domain: string | null | undefined): string =>
+  domain ? `https://logo.clearbit.com/${domain}` : '';
+
+/** Company logo URL via Clearbit Logo API — proper SVG logos, not favicons.
+ *  Falls back gracefully via onError in the img tag. */
+export const corpLogoUrl = (domain: string | null | undefined): string =>
+  domain ? `https://logo.clearbit.com/${domain}` : '';
 
 export const corpSlug = (name: string) =>
   name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
@@ -316,6 +322,24 @@ export async function getCorporationQuarterly(corpName: string): Promise<CorpQua
     .order('period', { ascending: true });
   if (error || !data) return [];
   return data as CorpQuarter[];
+}
+
+export type CorpGeoRevenue = {
+  region: string;
+  revenue_usd_bn: number;
+  ordinal: number;
+  fiscal_year: number;
+};
+
+export async function getCorporationGeoRevenue(corpName: string): Promise<CorpGeoRevenue[]> {
+  if (!historyClient) return [];
+  const { data, error } = await historyClient
+    .from('corp_geo_revenue')
+    .select('region, revenue_usd_bn, ordinal, fiscal_year')
+    .eq('corp_name', corpName)
+    .order('ordinal', { ascending: true });
+  if (error || !data) return [];
+  return data as CorpGeoRevenue[];
 }
 
 export async function getCorporationHistory(corpName: string): Promise<{ year: number; value: number | null }[]> {

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import LogoImg from '@/components/LogoImg';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
@@ -6,6 +7,7 @@ import {
   fmtUsdBn, fmtPct, INDICATORS,
 } from '@/lib/data';
 import { flagUrl, flagAlt } from '@/lib/flags';
+import { bankLogoUrl } from '@/lib/data';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
 import DealsTimeline from '@/components/DealsTimeline';
 
@@ -53,10 +55,14 @@ export default async function BankPage({ params }: { params: { slug: string } })
             {home && <> · <Link href={`/country/${home.slug}`}>{home.name}</Link></>}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
-            <h1 style={{ margin: 0 }}>{bank.name}</h1>
-            {home && flagUrl(home.iso3) && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+            <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+              {bankLogoUrl(bank.domain) && (                <LogoImg src={bankLogoUrl(bank.domain)} size={32} style={{ width: 52, height: 52, objectFit: 'contain', flexShrink: 0,
+                    background: 'white', borderRadius: 8, border: '1px solid var(--rule)',
+                    padding: 6, boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }} alt={`${bank.name} logo`} />
+              )}
+              <h1 style={{ margin: 0 }}>{bank.name}</h1>
+            </div>
+            {home && flagUrl(home.iso3) && (              <img
                 src={flagUrl(home.iso3, 160)}
                 alt={flagAlt(home.name)}
                 style={{

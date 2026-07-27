@@ -1,11 +1,12 @@
 import Link from 'next/link';
+import LogoImg from '@/components/LogoImg';
 import { getCorporations, getCountries, fmtUsdBn, fmtPct, corpSlug, corpLogoUrl } from '@/lib/data';
 import { flagUrl, flagAlt } from '@/lib/flags';
 
 export const revalidate = 3600;
 export const metadata = {
   title: 'Corporations — World Finance Atlas',
-  description: 'The world\'s leading public companies by market capitalisation, organised by home country.',
+  description: "The world's leading public companies by market capitalisation, organised by home country.",
 };
 
 export default async function CorporationsPage() {
@@ -72,11 +73,8 @@ export default async function CorporationsPage() {
               <tr key={c.id}>
                 <td className="rank">{i + 1}</td>
                 <td className="cname" style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-                  {corpLogoUrl(c.domain) ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img src={corpLogoUrl(c.domain, 32)} alt="" aria-hidden="true"
-                      style={{ width: 22, height: 22, objectFit: 'contain', flexShrink: 0,
-                        background: 'white', borderRadius: 4, border: '1px solid var(--rule)', padding: 2 }} />
+                  {corpLogoUrl(c.domain) ? (                    <LogoImg src={corpLogoUrl(c.domain)} size={32} style={{ width: 22, height: 22, objectFit: 'contain', flexShrink: 0,
+                        background: 'white', borderRadius: 4, border: '1px solid var(--rule)', padding: 2 }} alt="" aria-hidden="true" />
                   ) : <span style={{ width: 22 }} />}
                   <span>
                     <Link href={`/corporation/${corpSlug(c.name)}`}>{c.name}</Link>
@@ -117,11 +115,8 @@ export default async function CorporationsPage() {
               {list.slice(0, 4).map((c) => (
                 <div key={c.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px dotted var(--rule)', fontSize: 12, gap: 6 }}>
                   <span style={{ display: 'flex', alignItems: 'center', gap: 5, minWidth: 0 }}>
-                    {corpLogoUrl(c.domain) && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={corpLogoUrl(c.domain, 32)} alt="" aria-hidden="true"
-                        style={{ width: 16, height: 16, objectFit: 'contain', flexShrink: 0,
-                          background: 'white', borderRadius: 3, border: '1px solid var(--rule)', padding: 1 }} />
+                    {corpLogoUrl(c.domain) && (                      <LogoImg src={corpLogoUrl(c.domain)} size={32} style={{ width: 16, height: 16, objectFit: 'contain', flexShrink: 0,
+                          background: 'white', borderRadius: 3, border: '1px solid var(--rule)', padding: 1 }} alt="" aria-hidden="true" />
                     )}
                     <Link href={`/corporation/${corpSlug(c.name)}`} style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>{c.name}</Link>
                   </span>

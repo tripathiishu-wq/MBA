@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import LogoImg from '@/components/LogoImg';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
   getCountries, getCountry, getBanks, getRails, getHistory, totals, byRegion, INDICATORS, bankSlug,
-  getTradeItems, getSovereignWealth, getCorporations, corpSlug, corpLogoUrl,
+  getTradeItems, getSovereignWealth, getCorporations, corpSlug, corpLogoUrl, bankLogoUrl,
   fmtUsdBn, fmtPop, fmtKm2, fmtPct, fmtNum, type Country,
 } from '@/lib/data';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
@@ -104,9 +105,7 @@ export default async function CountryPage({ params }: { params: { slug: string }
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
             <h1 style={{ margin: 0 }}>{c.name}</h1>
-            {flagUrl(c.iso3) && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+            {flagUrl(c.iso3) && (              <img
                 src={flagUrl(c.iso3, 160)}
                 alt={flagAlt(c.name)}
                 style={{
@@ -278,11 +277,8 @@ export default async function CountryPage({ params }: { params: { slug: string }
                 {corporations.slice(0, 10).map((corp) => (
                   <tr key={corp.id}>
                     <td className="cname" style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
-                      {corpLogoUrl(corp.domain) ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={corpLogoUrl(corp.domain, 32)} alt="" aria-hidden="true"
-                          style={{ width: 20, height: 20, objectFit: 'contain', flexShrink: 0,
-                            background: 'white', borderRadius: 3, border: '1px solid var(--rule)', padding: 2 }} />
+                      {corpLogoUrl(corp.domain) ? (                        <LogoImg src={corpLogoUrl(corp.domain)} size={32} style={{ width: 20, height: 20, objectFit: 'contain', flexShrink: 0,
+                            background: 'white', borderRadius: 3, border: '1px solid var(--rule)', padding: 2 }} alt="" aria-hidden="true" />
                       ) : <span style={{ width: 20 }} />}
                       <span>
                         <Link href={`/corporation/${corpSlug(corp.name)}`}>{corp.name}</Link>
@@ -697,11 +693,16 @@ export default async function CountryPage({ params }: { params: { slug: string }
                 {banks.map((b, i) => (
                   <tr key={b.name}>
                     <td className="rank">{i + 1}</td>
-                    <td className="cname">
-                      <Link href={`/bank/${bankSlug(b.name)}`}>{b.name}</Link>
-                      {b.ceo_name && (
-                        <div style={{ fontSize: 11, fontWeight: 400, color: '#000', marginTop: 1 }}>{b.ceo_name}</div>
-                      )}
+                    <td className="cname" style={{ display: 'flex', alignItems: 'center', gap: 7 }}>
+                      {bankLogoUrl(b.domain) ? (                        <LogoImg src={bankLogoUrl(b.domain)} size={32} style={{ width: 20, height: 20, objectFit: 'contain', flexShrink: 0,
+                            background: 'white', borderRadius: 3, border: '1px solid var(--rule)', padding: 2 }} alt="" aria-hidden="true" />
+                      ) : <span style={{ width: 20, flexShrink: 0 }} />}
+                      <span>
+                        <Link href={`/bank/${bankSlug(b.name)}`}>{b.name}</Link>
+                        {b.ceo_name && (
+                          <div style={{ fontSize: 11, fontWeight: 400, color: '#000', marginTop: 1 }}>{b.ceo_name}</div>
+                        )}
+                      </span>
                     </td>
                     <td className="hide-sm" style={{ color: 'var(--ink-2)' }}>{b.hq_city ?? '—'}</td>
                     <td className="num">{fmtUsdBn(b.assets_usd_bn)}</td>

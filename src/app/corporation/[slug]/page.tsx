@@ -1,8 +1,10 @@
 import Link from 'next/link';
+import LogoImg from '@/components/LogoImg';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getCorporations, getCorporationBySlug, getCountries, getAllCorporationSlugs, getCorporationHistory, getCorporationQuarterly, corpSlug, corpLogoUrl, fmtUsdBn, fmtPct, fmtNum } from '@/lib/data';
+import { getCorporations, getCorporationBySlug, getCountries, getAllCorporationSlugs, getCorporationHistory, getCorporationQuarterly, getCorporationGeoRevenue, corpSlug, corpLogoUrl, fmtUsdBn, fmtPct, fmtNum } from '@/lib/data';
 import QuarterlyEarningsChart from '@/components/QuarterlyEarningsChart';
+import GeoRevenueChart from '@/components/GeoRevenueChart';
 import CorpScaleChart from '@/components/CorpScaleChart';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
 import { flagUrl, flagAlt } from '@/lib/flags';
@@ -36,6 +38,7 @@ export default async function CorpPage({ params }: { params: { slug: string } })
 
   const revenueHistory = await getCorporationHistory(c.name);
   const quarterly = await getCorporationQuarterly(c.name);
+  const geoRevenue = await getCorporationGeoRevenue(c.name);
 
   const sectorPeers = allCorps
     .filter(x => x.sector === c.sector && x.name !== c.name)
@@ -57,13 +60,10 @@ export default async function CorpPage({ params }: { params: { slug: string } })
           </div>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 20 }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              {corpLogoUrl(c.domain) && (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={corpLogoUrl(c.domain, 80)} alt={`${c.name} logo`}
-                  style={{ width: 56, height: 56, objectFit: 'contain', flexShrink: 0,
+              {corpLogoUrl(c.domain) && (                <LogoImg src={corpLogoUrl(c.domain)} size={32} style={{ width: 56, height: 56, objectFit: 'contain', flexShrink: 0,
                     background: 'white', borderRadius: 8,
                     border: '1px solid var(--rule)', padding: 6,
-                    boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }} />
+                    boxShadow: '0 1px 3px rgba(0,0,0,0.08)' }} alt={`${c.name} logo`} />
               )}
               <div>
                 <h1 style={{ margin: '0 0 4px' }}>{c.name}</h1>
@@ -74,9 +74,7 @@ export default async function CorpPage({ params }: { params: { slug: string } })
                 </div>
               </div>
             </div>
-            {home && flagUrl(home.iso3) && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={flagUrl(home.iso3, 160)} alt={flagAlt(home.name)}
+            {home && flagUrl(home.iso3) && (              <img src={flagUrl(home.iso3, 160)} alt={flagAlt(home.name)}
                 style={{ width: 'clamp(48px, 5vw, 72px)', height: 'auto', flexShrink: 0,
                   border: '1px solid var(--rule)', boxShadow: '0 1px 3px rgba(0,0,0,0.12)' }} />
             )}
@@ -114,6 +112,10 @@ export default async function CorpPage({ params }: { params: { slug: string } })
           revenue={c.revenue_usd_bn ?? null}
           sector={c.sector}
         />
+
+        {geoRevenue.length > 0 && (
+          <GeoRevenueChart data={geoRevenue} label={c.name} />
+        )}
 
         {revenueHistory.length >= 3 && (
           <GdpHistoryChart
