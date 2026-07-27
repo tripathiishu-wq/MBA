@@ -1,7 +1,10 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
-import { getCorporations, getCorporationBySlug, getCountries, getAllCorporationSlugs, corpSlug, fmtUsdBn, fmtPct, fmtNum } from '@/lib/data';
+import { getCorporations, getCorporationBySlug, getCountries, getAllCorporationSlugs, getCorporationHistory, getCorporationQuarterly, corpSlug, fmtUsdBn, fmtPct, fmtNum } from '@/lib/data';
+import QuarterlyEarningsChart from '@/components/QuarterlyEarningsChart';
+import CorpScaleChart from '@/components/CorpScaleChart';
+import GdpHistoryChart from '@/components/GdpHistoryChart';
 import { flagUrl, flagAlt } from '@/lib/flags';
 
 export const revalidate = 3600;
@@ -30,6 +33,9 @@ export default async function CorpPage({ params }: { params: { slug: string } })
   // find which banks have led deals involving this company
   const allCorps = await getCorporations();
   const globalRank = allCorps.findIndex(x => x.name === c.name) + 1;
+
+  const revenueHistory = await getCorporationHistory(c.name);
+  const quarterly = await getCorporationQuarterly(c.name);
 
   const sectorPeers = allCorps
     .filter(x => x.sector === c.sector && x.name !== c.name)
@@ -90,11 +96,39 @@ export default async function CorpPage({ params }: { params: { slug: string } })
               </div>
             </div>
           )}
-          <div className="caveat" style={{ marginTop: 14 }}>
-            <b>Market cap vs. revenue vs. assets</b>
-            Market cap is what the market values the company at today — not what it earns (revenue) or holds (assets). These three figures rank companies very differently. {c.name}&apos;s market cap of {fmtUsdBn(c.market_cap_usd_bn)} is a mid-2026 snapshot; verify before using for any decision.
-          </div>
         </div>
+
+        <CorpScaleChart
+          name={c.name}
+          marketCap={c.market_cap_usd_bn ?? null}
+          revenue={c.revenue_usd_bn ?? null}
+          sector={c.sector}
+        />
+
+        {revenueHistory.length >= 3 ? (
+          <GdpHistoryChart
+            data={revenueHistory as any}
+            label={c.name}
+            title="Annual revenue over time"
+            source="Company 10-K filings / SEC EDGAR · annual revenue, USD"
+          />
+        ) : (
+          <div className="panel">
+            <h3>Revenue history</h3>
+            <div className="missing">
+              Annual revenue history is not yet compiled for {c.name}. This atlas carries
+              verified, filing-sourced history for a small and growing set — partial and real
+              is preferred over complete and estimated. For quarterly earnings data, Twelve Data
+              (twelvedata.com) provides a clean free-tier API feed.
+            </div>
+          </div>
+        )}
+
+
+        {quarterly.length > 0 && (
+          <QuarterlyEarningsChart data={quarterly} label={c.name} />
+        )}
+
 
         {home && (
           <div className="panel">

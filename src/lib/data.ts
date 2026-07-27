@@ -292,6 +292,38 @@ export async function getSovereignWealth(iso3: string): Promise<{ fund_name: str
   return data as any[];
 }
 
+export type CorpQuarter = {
+  corp_name: string;
+  ticker: string;
+  period: string;
+  period_end: string | null;
+  revenue_usd_bn: number | null;
+  net_income_usd_bn: number | null;
+  eps: number | null;
+};
+
+export async function getCorporationQuarterly(corpName: string): Promise<CorpQuarter[]> {
+  if (!historyClient) return [];
+  const { data, error } = await historyClient
+    .from('corp_quarterly')
+    .select('corp_name, ticker, period, period_end, revenue_usd_bn, net_income_usd_bn, eps')
+    .eq('corp_name', corpName)
+    .order('period', { ascending: true });
+  if (error || !data) return [];
+  return data as CorpQuarter[];
+}
+
+export async function getCorporationHistory(corpName: string): Promise<{ year: number; value: number | null }[]> {
+  if (!historyClient) return [];
+  const { data, error } = await historyClient
+    .from('corp_observation')
+    .select('year, revenue_usd_bn')
+    .eq('corp_name', corpName)
+    .order('year', { ascending: true });
+  if (error || !data) return [];
+  return (data as any[]).map((r) => ({ year: r.year, value: r.revenue_usd_bn }));
+}
+
 export async function getBankDeals(bankName: string): Promise<{ deal: string; role: string; year: number | null }[]> {
   if (!historyClient) return [];
   const { data, error } = await historyClient
