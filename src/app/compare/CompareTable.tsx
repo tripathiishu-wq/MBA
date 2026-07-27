@@ -1,5 +1,7 @@
 'use client';
 
+import { flagEmoji } from '@/lib/flags';
+
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
 import {
@@ -147,7 +149,7 @@ export default function CompareTable({ rows, initialMetric }: { rows: Country[];
                 <td className="rank">{i + 1}</td>
                 <td className="cname microbar">
                   <span style={{ width: `${(v / max) * 100}%`, background: 'var(--teal)' }} />
-                  <Link href={`/country/${c.slug}`} style={{ position: 'relative' }}>{c.name}</Link>
+                  <Link href={`/country/${c.slug}`} style={{ position: 'relative' }}>{flagEmoji(c.iso3)} {c.name}</Link>
                 </td>
                 <td className="hide-sm" style={{ color: 'var(--ink-2)', fontSize: 13 }}>{c.region}</td>
                 <td className="hide-sm" style={{ fontFamily: 'var(--mono)', fontSize: 12 }}>{c.currency_code}</td>

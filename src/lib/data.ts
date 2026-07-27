@@ -73,6 +73,7 @@ export type Bank = {
   assets_usd_bn: number;
   hq_city: string | null;
   slug?: string;
+  ceo_name?: string | null;
 };
 
 export const bankSlug = (name: string) =>
@@ -142,6 +143,17 @@ const fetchAllBanks = cache(async (): Promise<Bank[]> => {
   return [...localBanks].sort((a, b) => b.assets_usd_bn - a.assets_usd_bn);
 });
 
+// CEO names, at build time, come from Supabase directly if reachable (same
+// pattern as Phase 3 enrichment) — bank CEOs aren't baked into the static seed.
+const fetchBankCeos = cache(async (): Promise<Map<string, string>> => {
+  const m = new Map<string, string>();
+  if (!historyClient) return m;
+  const { data, error } = await historyClient.from('bank').select('name, ceo_name');
+  if (error || !data) return m;
+  (data as any[]).forEach((r) => { if (r.ceo_name) m.set(r.name, r.ceo_name); });
+  return m;
+});
+
 const fetchAllRails = cache(async (): Promise<Rail[]> => {
   if (supabase) {
     const { data, error } = await supabase
@@ -161,7 +173,11 @@ export async function getCountry(slug: string): Promise<Country | null> {
 }
 
 export async function getBanks(iso3?: string): Promise<Bank[]> {
-  const rows = await fetchAllBanks();
+  let rows = await fetchAllBanks();
+  if (rows.length && rows[0].ceo_name === undefined) {
+    const ceos = await fetchBankCeos();
+    rows = rows.map((b) => ({ ...b, ceo_name: ceos.get(b.name) ?? null }));
+  }
   return iso3 ? rows.filter((b) => b.iso3 === iso3) : rows;
 }
 

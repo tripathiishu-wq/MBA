@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getCountries, fmtPct, INDICATORS } from '@/lib/data';
+import { flagEmoji } from '@/lib/flags';
 
 export const revalidate = 3600;
 export const metadata = {
@@ -70,7 +71,7 @@ export default async function RatesPage() {
               <td className="rank">{i + 1}</td>
               <td className="cname microbar">
                 <span style={{ width: `${((c.policy_rate ?? 0) / maxRate) * 100}%`, background: 'var(--teal)' }} />
-                <Link href={`/country/${c.slug}`} style={{ position: 'relative' }}>{c.name}</Link>
+                <Link href={`/country/${c.slug}`} style={{ position: 'relative' }}>{flagEmoji(c.iso3)} {c.name}</Link>
               </td>
               <td className="hide-sm" style={{ color: 'var(--ink-2)', fontSize: 13 }}>{c.cb_name}</td>
               <td className="hide-sm" style={{ color: 'var(--ink-3)', fontSize: 12 }}>{c.policy_rate_name}</td>
@@ -92,7 +93,7 @@ export default async function RatesPage() {
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 14px' }}>
             {members.sort((a, b) => b.gdp_usd_bn - a.gdp_usd_bn).map((c) => (
               <Link key={c.iso3} href={`/country/${c.slug}`}
-                style={{ fontSize: 13, color: 'var(--ink-2)' }}>{c.name}</Link>
+                style={{ fontSize: 13, color: 'var(--ink-2)' }}>{flagEmoji(c.iso3)} {c.name}</Link>
             ))}
           </div>
         </div>

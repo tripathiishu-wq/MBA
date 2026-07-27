@@ -2,9 +2,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
-  getBanks, getBankBySlug, getCountries, bankSlug,
+  getBanks, getBankBySlug, getCountries, getHistory, bankSlug,
   fmtUsdBn, fmtPct, INDICATORS,
 } from '@/lib/data';
+import { flagEmoji } from '@/lib/flags';
+import GdpHistoryChart from '@/components/GdpHistoryChart';
 
 export const revalidate = 3600;
 
@@ -38,6 +40,7 @@ export default async function BankPage({ params }: { params: { slug: string } })
     .slice(0, 6);
   const vsGdp = home ? (bank.assets_usd_bn / home.gdp_usd_bn) * 100 : null;
   const I = INDICATORS.BANK_ASSETS;
+  const gdpHistory = home ? await getHistory(home.iso3, 'gdp_usd_bn') : [];
 
   return (
     <>
@@ -47,11 +50,22 @@ export default async function BankPage({ params }: { params: { slug: string } })
             <Link href="/">Atlas</Link> · <Link href="/banks">Banks</Link>
             {home && <> · <Link href={`/country/${home.slug}`}>{home.name}</Link></>}
           </div>
-          <h1>{bank.name}</h1>
+          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 20 }}>
+            <h1 style={{ margin: 0 }}>{bank.name}</h1>
+            {home && flagEmoji(home.iso3) && (
+              <span style={{ fontSize: 'clamp(28px, 4vw, 44px)', lineHeight: 1, flexShrink: 0 }}
+                role="img" aria-label={`Flag of ${home.name}`}>{flagEmoji(home.iso3)}</span>
+            )}
+          </div>
           <div className="country-meta">
             <span>Headquarters <b>{bank.hq_city ?? '—'}</b></span>
             {home && <span>Home economy <b>{home.name}</b></span>}
             <span>Global rank <b>{globalRank} of {total}</b></span>
+            {bank.ceo_name && (
+              <span>CEO <b style={{ color: 'var(--ink)', fontWeight: 600 }}>{bank.ceo_name}</b>
+                <span style={{ color: 'var(--ink-3)', fontSize: 11, marginLeft: 5 }}>verify</span>
+              </span>
+            )}
           </div>
         </div>
       </section>
@@ -88,6 +102,23 @@ export default async function BankPage({ params }: { params: { slug: string } })
             matter, consult the institution&apos;s own filings.
           </div>
         </div>
+
+        {home && gdpHistory.length >= 2 && (
+          <>
+            <GdpHistoryChart
+              data={gdpHistory}
+              label={home.name}
+              title={`${home.name}'s economy, for scale`}
+              source="IMF World Economic Outlook · nominal USD, not inflation-adjusted"
+            />
+            <p style={{ fontSize: 12, color: 'var(--ink-3)', margin: '-28px 0 24px' }}>
+              This atlas does not carry a multi-year asset history for individual banks — no single
+              free source covers that across {total} institutions. {home.name}&apos;s own GDP trajectory,
+              shown here, is the closest sourced context available for how {bank.name}&apos;s scale compares
+              to its home economy over time.
+            </p>
+          </>
+        )}
 
         {home && (
           <div className="panel">

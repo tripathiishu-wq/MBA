@@ -6,6 +6,7 @@ import {
   fmtUsdBn, fmtPop, fmtKm2, fmtPct, fmtNum, type Country,
 } from '@/lib/data';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
+import { flagEmoji } from '@/lib/flags';
 
 export const revalidate = 3600;
 
@@ -94,7 +95,15 @@ export default async function CountryPage({ params }: { params: { slug: string }
           <div className="crumb">
             <Link href="/">Atlas</Link> · <Link href="/regions">{c.region}</Link> · {c.iso3}
           </div>
-          <h1>{c.name}</h1>
+          <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: 20 }}>
+            <h1 style={{ margin: 0 }}>{c.name}</h1>
+            {flagEmoji(c.iso3) && (
+              <span style={{ fontSize: 'clamp(34px, 5vw, 54px)', lineHeight: 1, flexShrink: 0 }}
+                role="img" aria-label={`Flag of ${c.name}`}>
+                {flagEmoji(c.iso3)}
+              </span>
+            )}
+          </div>
           <div className="country-meta">
             <span>Capital <b>{c.capital ?? '—'}</b></span>
             <span>Currency <b>{c.currency_code}</b>{c.currency_name ? ` · ${c.currency_name}` : ''}</span>
@@ -542,7 +551,12 @@ export default async function CountryPage({ params }: { params: { slug: string }
                 {banks.map((b, i) => (
                   <tr key={b.name}>
                     <td className="rank">{i + 1}</td>
-                    <td className="cname"><Link href={`/bank/${bankSlug(b.name)}`}>{b.name}</Link></td>
+                    <td className="cname">
+                      <Link href={`/bank/${bankSlug(b.name)}`}>{b.name}</Link>
+                      {b.ceo_name && (
+                        <div style={{ fontSize: 11, fontWeight: 400, color: '#000', marginTop: 1 }}>{b.ceo_name}</div>
+                      )}
+                    </td>
                     <td className="hide-sm" style={{ color: 'var(--ink-2)' }}>{b.hq_city ?? '—'}</td>
                     <td className="num">{fmtUsdBn(b.assets_usd_bn)}</td>
                     <td className="num hide-sm">{fmtPct((b.assets_usd_bn / c.gdp_usd_bn) * 100, 0)}</td>

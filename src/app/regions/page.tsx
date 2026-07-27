@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getCountries, byRegion, totals, fmtUsdBn, fmtPop, fmtNum, fmtPct } from '@/lib/data';
+import { flagEmoji } from '@/lib/flags';
 
 export const revalidate = 3600;
 export const metadata = {
@@ -83,7 +84,7 @@ export default async function RegionsPage() {
                 padding: '10px 13px', borderRight: '1px solid var(--rule)',
                 borderBottom: '1px solid var(--rule)', fontSize: 13,
               }}>
-                <div style={{ fontWeight: 500 }}>{c.name}</div>
+                <div style={{ fontWeight: 500 }}>{flagEmoji(c.iso3)} {c.name}</div>
                 <div style={{ fontFamily: 'var(--mono)', fontSize: 11, color: 'var(--ink-3)' }}>
                   {fmtUsdBn(c.gdp_usd_bn)} · {fmtPct(c.debt_pct_gdp, 0)}
                 </div>

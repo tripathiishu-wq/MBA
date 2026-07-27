@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getCountries, getBanks, fmtUsdBn, fmtPct, INDICATORS } from '@/lib/data';
 import { bankSlug } from '@/lib/data';
+import { flagEmoji } from '@/lib/flags';
 
 export const revalidate = 3600;
 export const metadata = {
@@ -58,7 +59,7 @@ export default async function BanksPage() {
           {hosts.map((h, i) => (
             <tr key={h.iso3}>
               <td className="rank">{i + 1}</td>
-              <td className="cname"><Link href={`/country/${h.c.slug}`}>{h.c.name}</Link></td>
+              <td className="cname"><Link href={`/country/${h.c.slug}`}>{flagEmoji(h.c.iso3)} {h.c.name}</Link></td>
               <td className="num">{fmtUsdBn(h.assets)}</td>
               <td className="num hide-sm">{fmtUsdBn(h.c.gdp_usd_bn)}</td>
               <td className="num">{fmtPct((h.assets / h.c.gdp_usd_bn) * 100, 0)}</td>
@@ -86,7 +87,12 @@ export default async function BanksPage() {
             return (
               <tr key={b.name}>
                 <td className="rank">{i + 1}</td>
-                <td className="cname"><Link href={`/bank/${bankSlug(b.name)}`}>{b.name}</Link></td>
+                <td className="cname">
+                  <Link href={`/bank/${bankSlug(b.name)}`}>{b.name}</Link>
+                  {b.ceo_name && (
+                    <div style={{ fontSize: 11, fontWeight: 400, color: '#000', marginTop: 1 }}>{b.ceo_name}</div>
+                  )}
+                </td>
                 <td className="hide-sm" style={{ color: 'var(--ink-2)', fontSize: 13 }}>{b.hq_city ?? '—'}</td>
                 <td style={{ fontSize: 13 }}>
                   {c ? <Link href={`/country/${c.slug}`}>{c.name}</Link> : b.iso3}
