@@ -24,7 +24,7 @@ export default async function BanksPage() {
     .sort((a, b) => b.assets - a.assets)
     .slice(0, 12);
 
-  const top = banks.slice(0, 40);
+  const top = banks;
   const I = INDICATORS.BANK_ASSETS;
 
   return (
@@ -105,8 +105,8 @@ export default async function BanksPage() {
         </tbody>
       </table>
       <p style={{ fontSize: 13, color: 'var(--ink-3)', marginTop: 16 }}>
-        Showing the 40 largest of {banks.length}. Each country page lists the institutions
-        headquartered there.
+        All {banks.length} institutions in this dataset, ranked by total assets. Each country page
+        lists the ones headquartered there.
       </p>
     </div>
   );

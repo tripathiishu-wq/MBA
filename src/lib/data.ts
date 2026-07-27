@@ -53,6 +53,10 @@ export type Country = {
   hos_title?: string | null;
   broad_money_pct_gdp?: number | null;
   gold_tonnes?: number | null;
+  wealth_produced_pct?: number | null;
+  wealth_natural_pct?: number | null;
+  wealth_human_pct?: number | null;
+  wealth_foreign_pct?: number | null;
 };
 
 export type Rail = {
@@ -108,7 +112,7 @@ const localRails = ((seed as any).rails ?? []) as Rail[];
 // they're not in the bundled seed. Fetched once as a single bulk query using the
 // non-build-blocked client, same pattern as history, then merged onto the seed.
 // This is why they appear at build rather than only after revalidation.
-const PHASE3 = 'iso3, current_account_pct_gdp, inflation_pct, reserves_usd_bn, reserves_pct_gdp, rating_sp, rating_moodys, rating_fitch, exports_usd_bn, imports_usd_bn, top_export, lpi_score, trade_partners, trade_openness_pct, trade_balance_usd_bn, bond_yield_10y, leader_name, leader_title, leader_since, gov_type, blocs, hos_name, hos_title, broad_money_pct_gdp, gold_tonnes';
+const PHASE3 = 'iso3, current_account_pct_gdp, inflation_pct, reserves_usd_bn, reserves_pct_gdp, rating_sp, rating_moodys, rating_fitch, exports_usd_bn, imports_usd_bn, top_export, lpi_score, trade_partners, trade_openness_pct, trade_balance_usd_bn, bond_yield_10y, leader_name, leader_title, leader_since, gov_type, blocs, hos_name, hos_title, broad_money_pct_gdp, gold_tonnes, wealth_produced_pct, wealth_natural_pct, wealth_human_pct, wealth_foreign_pct';
 
 const fetchEnrichment = cache(async (): Promise<Map<string, Partial<Country>>> => {
   const m = new Map<string, Partial<Country>>();
@@ -223,6 +227,29 @@ const fetchAllHistory = cache(async (): Promise<Observation[]> => {
   }
   return all;
 });
+
+export async function getTradeItems(iso3: string): Promise<{ direction: 'export'|'import'; item: string; pct_share: number|null; ordinal: number }[]> {
+  if (!historyClient) return [];
+  const { data, error } = await historyClient
+    .from('trade_item')
+    .select('direction, item, pct_share, ordinal')
+    .eq('iso3', iso3)
+    .order('direction', { ascending: true })
+    .order('ordinal', { ascending: true });
+  if (error || !data) return [];
+  return data as any[];
+}
+
+export async function getSovereignWealth(iso3: string): Promise<{ fund_name: string; aum_usd_bn: number; ordinal: number }[]> {
+  if (!historyClient) return [];
+  const { data, error } = await historyClient
+    .from('swf')
+    .select('fund_name, aum_usd_bn, ordinal')
+    .eq('iso3', iso3)
+    .order('ordinal', { ascending: true });
+  if (error || !data) return [];
+  return data as any[];
+}
 
 export async function getBankDeals(bankName: string): Promise<{ deal: string; role: string; year: number | null }[]> {
   if (!historyClient) return [];

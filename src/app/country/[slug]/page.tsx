@@ -3,9 +3,11 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import {
   getCountries, getCountry, getBanks, getRails, getHistory, totals, byRegion, INDICATORS, bankSlug,
+  getTradeItems, getSovereignWealth,
   fmtUsdBn, fmtPop, fmtKm2, fmtPct, fmtNum, type Country,
 } from '@/lib/data';
 import GdpHistoryChart from '@/components/GdpHistoryChart';
+import WealthComposition from '@/components/WealthComposition';
 import { flagUrl, flagAlt } from '@/lib/flags';
 
 export const revalidate = 3600;
@@ -60,6 +62,8 @@ export default async function CountryPage({ params }: { params: { slug: string }
   const history = await getHistory(c.iso3, 'gdp_usd_bn');
   const debtHistory = await getHistory(c.iso3, 'debt_pct_gdp');
   const popHistory = await getHistory(c.iso3, 'population_mn');
+  const tradeItems = await getTradeItems(c.iso3);
+  const swfs = await getSovereignWealth(c.iso3);
   const w = totals(all);
   const regions = byRegion(all);
   const reg = regions.find((r) => r.region === c.region)!;
@@ -318,6 +322,48 @@ export default async function CountryPage({ params }: { params: { slug: string }
           )}
         </div>
 
+        {/* ---- national wealth composition (World Bank) ---- */}
+        <WealthComposition
+          w={{
+            produced: c.wealth_produced_pct,
+            natural:  c.wealth_natural_pct,
+            human:    c.wealth_human_pct,
+            foreign:  c.wealth_foreign_pct,
+          }}
+          label={c.name}
+        />
+
+        {/* ---- sovereign wealth funds ---- */}
+        {swfs.length > 0 && (
+          <div className="panel">
+            <h3>Sovereign wealth</h3>
+            <p style={{ marginTop: 0, marginBottom: 14, fontSize: 13, color: 'var(--ink-2)', lineHeight: 1.55 }}>
+              State-owned investment vehicles distinct from the central bank&apos;s reserves.
+              Where a country holds its financial buffer in a fund rather than in FX reserves,
+              this is where to look.
+            </p>
+            <table className="ledger">
+              <thead>
+                <tr><th>Fund</th><th style={{ textAlign: 'right' }}>AUM</th><th style={{ textAlign: 'right' }} className="hide-sm">vs. GDP</th></tr>
+              </thead>
+              <tbody>
+                {swfs.map((f, i) => (
+                  <tr key={i}>
+                    <td className="cname">{f.fund_name}</td>
+                    <td className="num">{fmtUsdBn(f.aum_usd_bn)}</td>
+                    <td className="num hide-sm">
+                      {c.gdp_usd_bn > 0 ? fmtPct((f.aum_usd_bn / c.gdp_usd_bn) * 100, 0) : '—'}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <p style={{ fontSize: 11, color: 'var(--ink-3)', margin: '10px 0 0', fontFamily: 'var(--mono)' }}>
+              Source: SWF Institute · AUM moves with markets; point-in-time
+            </p>
+          </div>
+        )}
+
         {/* ---- trade & supply chain ---- */}
         {(c.exports_usd_bn != null || c.top_export) ? (
           <div className="panel">
@@ -356,6 +402,38 @@ export default async function CountryPage({ params }: { params: { slug: string }
                 <span style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.08em',
                   textTransform: 'uppercase', color: 'var(--ink-3)' }}>Principal partners</span>
                 <div style={{ marginTop: 5 }}>{c.trade_partners}</div>
+              </div>
+            )}
+            {tradeItems.length > 0 && (
+              <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--rule)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+                  {(['export', 'import'] as const).map((dir) => {
+                    const items = tradeItems.filter((t) => t.direction === dir);
+                    if (!items.length) return null;
+                    return (
+                      <div key={dir}>
+                        <span style={{ fontFamily: 'var(--mono)', fontSize: 11, letterSpacing: '0.08em',
+                          textTransform: 'uppercase', color: 'var(--ink-3)' }}>
+                          {dir === 'export' ? 'Principal exports' : 'Principal imports'}
+                        </span>
+                        <div style={{ marginTop: 8 }}>
+                          {items.map((t, i) => (
+                            <div key={i} style={{ display: 'flex', justifyContent: 'space-between',
+                              padding: '5px 0', borderBottom: '1px dotted var(--rule)', fontSize: 13 }}>
+                              <span>{t.item}</span>
+                              <span style={{ fontFamily: 'var(--mono)', color: 'var(--ink-2)' }}>
+                                {t.pct_share != null ? `${t.pct_share}%` : '—'}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+                <p style={{ fontSize: 11, color: 'var(--ink-3)', margin: '10px 0 0', fontFamily: 'var(--mono)' }}>
+                  Share of total goods trade. Source: UN Comtrade / national statistics
+                </p>
               </div>
             )}
           </div>
